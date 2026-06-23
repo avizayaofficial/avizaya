@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   AVIZAYA - GLOBAL STYLES
+   Brand colors locked. Match the existing Avizaya episode CSS.
+   ============================================================ */
+
+:root {
+  --plum: #2C1A4A;
+  --gold: #C4955A;
+  --ivory: #F7F2EC;
+  --muted: #6B5A72;
+  --light: #FAF6F0;
+  --green: #1A3A2E;
+}
+
+html {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  color: var(--plum);
+  background: var(--ivory);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--ivory);
+  color: var(--plum);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  color: var(--plum);
+}
+
+/* Focus visible for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   READER STYLES - preserves the existing locked Avizaya episode
+   typography. When episode HTML is rendered into a <div>, these
+   styles apply only inside .episode-content (scoped).
+   ============================================================ */
+
+.episode-content {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 32px 100px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  color: var(--plum);
+  background: var(--ivory);
+}
+
+.episode-content h1,
+.episode-content h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+}
+
+.episode-content p {
+  font-size: 16px;
+  line-height: 1.9;
+  color: #3A2840;
+  margin-bottom: 22px;
+}
+
+/* Preserved styling from the locked episode CSS lives inline in
+   the imported HTML <style> blocks, so all custom blockquote,
+   scripture, prayer, and declaration styling renders correctly.
+*/

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avizaya: School 1, Episode 3</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --plum: #2C1A4A;
+    --gold: #C4955A;
+    --ivory: #F7F2EC;
+    --muted: #6B5A72;
+    --light: #FAF6F0;
+    --green: #1A3A2E;
+  }
+  body { background: var(--ivory); font-family: 'Jost', sans-serif; font-weight: 300; color: var(--plum); padding: 0 0 100px; -webkit-font-smoothing: antialiased; }
+
+  .cover { background: var(--plum); padding: 72px 40px 64px; text-align: center; }
+  .cover-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; }
+  .cover-school { font-size: 12px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(196,149,90,0.6); margin-bottom: 20px; }
+  .cover-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(34px, 6vw, 58px); font-weight: 300; line-height: 1.15; color: var(--ivory); margin-bottom: 24px; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .cover-title em { font-style: italic; color: var(--gold); }
+  .cover-divider { display: flex; align-items: center; gap: 14px; max-width: 320px; margin: 0 auto 24px; }
+  .cover-line { flex: 1; height: 0.5px; background: var(--gold); opacity: 0.35; }
+  .cover-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
+  .cover-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; font-weight: 300; color: rgba(232,213,196,0.7); max-width: 480px; margin: 0 auto; line-height: 1.6; }
+
+  .body { max-width: 680px; margin: 0 auto; padding: 0 32px; }
+  .section-tag { display: inline-flex; align-items: center; gap: 8px; margin: 48px 0 20px; }
+  .tag-line { width: 24px; height: 0.5px; background: var(--gold); }
+  .tag-text { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+
+  h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 4vw, 34px); font-weight: 400; line-height: 1.3; color: var(--plum); margin-bottom: 20px; }
+  h2 em { font-style: italic; color: var(--gold); }
+
+  p { font-size: 16px; line-height: 1.9; color: #3A2840; margin-bottom: 22px; }
+  p.large { font-family: 'Cormorant Garamond', serif; font-size: clamp(19px, 3vw, 24px); font-style: italic; line-height: 1.65; color: var(--plum); }
+  p strong { font-weight: 500; color: var(--plum); }
+  p em { font-style: italic; color: var(--gold); }
+
+  .divider { display: flex; align-items: center; gap: 14px; margin: 40px 0; }
+  .divider-line { flex: 1; height: 0.5px; background: var(--gold); opacity: 0.3; }
+  .diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); }
+
+  blockquote { border-left: 2px solid var(--gold); padding: 18px 0 18px 24px; margin: 36px 0; }
+  blockquote p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(19px, 3vw, 25px); color: var(--plum); margin: 0; line-height: 1.5; }
+
+  .scripture { background: var(--light); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; padding: 18px 22px; margin: 32px 0; }
+  .scripture p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; color: var(--plum); line-height: 1.6; margin-bottom: 8px; }
+  .scripture .ref { font-family: 'Jost', sans-serif; font-style: normal; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+
+  .principle-box { background: var(--plum); border-radius: 12px; padding: 32px 30px; margin: 40px 0; text-align: center; }
+  .principle-label { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .principle-box p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: var(--ivory); margin: 0; line-height: 1.5; }
+
+  .step-box { background: white; border: 0.5px solid rgba(196,149,90,0.3); border-radius: 12px; padding: 28px 26px; margin: 28px 0; }
+  .step-num { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .step-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--plum); margin-bottom: 14px; line-height: 1.3; }
+
+  .reflection-box { background: var(--plum); border-radius: 12px; padding: 36px 30px; margin: 48px 0; }
+  .reflection-box .reflection-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--gold); margin-bottom: 22px; font-style: italic; }
+  .reflection-box p { color: rgba(232,213,196,0.88); margin-bottom: 18px; font-size: 16px; }
+  .reflection-box p:last-child { margin-bottom: 0; }
+  .reflection-box p strong { color: var(--gold); font-weight: 400; }
+
+  .prayer-box { background: var(--green); border-radius: 12px; padding: 36px 30px; margin: 48px 0; }
+  .prayer-box .prayer-title { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; }
+  .prayer-box p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; line-height: 1.75; color: rgba(232,213,196,0.92); margin-bottom: 14px; }
+  .prayer-box p:last-child { margin-bottom: 0; }
+
+  .closing { text-align: center; padding: 70px 0 30px; }
+  .closing p { font-family: 'Cormorant Garamond', serif; font-size: clamp(20px, 3.5vw, 28px); font-style: italic; color: var(--plum); line-height: 1.6; margin-bottom: 18px; }
+  .closing .sig { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-style: normal; font-family: 'Jost', sans-serif; font-weight: 400; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <p class="cover-eyebrow">Avizaya</p>
+  <p class="cover-school">School 1: The abandoned girl &nbsp;&middot;&nbsp; Episode 3</p>
+  <h1 class="cover-title">The <em>father wound.</em></h1>
+  <div class="cover-divider">
+    <div class="cover-line"></div>
+    <div class="cover-diamond"></div>
+    <div class="cover-line"></div>
+  </div>
+  <p class="cover-sub">A teaching on the wound that has been quietly translating itself into your relationship with God, and the Father who has been running toward you the whole time.</p>
+</div>
+
+<div class="body">
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Welcome</span></div>
+
+  <p class="large">Darling, in our last two conversations together we laid the first two stones of everything we are building in this school. The first stone was the promise of Psalm 27:10, that though our father and mother forsake us the Lord Himself receives us. The second stone was the truth of who we are in His hands, the woman He formed in our mother's womb before any voice in this world had a chance to speak.</p>
+
+  <p>Now we come to the third stone. And this one is the heaviest stone we will lay in this school, because it touches a place inside us that has been quietly aching for a very long time, longer in most cases than we have been willing to admit even to ourselves.</p>
+
+  <p>The father wound.</p>
+
+  <p>I want to say at the very beginning that we are not going to walk into this teaching the way the world walks into it. The world walks into the father wound looking for someone to blame, looking for a story to tell, looking for something to name as the reason a woman's life turned out the way it did. We are not walking into this looking for blame. We are walking into it looking for what God is doing inside the very place that broke us, because the Word of God is unflinchingly honest about wounds, and it is equally unflinching about what God does with them.</p>
+
+  <div class="scripture">
+    <p>"A father to the fatherless, a defender of widows, is God in his holy dwelling."</p>
+    <p class="ref">Psalm 68:5 NIV</p>
+  </div>
+
+  <p>This is the promise we are going to build the entire episode on. Not that you did not have a wound. You did. Not that your father did not fail you in some specific way. He may have, and we are going to name it. The promise is that God Himself, the Creator of the universe, the One who knit you together in your mother's womb, has named Himself Father to the fatherless. And God does not name Himself things lightly. When He assigns Himself a role, He fulfills it perfectly. He has named Himself your Father, and the gap that the man in your life left in you, whether by his choice or by circumstance or by his own brokenness, is the very gap He has been waiting to fill with His own presence.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 1</span></div>
+  <h2>What the father wound <em>actually is.</em></h2>
+
+  <p>There is a teaching about the father wound that most psychology books will give you, and it is true as far as it goes. The father wound shapes your sense of safety, your sense of worth, your sense of being chosen, your sense of being protected. All of that is real. The earthly father was meant to be the first man who taught a daughter that she is safe and worthy and chosen and protected. When he fails at that calling, the daughter carries the absence of those teachings into every relationship she ever has after him.</p>
+
+  <p>But there is a deeper layer underneath the psychological one, and we have to name it if we want to actually heal at the root and not just at the surface.</p>
+
+  <p>The father wound is, at its very heart, a wound to your image of God.</p>
+
+  <p>Because every child first learns what father means from her own father. He is the first translator of the heavenly Father's nature to the child. The earthly father teaches the child, by his daily presence or absence, by his words or his silences, by the way he looks at her or the way he overlooks her, what fathers are like. And when the child grows up and is introduced to the Father in heaven, she reads that Father through the translation she was given by the one on earth, and the translation has been running underneath everything she believes about God.</p>
+
+  <p>If the earthly father was absent, the daughter grows up quietly assuming God is also absent.</p>
+
+  <p>If the earthly father was harsh, the daughter grows up quietly assuming God is also harsh.</p>
+
+  <p>If the earthly father was disappointed in her, the daughter grows up quietly assuming God is also disappointed in her.</p>
+
+  <p>If the earthly father chose other things over her, the daughter grows up quietly assuming God will also choose other things over her.</p>
+
+  <p>This is the deepest wound. Not that your earthly father failed you. He was a man, and men sometimes fail. The deepest wound is that his failure has been silently translating itself into your relationship with the Father in heaven, and you have been operating in your faith for years through a corrupted translation without knowing it. Until that translation is fixed, the rest of your spiritual life will keep hitting an invisible ceiling, because you cannot fully receive from a Father you secretly suspect of being like the one who hurt you.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">The inversion</span></div>
+  <h2>The wound is the <em>doorway.</em></h2>
+
+  <p class="large">The father wound you carry is not the end of your story. It is the beginning of your introduction to your true Father.</p>
+
+  <p>The women I have watched walk most deeply into the Father heart of God across the years are almost never the women who had wonderful earthly fathers. They are the women who carried this exact wound. Because the wound created in them a hunger that women with full earthly fathers rarely have, and that hunger is what has been driving them deeper into the only One who can satisfy it.</p>
+
+  <p>Women who had everything from their earthly fathers often stop short with God. They learn about Him, they serve Him, they obey Him faithfully, but they rarely cry Abba. They rarely climb into His lap. They rarely let themselves need Him the way a daughter needs a father, because they got most of their daughter-needs met somewhere else and so the hunger never drove them to the only place that can fully feed it.</p>
+
+  <p>You, the woman with the wound, are positioned for the very thing the others miss. The exact wound the enemy meant to use against you is the wound that has been making your heart hungry enough to actually receive what He is offering. The thing that broke you was not the end of your inheritance. It was the very thing that opened your inheritance to you in a way that women who did not have this wound will rarely access.</p>
+
+  <p>This is the inversion that runs through the entire Word of God. What the enemy means for harm, God works for good. What the world rejects, God positions. The very wound the world calls your disqualification, the kingdom of God calls your qualification.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 2</span></div>
+  <h2>The Father God <em>actually is.</em></h2>
+
+  <p>Let us go to the Word now and see who God says He is to the daughter without a father.</p>
+
+  <div class="scripture">
+    <p>"A father to the fatherless, a defender of widows, is God in his holy dwelling."</p>
+    <p class="ref">Psalm 68:5 NIV</p>
+  </div>
+
+  <p>He has named Himself two things in that single verse. A father to the fatherless. A defender of widows. God has chosen, by His own voice, to take the place of the man who is absent, and He has chosen, by His own voice, to take the place of the man who is gone. He does not consider this a charity. He does not consider it a gap-filling gesture for women who could not get the real thing. He considers it His holy assignment to position Himself, with the full weight of who He is, exactly where a man failed to be.</p>
+
+  <div class="scripture">
+    <p>"for in you the fatherless find compassion."</p>
+    <p class="ref">Hosea 14:3 NIV</p>
+  </div>
+
+  <p>In You, the prophet says to God. Not eventually. Not maybe. In You the fatherless find compassion, as if the very nature of God has been pre-loaded with the exact medicine the fatherless heart needs. The God of the universe runs toward the daughter without a father, not away from her. The wound is the very thing that draws Him closer, not the thing that pushes Him further.</p>
+
+  <div class="scripture">
+    <p>"I will be a Father to you, and you will be my sons and daughters, says the Lord Almighty."</p>
+    <p class="ref">2 Corinthians 6:18 NIV</p>
+  </div>
+
+  <p>I will be. Future tense from God is more certain than past tense from any man. When God says I will be, it is already done in eternity, and only the unfolding remains to be seen in time. He has committed Himself, by His own word, to fathering you. The work is not to convince Him. The work is to receive what He has already committed Himself to giving.</p>
+
+  <div class="scripture">
+    <p>"I will not leave you as orphans; I will come to you."</p>
+    <p class="ref">John 14:18 NIV</p>
+  </div>
+
+  <p>This is Christ Himself speaking to His own disciples on the night before His death. The promise was given in a moment of impending grief, when His followers were about to feel like they were losing everything. He did not say eventually you will find another father figure. He did not say I am sorry this is happening. He said I will not leave you as orphans, I will come. The Father has been on His way to you since before you knew you were missing Him.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 3</span></div>
+  <h2>The faces of <em>the wound.</em></h2>
+
+  <p>The father wound comes in many shapes, and the shape often determines what we feel and what we cannot quite put into words about ourselves. I want to name a few of them, not to dwell in them but to let you find yourself somewhere in the naming, because being seen in the wound is the beginning of being healed of it.</p>
+
+  <p>Some fathers leave by death, by divorce, by addiction, by their own choice, by their own inability to stay. The daughter grows up with a hole where a father was supposed to be, and she carries that absence into every later relationship in her life, and the absence shapes how she loves and how she lets herself be loved.</p>
+
+  <p>Other fathers are present in the home but their presence is a threat instead of a refuge. The daughter learns early that to be loved she has to perform, and to be safe she has to please, and to exist near her father she has to disappear into his moods, because the real her would not survive his judgment if she ever brought her real self into the room.</p>
+
+  <p>Other fathers are there in body but absent in attention. They pay the bills. They do not pay attention. The daughter grows up next to a man who never quite knew her, and she learns to settle for proximity without intimacy, which will later show up in every relationship she enters, where she will find herself with men who are near her but not actually with her.</p>
+
+  <p>Other fathers have their attention stolen by something other than the daughter. Alcohol, work, women, status, even religion taken to the wrong place. The daughter learns she cannot compete with whatever has her father's heart, and she grows up quietly assuming she cannot compete with whatever has any man's heart.</p>
+
+  <p>Other fathers chose another family, or left the first family for the second, or had a second life running alongside the first. The daughter learns she was not enough to keep a father, and she has been quietly preparing to be left ever since.</p>
+
+  <p>Each of these shapes the same wound at the root. He did not father me the way I needed. He did not give me what only a father can give. And so I have been operating in this world without something essential that other women seem to have been given without even asking for it.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">A note</span></div>
+  <h2>For the woman who thinks she did <em>not</em> have one.</h2>
+
+  <p>Before we go further, I want to speak to the woman reading this who is thinking, this is not me, I had a good father.</p>
+
+  <p>You may have. And if you did, I want you to thank God for him, because what your father gave you is a gift that very few women in this generation received, and it has been quietly shaping your sense of safety in the world your entire life without you even knowing how rare it was.</p>
+
+  <p>But I want to ask you a gentle question before you set this teaching aside.</p>
+
+  <p>Did anyone else who was supposed to father you fail at fathering you in some specific way?</p>
+
+  <p>A stepfather. A grandfather. A teacher who held a father role for you. A pastor. A coach. A husband whose role expanded into father-figure when your own father retired into the background of your life. Even God Himself, as He was misrepresented to you by a teacher or a leader who painted Him in a way that did not match His actual heart.</p>
+
+  <p>The father wound does not only come from biological fathers. It comes from any man who held a father role, formally or informally, and failed at that role in a way that left a daughter wondering what was wrong with her. If anything in any of those categories is stirring in you, this teaching is for you too.</p>
+
+  <p>There is also the daughter who had a wonderful father but had to grow up too fast in some way. The daughter who became her father's emotional partner because her mother could not be. The daughter who became her father's confidante because no one else was willing to listen to him. The daughter who lost her father-daughter relationship to the role-reversal her family forced upon her. She was loved, she was even valued, but she was not protected as a daughter, because she was being used as a partner. That is also a father wound, and it sits in a woman quietly until someone finally names it and gives her permission to grieve what she did not even know she had lost.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 4</span></div>
+  <h2>The Father who <em>runs.</em></h2>
+
+  <div class="scripture">
+    <p>"But while he was still a long way off, his father saw him and was filled with compassion for him; he ran to his son, threw his arms around him and kissed him."</p>
+    <p class="ref">Luke 15:20 NIV</p>
+  </div>
+
+  <p>This is the parable of the prodigal son. The son had taken his inheritance early, an act considered the deepest insult a son could deliver in that culture, essentially saying to his father, I wish you were already dead. He had wasted everything. He had ended up in a foreign land, starving in a pig field, working a job no Jewish son should ever have been doing. And in his ruin, he decided to come home, hoping his father might at least let him be a hired servant, because he had concluded that he no longer deserved to be a son.</p>
+
+  <p>And the father saw him while he was still a long way off.</p>
+
+  <p>The father saw him, which means the father had been watching the road. The father had not given up, had not moved on, had not built a new life that did not include the son who left. The father had been standing by the window every single day, scanning the horizon, waiting for the day his child would return to him.</p>
+
+  <p>And when he saw him, what did the father do?</p>
+
+  <p class="large">He ran.</p>
+
+  <p>A Jewish man in that culture did not run. It was considered beneath the dignity of an elder, and especially a father, to lift his robes and run anywhere. Running was for children and for laborers and for people without status. But the father in this parable picked up his robes and ran toward the child, because the dignity of decorum was less important to him in that moment than the urgency of receiving his child home.</p>
+
+  <p>This is the Father in heaven. He is not waiting for you to clean yourself up before He receives you. He is not standing with His arms folded judging the distance you have left to travel. He is running. He has been running toward you since before you knew you needed to come home, and the whole time you were quietly assuming He was sitting in judgment, He was actually scanning the horizon for the very first sign of your turning.</p>
+
+  <p>The son had a speech prepared. He was going to confess his sin and ask to be made a servant. He never got to finish his speech. The father interrupted him. The father called for the best robe and the ring and the fattened calf and a party, because no child of his comes home and stays in mourning clothes, and no child of his comes home to be made a servant. The child who comes home is a child, and the celebration of her return is mandatory in that house.</p>
+
+  <p>That is the heart of God toward you. The wound you have been carrying is not stronger than His running. The distance you have been keeping from Him is not stronger than His pursuit of you. The version of the Father you have been afraid of, because of what your earthly father was, is not the Father who is actually running toward you with the celebration already prepared in His own house.</p>
+
+  <div class="principle-box">
+    <p class="principle-label">The principle</p>
+    <p>He has been running toward you since before you knew you needed to come home, and the wound that broke you is the very thing that has been preparing you to receive Him.</p>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 5</span></div>
+  <h2>Learning to call Him <em>Abba.</em></h2>
+
+  <div class="scripture">
+    <p>"The Spirit you received does not make you slaves, so that you live in fear again; rather, the Spirit you received brought about your adoption to sonship. And by him we cry, Abba, Father."</p>
+    <p class="ref">Romans 8:15 NIV</p>
+  </div>
+
+  <p>Abba. The most intimate word in Aramaic for father. It is the word a small child uses for her own father, the word a daughter cries out when she has scraped her knee, the word that a father's heart cannot resist when it is called from a child who belongs to him.</p>
+
+  <p>This is the word the Holy Spirit teaches us to use when we approach God.</p>
+
+  <p>Not Lord, though He is Lord. Not King, though He is King. Not Almighty God of the universe, though He is all of those things and more. The word the Spirit teaches us to use, when we crawl into His presence, is Abba. Daddy. Papa.</p>
+
+  <p>I know how that lands in a woman who has a father wound. It feels too intimate, too vulnerable, too tender to be addressing the Creator of the universe that way. We were taught to come to God with reverence and with awe and with formality, and all of that is right and good in its season. But the Spirit of adoption that has been given to you, the Spirit who lives inside every daughter of God, is teaching you a different word. The Spirit Himself is forming the word Abba in your spirit, and the cry comes out of you before you have a chance to be embarrassed by its tenderness.</p>
+
+  <p>When you can say Abba to God and mean it, when you can crawl into the lap of the Father in heaven without performing or apologizing or making yourself useful first, the father wound has actually begun to heal at the root, and not just at the surface where the world tries to heal things.</p>
+
+  <p>He is not waiting for you to feel ready. He is waiting for you to come.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 6</span></div>
+  <h2>Three movements for <em>this week.</em></h2>
+
+  <p>And so we come to three movements to take with us into this week. These three together form the work of letting God Father you in the very place where another father did not.</p>
+
+  <div class="step-box">
+    <p class="step-num">Movement one</p>
+    <p class="step-title">Name what was missed.</p>
+    <p>You cannot receive what God is giving you as Father if you have not first acknowledged what you did not receive from the man who was supposed to give it. So this week, take a quiet hour with God and write out, slowly and honestly, what your earthly father did not give you that a father is meant to give.</p>
+    <p>Maybe it was protection. Maybe it was attention. Maybe it was approval. Maybe it was the sense of being chosen. Maybe it was the sense of being safe, of being known, of being precious to a man simply because you were his daughter and that was enough.</p>
+    <p>Whatever it was, name it specifically. Do not generalize, because generalized wounds do not heal. Specific naming is what God works with. David in the Psalms named what was missing constantly, he did not pretend his enemies were not real or his losses were not real or his pain did not exist, he named exactly what he was lacking and he brought it to God. That is the model. Specific honest naming, brought into the presence of the One who is committed to filling what was emptied.</p>
+  </div>
+
+  <div class="step-box">
+    <p class="step-num">Movement two</p>
+    <p class="step-title">Receive what He is offering.</p>
+    <p>For every specific thing you named in movement one, find the corresponding thing God has promised to be for you, and receive it as the medicine for that specific wound.</p>
+    <p>If you named that your father did not protect you, receive that God is your defender. Psalm 18:2 names the Lord as your rock, your fortress and your deliverer.</p>
+    <p>If you named that your father did not see you, receive that God is the God who sees. Genesis 16:13. Hagar, in her abandonment in the desert, called Him El Roi, the God who sees me.</p>
+    <p>If you named that your father did not choose you, receive that God chose you before the foundation of the world. Ephesians 1:4. He chose us in Him before the creation of the world.</p>
+    <p>The specific gap your father left, the Father in heaven has a specific name and a specific promise to fill it with. The work is not to ask Him to fill it. The work is to receive what He has already named Himself as ready to be for you.</p>
+  </div>
+
+  <div class="step-box">
+    <p class="step-num">Movement three</p>
+    <p class="step-title">Begin to call Him Abba.</p>
+    <p>This one will feel strange the first time you try it, and that is alright.</p>
+    <p>This week, find one quiet moment alone, and instead of beginning your prayer with Lord or God or Father, begin it with Abba. Or with whatever the equivalent intimate word for father is in your own first language. Try it once. Then again the next day. Then again.</p>
+    <p>You are not being irreverent. You are being obedient to what the Spirit is forming inside you. He is teaching your spirit to cry Abba, and your spirit will not learn what your mouth refuses to practice. The cry will get easier. The intimacy will deepen. And one day, sometimes years later, you will lift your head and realize that the Father you used to be afraid of has somehow become the Father you cannot live without.</p>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">A brief note</span></div>
+  <h2>On <em>my own walk.</em></h2>
+
+  <p>Dear woman, I will tell you that I grew up without a father. He died when I was very small, and I have no memory of him at all. For a long time I told myself this was not really a wound, because I had never known what I was missing, and how can a woman grieve someone she never had the chance to meet.</p>
+
+  <p>But the absence shaped me anyway. The shape of what was not there was its own kind of presence, and it formed me as surely as a present father would have formed me, only in the opposite direction.</p>
+
+  <p>When I came to know God deeply, He had to do the work that the father I never knew could not do. He had to teach me what fathers were like, because no man on earth had ever taught me what they were like. He had to translate Himself to me from scratch, because I had no translation given to me by an earthly father at all. And that became a strange gift in my life, because the translation God gave me was the original. He was the first father I ever knew, and He has been a Father I have not been able to live without ever since.</p>
+
+  <p>If you are the daughter whose father left you, the principle works for you. If you are the daughter whose father was taken from you, the principle works for you. If you are the daughter whose father was present but absent in some other way, the principle works for you too. The Father in heaven is not filling in for what your earthly father failed to give. He is being who He has always been to daughters like us. The first Father. The original. The only one who has been there from the beginning.</p>
+
+  <p>I am not telling you this work is fast. I am telling you it is real, and that it works, because the principle underneath it is sound. He is the Father to the fatherless. He has named Himself that, and He has never failed to be what He has named Himself.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="reflection-box">
+    <p class="reflection-title">Five questions for this week</p>
+    <p>Read one a day. Sit with it. Bring it to God in prayer.</p>
+    <p><strong>One.</strong> What did your earthly father not give you that a father is meant to give? Name it specifically, without softening it for his sake or for yours.</p>
+    <p><strong>Two.</strong> How has that absence quietly translated itself into your image of God? Where has the wound been showing up in your spiritual life without you knowing it was the wound?</p>
+    <p><strong>Three.</strong> What promise of God's Father heart speaks most directly to the specific shape of your wound, and have you ever actually received that promise as something for you, not just as something for other people?</p>
+    <p><strong>Four.</strong> If you truly believed today that the Father in heaven has been running toward you since before you knew you were lost, what would you stop doing? What would you finally let yourself begin?</p>
+    <p><strong>Five.</strong> What would it look like for you, this week, to call Him Abba even once, and to let yourself be His daughter and not just His servant?</p>
+  </div>
+
+  <div class="prayer-box">
+    <p class="prayer-title">A prayer for the daughter coming home</p>
+    <p>Father, I come to You as the daughter I actually am, not the daughter I have been pretending to be.</p>
+    <p>I confess that I have been carrying a wound for a long time, a wound from the man who was supposed to father me and did not father me the way I needed. I confess that I have let that wound translate itself, quietly, into who I have assumed You to be, and I have been operating in faith through a corrupted translation for too long.</p>
+    <p>I want to know You as the Father You actually are. The One who runs. The One who sees. The One who has named Himself Father to the fatherless and has never failed to be what He has named Himself.</p>
+    <p>Heal what was broken in me by the absence of an earthly father. Fill what was emptied. Translate what was misunderstood. Teach me to call You Abba and to mean it, and to let myself be received by You the way only a daughter can be received.</p>
+    <p>I lay down my speeches. I lay down my excuses. I lay down my fear that You will not run the way the parable says You will. I come home.</p>
+    <p>In the name of Jesus, amen.</p>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Before you go</span></div>
+  <h2>One word, spoken <em>once.</em></h2>
+
+  <p>This week, just one practice. Find a quiet place. Speak the word Abba out loud, to God, one time. Just once is enough to begin. And then sit with whatever rises in you afterward. Maybe tears. Maybe resistance. Maybe nothing at all the first time you try it, and that is also alright, because the work is happening even when you cannot feel it happening.</p>
+
+  <p>The word will not stay strange forever. Every time you speak it you are practicing a new instinct, and the instinct that needs to be formed in every daughter of God is the instinct of crying Abba in moments of need and in moments of joy and in moments of confusion and in the small quiet moments of an ordinary Tuesday afternoon when no one is watching the practice forming inside you.</p>
+
+  <p>He is the Father you have been looking for your whole life. He has been the Father you were looking for the whole time you were looking. And the only thing that has been keeping you from receiving Him fully is the translation you were given by another man, a translation that is being corrected in you right now, as you read this, whether you can feel it being corrected or not.</p>
+
+  <p>Stay in the conversation. The Father who runs is closer than you know.</p>
+
+  <div class="closing">
+    <p>The wound the world called your disqualification,<br>the kingdom calls your <em>qualification</em>.<br><em>Everything else, Darling,<br>was always too small a destiny<br>for the daughter the Father has been running toward.</em></p>
+    <p class="sig">Avizaya &nbsp;&middot;&nbsp; School 1, Episode 3</p>
+  </div>
+
+</div>
+</body>
+</html>

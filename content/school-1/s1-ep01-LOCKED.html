@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avizaya: School 1, Episode 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --plum: #2C1A4A;
+    --gold: #C4955A;
+    --ivory: #F7F2EC;
+    --muted: #6B5A72;
+    --light: #FAF6F0;
+    --green: #1A3A2E;
+  }
+  body { background: var(--ivory); font-family: 'Jost', sans-serif; font-weight: 300; color: var(--plum); padding: 0 0 100px; -webkit-font-smoothing: antialiased; }
+
+  .cover { background: var(--plum); padding: 72px 40px 64px; text-align: center; }
+  .cover-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; }
+  .cover-school { font-size: 12px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(196,149,90,0.6); margin-bottom: 20px; }
+  .cover-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(34px, 6vw, 58px); font-weight: 300; line-height: 1.15; color: var(--ivory); margin-bottom: 24px; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .cover-title em { font-style: italic; color: var(--gold); }
+  .cover-divider { display: flex; align-items: center; gap: 14px; max-width: 320px; margin: 0 auto 24px; }
+  .cover-line { flex: 1; height: 0.5px; background: var(--gold); opacity: 0.35; }
+  .cover-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
+  .cover-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; font-weight: 300; color: rgba(232,213,196,0.7); max-width: 480px; margin: 0 auto; line-height: 1.6; }
+
+  .body { max-width: 680px; margin: 0 auto; padding: 0 32px; }
+  .section-tag { display: inline-flex; align-items: center; gap: 8px; margin: 48px 0 20px; }
+  .tag-line { width: 24px; height: 0.5px; background: var(--gold); }
+  .tag-text { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+
+  h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 4vw, 34px); font-weight: 400; line-height: 1.3; color: var(--plum); margin-bottom: 20px; }
+  h2 em { font-style: italic; color: var(--gold); }
+
+  p { font-size: 16px; line-height: 1.9; color: #3A2840; margin-bottom: 22px; }
+  p.large { font-family: 'Cormorant Garamond', serif; font-size: clamp(19px, 3vw, 24px); font-style: italic; line-height: 1.65; color: var(--plum); }
+  p strong { font-weight: 500; color: var(--plum); }
+
+  .divider { display: flex; align-items: center; gap: 14px; margin: 40px 0; }
+  .divider-line { flex: 1; height: 0.5px; background: var(--gold); opacity: 0.3; }
+  .diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); }
+
+  blockquote { border-left: 2px solid var(--gold); padding: 18px 0 18px 24px; margin: 36px 0; }
+  blockquote p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(19px, 3vw, 25px); color: var(--plum); margin: 0; line-height: 1.5; }
+
+  .scripture { background: var(--light); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; padding: 18px 22px; margin: 32px 0; }
+  .scripture p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; color: var(--plum); line-height: 1.6; margin-bottom: 8px; }
+  .scripture .ref { font-family: 'Jost', sans-serif; font-style: normal; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+
+  .principle-box { background: var(--plum); border-radius: 12px; padding: 32px 30px; margin: 40px 0; text-align: center; }
+  .principle-label { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .principle-box p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: var(--ivory); margin: 0; line-height: 1.5; }
+
+  .note { background: var(--light); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 32px 0; font-size: 14px; line-height: 1.75; color: #5A4A60; }
+  .note strong { font-weight: 500; color: var(--plum); display: block; margin-bottom: 6px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; }
+
+  .step-box { background: white; border: 0.5px solid rgba(196,149,90,0.3); border-radius: 12px; padding: 28px 26px; margin: 28px 0; }
+  .step-num { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .step-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--plum); margin-bottom: 14px; line-height: 1.3; }
+
+  .reflection-box { background: var(--plum); border-radius: 12px; padding: 36px 30px; margin: 48px 0; }
+  .reflection-box .reflection-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--gold); margin-bottom: 22px; font-style: italic; }
+  .reflection-box p { color: rgba(232,213,196,0.88); margin-bottom: 18px; font-size: 16px; }
+  .reflection-box p:last-child { margin-bottom: 0; }
+  .reflection-box p strong { color: var(--gold); font-weight: 400; }
+
+  .prayer-box { background: var(--green); border-radius: 12px; padding: 36px 30px; margin: 48px 0; }
+  .prayer-box .prayer-title { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; }
+  .prayer-box p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; line-height: 1.75; color: rgba(232,213,196,0.92); margin-bottom: 14px; }
+  .prayer-box p:last-child { margin-bottom: 0; }
+
+  .closing { text-align: center; padding: 70px 0 30px; }
+  .closing p { font-family: 'Cormorant Garamond', serif; font-size: clamp(20px, 3.5vw, 28px); font-style: italic; color: var(--plum); line-height: 1.6; margin-bottom: 18px; }
+  .closing .sig { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-style: normal; font-family: 'Jost', sans-serif; font-weight: 400; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <p class="cover-eyebrow">Avizaya</p>
+  <p class="cover-school">School 1: The abandoned girl &nbsp;&middot;&nbsp; Episode 1</p>
+  <h1 class="cover-title">Your healing begins when you stop <em>abandoning yourself.</em></h1>
+  <div class="cover-divider">
+    <div class="cover-line"></div>
+    <div class="cover-diamond"></div>
+    <div class="cover-line"></div>
+  </div>
+  <p class="cover-sub">The first teaching. The principle beneath every other principle.</p>
+</div>
+
+<div class="body">
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Welcome</span></div>
+
+  <p class="large">Before we go a single step further, I want you to understand the foundation of everything we are about to build together.</p>
+
+  <p>This program is not built on my story. It is built on principles. Principles that existed before I was born and will continue long after I am gone. Principles that have governed the rise and fall of nations, the success and failure of marriages, the freedom and bondage of souls since the very first chapters of Genesis.</p>
+
+  <p>Principles do not change. People do. Cultures do. Trends do. Therapies come in and out of style. But the principles God established in the beginning are the only foundation that can carry the weight of a real woman becoming who she was created to be.</p>
+
+  <p>So we are going to build on rock. Not on sand. Not on my opinion. Not on what is popular this year. On rock.</p>
+
+  <p>And the rock for this entire school is one verse, one promise, one unshakeable principle, and everything we teach across these episodes will be built on it.</p>
+
+  <div class="scripture">
+    <p>"Though my father and mother forsake me, the Lord will receive me."</p>
+    <p class="ref">Psalm 27:10 NIV</p>
+  </div>
+
+  <p>Read it again, because it is going to change your life when you let it.</p>
+
+  <p>God is the only Father who has never abandoned anyone. He did not abandon Hagar in the desert, He did not abandon Joseph in the pit, He did not abandon David in the cave, He did not abandon Hannah when the priest mistook her anguish for drunkenness, He did not abandon the woman at the well after five husbands left her and He has not abandoned you, no matter what your story has told you.</p>
+
+  <p>That is the principle. Everything else in this school is a way of applying it.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 1</span></div>
+  <h2>Why we start <em>here.</em></h2>
+
+  <p>Of all the schools in this program, this is the one I was most reluctant to put first, because the subject is heavy and the temptation in our culture is to start with something lighter, something that feels good, something inspirational without being demanding.</p>
+
+  <p>But the truth is that nothing else in this program will hold if this principle is not settled in you first. You can heal your body, build wealth, marry well, raise children, walk in your calling. And every one of those will eventually collapse if you have not built your identity on the only Father who never leaves.</p>
+
+  <p>Most women are building their lives on the wrong foundation. They are building on a parent's approval, a husband's love, a friend's loyalty, a career's validation, a church's acceptance, a culture's standards of beauty and worth, and every one of those foundations is moveable. Every one of them will, sooner or later, fail to hold the weight of your life.</p>
+
+  <p>When that foundation cracks, the woman built on it cracks with it, and we have all seen this happen. Many of us have been the woman it has happened to.</p>
+
+  <p>The principle is simple: if your identity comes from anything that can be taken from you, your identity is already lost, and it is only a matter of time before life shows you so.</p>
+
+  <p>That is why we start here. Because the only foundation that cannot be taken from you is the One who established you before the foundation of the world.</p>
+
+  <div class="scripture">
+    <p>"For he chose us in him before the creation of the world to be holy and blameless in his sight."</p>
+    <p class="ref">Ephesians 1:4 NIV</p>
+  </div>
+
+  <p>You were known before you had a name. Before anyone left. Before anyone failed you. Before you ever had the chance to fail yourself. That knowing is your foundation. Nothing that happens to you in time can touch what God established about you in eternity.</p>
+
+  <p>This is not poetic comfort. This is structural reality. The whole point of this school is to move your identity from the moveable to the unmovable. Once it is settled there, you become unshakeable.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 2</span></div>
+  <h2>What abandonment <em>actually is.</em></h2>
+
+  <p>Most people think abandonment means someone left. A parent walked out. A man disappeared. A friend went silent. A husband chose something else over you.</p>
+
+  <p>All of that is abandonment. And Scripture takes it seriously. The God of the Bible does not minimize human suffering. He names it. He addresses it. He sits with the abandoned and the rejected throughout every book of His Word.</p>
+
+  <p>But there is a deeper layer to this wound we have to name, because until we do, the principle of Psalm 27:10 cannot do its full work in you.</p>
+
+  <p>The deeper layer is this. The first abandonment in human history was not done by a parent. It was done in the garden. And it was done by humanity to God.</p>
+
+  <p>Read Genesis 3 again with fresh eyes. The serpent comes. Eve listens. Adam follows. They reach for something God had not given. And the very first thing they do after sin enters is hide from God. They abandoned Him before any human ever abandoned them.</p>
+
+  <p>This matters. Because every human pattern of abandonment that has played out since that day is downstream of that first severing. Parents leave, husbands disappear, friends betray, communities fail, because humanity first walked away from the One who never would. Sin is, at its core, abandonment of God. And every horizontal abandonment we experience is a faint echo of that first vertical one.</p>
+
+  <p>The principle here matters. The wound of being left by people is real. But it is not the deepest wound. The deepest wound is that you were created for unbroken communion with God and have been living in a world where that communion is fractured. Every other ache traces back to that one.</p>
+
+  <p>The good news is also vertical. The same Father who never abandoned humanity even when humanity abandoned Him is the One who is reaching for you now. The cross is the proof. The cross is where God said, in the loudest possible way, "I am not letting you go."</p>
+
+  <div class="scripture">
+    <p>"But God demonstrates his own love for us in this: While we were still sinners, Christ died for us."</p>
+    <p class="ref">Romans 5:8 NIV</p>
+  </div>
+
+  <p>While we were still sinners. While we were still abandoning Him. While we were still hiding in the garden. He came for us anyway.</p>
+
+  <p>That is the principle. He does not require you to clean yourself up before He receives you. He receives you. The cleaning up is the result of the receiving, not the requirement for it.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 3</span></div>
+  <h2>The principle of <em>adoption.</em></h2>
+
+  <p>God's answer to abandonment is not consolation. It is adoption.</p>
+
+  <p>This is one of the most beautiful and most underused doctrines in the entire Word of God. And it changes everything for the woman who feels she has been left.</p>
+
+  <div class="scripture">
+    <p>"The Spirit you received does not make you slaves, so that you live in fear again; rather, the Spirit you received brought about your adoption to sonship. And by him we cry, Abba, Father."</p>
+    <p class="ref">Romans 8:15 NIV</p>
+  </div>
+
+  <p>Adoption is not a metaphor. Adoption is the legal and spiritual reality of every woman who has come to God through Christ. You were not given a consolation prize for your earthly losses. You were given a position in the family of God that supersedes every earthly relationship you ever had.</p>
+
+  <p>This is the principle. Whatever you lost horizontally, God has restored vertically. With interest. The Father you never had on earth is not the Father you were always meant to know. The Father you always meant to know is the One who established you in the beginning, watches over you in time and will receive you in eternity. He is not a substitute for what you lost. He is the original. He is the reality of which your earthly relationships were only ever a shadow.</p>
+
+  <p>When a woman understands this, something shifts. The same wound that was destroying her becomes the doorway into a relationship with God that women who never experienced abandonment often never find. Because abandonment, painful as it is, leaves a hunger that only God can fill. And women who let Him fill it become the most spiritually formidable women on earth.</p>
+
+  <p>Joseph was abandoned by his brothers. Sold. Imprisoned. Forgotten. And by the time the famine came, he was the second most powerful man in Egypt, positioned exactly where he needed to be to save his entire family. He looked at the brothers who had left him to die and said:</p>
+
+  <div class="scripture">
+    <p>"You intended to harm me, but God intended it for good to accomplish what is now being done, the saving of many lives."</p>
+    <p class="ref">Genesis 50:20 NIV</p>
+  </div>
+
+  <p>That is the principle in motion. What was meant to break Joseph became the very thing God used to position him. His abandonment was his preparation. He could not have served what he was called to serve if he had stayed in his father's tent.</p>
+
+  <p>The same is true of David, passed over by his own father at the anointing, sent back to the sheep, only to be called from those sheep to be king. The same is true of Hagar, sent into the desert with her son, where God Himself appeared to her and gave her the only name in Scripture given to God by a woman, El Roi, "the God who sees me."</p>
+
+  <p>The pattern is consistent across the entire Bible. The ones the world rejects, God positions. The ones who are pushed out of the tent become the ones who carry the kingdom. The ones whose fathers and mothers forsake them are received by the only Father who never forsakes.</p>
+
+  <p>This is your inheritance. Not as a survivor of what happened to you. As an heir of what God has prepared for you.</p>
+
+  <div class="principle-box">
+    <p class="principle-label">The principle</p>
+    <p>What was meant to leave you fatherless is the very thing God used to introduce you to the only Father who never leaves.</p>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 4</span></div>
+  <h2>The work of <em>self-abandonment.</em></h2>
+
+  <p>There is a place where this principle most often breaks down in a woman's daily life, and we need to name it, because this is what determines whether the principle of adoption actually takes root in your life or remains a beautiful idea you nod at on Sunday.</p>
+
+  <p>You can be adopted by God and still live like an orphan.</p>
+
+  <p>That is the real problem. The principle is settled in heaven. The application is what we walk out in time. And the application breaks down at one specific point, which is the moment you start abandoning yourself.</p>
+
+  <p>Self-abandonment is what happens when you are spiritually adopted but functionally still operating as if you have to earn the love you have already been given. It looks like this.</p>
+
+  <p>It is saying yes when your whole body is screaming no. It is shrinking yourself so someone else can be comfortable. It is apologizing for existing in a room. It is going hungry so others can eat, going silent so others can speak, going without so others can have. It is staying in places that are costing you your peace because you are more afraid of being alone than you are of being destroyed slowly.</p>
+
+  <p>It is the work you bury yourself in so you do not have to feel what is underneath. The relationships you stayed in past their expiration. The wine every night you do not really want. The way you say "I am fine" when you are not fine at all.</p>
+
+  <p>That is self-abandonment. And it is the single biggest blocker to women walking in the inheritance God has already given them.</p>
+
+  <p>The principle is this. God will not override your free will. He has already adopted you. He has already declared your worth. He has already prepared a future for you. But He will not force you to live as His daughter. You have to receive what He has given. And every act of self-abandonment is a refusal to receive.</p>
+
+  <p>When you say yes when your soul says no, you are functionally saying that someone else's comfort matters more than the dignity God assigned to you. When you shrink yourself to keep someone close, you are saying that their approval matters more than the identity God formed you to walk in. When you stay where you should leave, you are saying that fear of being alone matters more than faith in the Father who has promised never to leave.</p>
+
+  <p>This is not a moral judgment. It is a structural one. The principle is simply that you cannot operate as the daughter of the most high God while simultaneously living as if you have to earn the right to be in the room. Those two postures are mutually exclusive.</p>
+
+  <p>So the work of this school is to bring your daily life into alignment with the spiritual reality that has already been established about you. Not to make you worthy. You are already worthy. To teach you to live like it.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">A note for the woman</span></div>
+  <h2>Who does not look like she <em>needs this.</em></h2>
+
+  <p>Before we move on, there is a specific woman in this room I want to speak to directly. The one who looks like she has it all together, the one who runs the team, raises the children, holds the family, leads the table, builds the business, keeps her body, keeps her faith, keeps her composure.</p>
+
+  <p>You are not exempt from this work. You may need it more than anyone else.</p>
+
+  <p>The principle works both ways. Just as a woman can outwardly look broken and inwardly be deeply rooted in God, a woman can outwardly look strong and inwardly be living as a self-abandoning orphan. Competence is not communion. Capability is not identity. The fact that you can carry the weight does not mean you should.</p>
+
+  <p>The mask of competence is the most sophisticated form of self-abandonment a high-functioning woman can wear. You have built a fortress of independence. You let people close enough to admire, not close enough to stabilize you. Because if you ever truly needed someone, it would puncture the illusion of sovereignty you have been protecting since you were a child.</p>
+
+  <p>But the principle is the same for you as it is for the woman who looks visibly wounded. The principle of adoption does not require visible brokenness to apply. It requires reception. And reception requires honesty. And honesty, for the high-functioning woman, is the hardest spiritual discipline in the world.</p>
+
+  <p>This program is not asking you to become weak. It is asking you to become honest. There is a difference. The strongest woman in the world is the one who is fully strong because her strength is sourced from the only One who is. She is not pretending. She is not performing. She is not carrying alone what was never hers to carry alone. She is rooted. And from that rooting, she becomes formidable in a way no self-built woman can match.</p>
+
+  <p>That is the woman this program is forming. Soft and powerful. Disciplined and free. Capable and surrendered. There is no contradiction. There is only the principle.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 5</span></div>
+  <h2>The principle of <em>kintsugi.</em></h2>
+
+  <p>There is a Japanese art called kintsugi. The art of repairing broken pottery with gold. The philosophy is that the break is not something to hide. It is something to honor. The repaired vessel is more valuable than the original, not less, because it carries the evidence of what it survived.</p>
+
+  <p>This is not a foreign concept to Scripture. It is one of the most consistent patterns in the entire Word of God.</p>
+
+  <div class="scripture">
+    <p>"To bestow on them a crown of beauty instead of ashes, the oil of joy instead of mourning, and a garment of praise instead of a spirit of despair."</p>
+    <p class="ref">Isaiah 61:3 NIV</p>
+  </div>
+
+  <p>God does not erase what happened to you. He does not pretend the pain did not exist. He takes the pieces, the very pieces the world would have thrown away, and He makes them holy. The break becomes the proof of His grace in your life. The very thing that almost destroyed you becomes the very thing that qualifies you to carry His name to other women.</p>
+
+  <p>This is the principle. You are not damaged goods. You are repaired by gold. And the gold makes you more valuable, not less. More qualified, not less. More usable in the hand of God, not less.</p>
+
+  <p>The women who walk into your life from this day forward will see the gold lines in you and recognize themselves. They will know it is safe to bring their broken places to you because yours are not hidden. They are radiant.</p>
+
+  <p>That is the inheritance of the woman who lets God do this work. She becomes a sanctuary for other women. Her healing becomes their permission. Her freedom becomes their first taste of freedom. And the same wounds that the enemy meant to disqualify her become the qualification God uses to position her exactly where she is needed.</p>
+
+  <p>This is what your story is becoming. Not a sad story. A repaired one. Gilded. Beautiful in a way it could not have been without the breaking.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 6</span></div>
+  <h2>Pain into power. <em>A biblical practice.</em></h2>
+
+  <p>I want to give you a practice you can take into this week. It has three steps, every one of them grounded in a principle Scripture has been teaching for thousands of years. These are the same three movements that the women of the Bible walked through, that the men of the Bible walked through, that Christ Himself walked through on the road to the cross.</p>
+
+  <div class="step-box">
+    <p class="step-num">Step one</p>
+    <p class="step-title">Feel what is real. Do not hide.</p>
+    <p>Scripture honors feeling. Jesus wept, David lamented, Hannah cried out, Job sat in ashes for days and the Psalms are not polite, they are raw. The Bible never tells us to numb our way through life, it tells us to bring everything we are to the One who can hold it.</p>
+    <p>The only way through the pain is to walk through it, not to bury it, because what we bury does not actually die. The root just grows deeper in the ground, and one day, when we are not expecting it, it sprouts back up through the earth, only this time stronger and more powerful than before. That is why so many women find themselves dealing with the same wound in a new form, year after year. The wound is not new, it is the same root, surfacing again, because no one ever taught us how to pull it out.</p>
+    <p>Modern culture tells us to manage feelings with food, scrolling, alcohol, men, work, shopping and a thousand other techniques for numbing, none of which heal anything. They just delay the reckoning, and the reckoning always comes eventually, because the root has been growing all along.</p>
+    <p>The first step is the principle of honesty before God. Sit with what is real in you, the grief, the rage, the disappointment, the longing, and bring it to God in the same raw form David brought his to the Psalms. Energy that is honestly felt moves through us, but energy that is denied gets stuck, and stuck energy is what we have been calling depression, anxiety, body symptoms and a hundred other names for unfelt grief looking for a way out.</p>
+    <p>Start small. Sit with one feeling for sixty seconds without reaching for the thing that makes it stop, and you will discover that the feeling, fully felt, has far less power than the avoidance you have been doing to avoid it.</p>
+  </div>
+
+  <div class="step-box">
+    <p class="step-num">Step two</p>
+    <p class="step-title">Ask what God is doing in this.</p>
+    <p>This is the shift from why me to what for.</p>
+    <p>Your wounds are not random, your wounds are your curriculum, and every woman God uses, He prepares through valley. He does not waste pain, He invests it, and the question is whether you will collect the dividend.</p>
+    <p>Look at the wound that hurt the most in the last five years and sit with it again, and then ask yourself who you have become because of it. What can you see that you could not see before, what do you know about God and about people and about yourself that you could not have known any other way.</p>
+    <p>That is the curriculum, and the moment you can name what the wound built in you, the wound loses its grip on you, because you have stopped being the victim of it and have become the graduate of it. Joseph could only see the principle from the throne room, but the principle was working the entire time he was in the pit.</p>
+    <p>Scripture is unflinching on this. Romans 8:28 says that God works all things together for the good of those who love Him and are called according to His purpose. Not most things, not the things that are easy to redeem, all things. The pain, the loss, the betrayal, the wasted years, He is weaving every single thread.</p>
+  </div>
+
+  <div class="step-box">
+    <p class="step-num">Step three</p>
+    <p class="step-title">Channel it forward into testimony.</p>
+    <p>Revelation 12:11 names a principle most women never apply: "They overcame him by the blood of the Lamb and by the word of their testimony." The testimony is part of the overcoming, because the story God has been writing in you was never meant to stay in you, it was meant to liberate someone else.</p>
+    <p>Pain is energy, and you decide where it goes. It will either rot inward and become self-hatred, addiction and the long quiet collapse, or it will turn outward in bitterness and become the very cycle you swore you would never repeat. There is also a third path, the one most women never get told about, which is to channel the same energy into the building of something, into the serving of the women who are about to walk where you have already walked.</p>
+    <p>The principle is consistent across the whole Bible. The ones God uses most powerfully are the ones who took their hardest seasons and translated them into a mission. Mary Magdalene was the first to carry the news of the resurrection, not Peter, not John, but the woman with the past, because she had been with Him through what no one else had been with Him through.</p>
+    <p>Your specific story is qualifying you for a specific assignment, and the fact that you are reading this means the qualification is almost complete.</p>
+  </div>
+
+  <p>Pain is just energy. You get to decide where it goes.</p>
+
+  <p>So will you let it rot in you, or will you let God turn it into the very thing that liberates another woman?</p>
+
+  <p>The choice, Darling, is yours.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">A brief note</span></div>
+  <h2>On <em>my own walk.</em></h2>
+
+  <p>I have walked through valleys, and I will not detail them here because this program is not about me, it is about the principles. But I will tell you that every principle I am teaching you in this school I have tested in my own life, and I have watched them hold when nothing else did. I have watched God do exactly what He said He would do in His word, even when my own faith was thin.</p>
+
+  <p>I am not writing to you as a woman who hopes these principles work, but as a woman who knows they do, because they worked in me, and they have worked in every other woman God has put in my path who was willing to apply them.</p>
+
+  <p>That is the only credential I am claiming. The Word of God is true, and I am a witness to it. I am inviting you to become one too.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="reflection-box">
+    <p class="reflection-title">Five questions for this week</p>
+    <p>Read one a day. Sit with it. Bring it to God in prayer.</p>
+    <p><strong>One.</strong> Where am I currently building my identity on something that can be taken from me. A relationship. A role. A body. A reputation. A career. Name it specifically.</p>
+    <p><strong>Two.</strong> Where am I living as if I am still earning love that God has already given me. What does that look like in my schedule, my body, my voice, my marriage, my work.</p>
+    <p><strong>Three.</strong> Have I ever named the abandonment in my own story specifically before God. Not as a complaint. As a place I am asking Him to come.</p>
+    <p><strong>Four.</strong> Where am I performing wholeness rather than receiving it. Where am I carrying alone what was never mine to carry alone.</p>
+    <p><strong>Five.</strong> If I truly believed I am the adopted daughter of the most high God, what would I stop doing this week.</p>
+  </div>
+
+  <div class="prayer-box">
+    <p class="prayer-title">A prayer for the woman beginning this work</p>
+    <p>Father, I come to You.</p>
+    <p>I confess that I have been building my life on foundations that can be moved, on the approval of people, on the validation of accomplishment, on the illusion of self-sufficiency.</p>
+    <p>I lay every one of those down at Your feet, not because I want to be weak, but because I want to be rooted in what is real.</p>
+    <p>Teach me what it means to live as Your daughter, not just to know I am, but to walk in the daily authority of it. Show me where I am still living like an orphan in a kingdom where I have already been given a seat at Your table.</p>
+    <p>Use the very places I have been broken. Fill them with gold. Make them sacred. Make them the testimony that liberates another woman.</p>
+    <p>I am Yours. I have always been Yours. Today I receive it.</p>
+    <p>In the name of Jesus, amen.</p>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Before you go</span></div>
+  <h2>One promise. <em>One small loyalty.</em></h2>
+
+  <p>I am not going to ask you to do anything dramatic this week. Transformation is built in the small, consistent, kept promises a woman makes to herself when no one is watching.</p>
+
+  <p>So this is what I am asking. One promise, one small and keepable promise you make to yourself this week and you keep, not to anyone else, to you.</p>
+
+  <p>Maybe it is going to bed at the same time every night. Maybe it is drinking water in the morning before anything else. Maybe it is closing the app that takes two hours of your life every time you open it. Maybe it is five minutes of silence with God before you check your phone. Maybe it is writing one sentence in a journal at the end of each day.</p>
+
+  <p>It does not matter what it is, only that you choose it and you keep it, even when no one is watching, especially when no one is watching.</p>
+
+  <p>Because that small kept promise is the first act of living like the woman God has already declared you to be. Every kept promise is a vote in favor of the woman of unshakeable identity. Every kept promise is a quiet act of receiving the inheritance.</p>
+
+  <p>One kept promise leads to another, and then another, until one day you look up and realize you have become her. The woman who does not abandon herself, the woman who lives like she is loved because she knows she is loved, the woman whose identity is not borrowed from anyone because it is rooted in the only Father who has never left.</p>
+
+  <p>You are not the girl who was left behind. You are the woman God receives. And that reception was settled before the foundation of the world.</p>
+
+  <div class="closing">
+    <p>Your healing begins not when they come back.<br>Not when someone finally sees you.<br>Not when life gets easier.<br><em>It begins the moment you receive that He never left.</em></p>
+    <p class="sig">Avizaya &nbsp;&middot;&nbsp; School 1, Episode 1</p>
+  </div>
+
+</div>
+</body>
+</html>

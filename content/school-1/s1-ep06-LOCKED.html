@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avizaya: School 1, Episode 6</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --plum: #2C1A4A;
+    --gold: #C4955A;
+    --ivory: #F7F2EC;
+    --muted: #6B5A72;
+    --light: #FAF6F0;
+    --green: #1A3A2E;
+  }
+  body { background: var(--ivory); font-family: 'Jost', sans-serif; font-weight: 300; color: var(--plum); padding: 0 0 100px; -webkit-font-smoothing: antialiased; }
+
+  .cover { background: var(--plum); padding: 72px 40px 64px; text-align: center; }
+  .cover-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; }
+  .cover-school { font-size: 12px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(196,149,90,0.6); margin-bottom: 20px; }
+  .cover-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(34px, 6vw, 58px); font-weight: 300; line-height: 1.15; color: var(--ivory); margin-bottom: 24px; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .cover-title em { font-style: italic; color: var(--gold); }
+  .cover-divider { display: flex; align-items: center; gap: 14px; max-width: 320px; margin: 0 auto 24px; }
+  .cover-line { flex: 1; height: 0.5px; background: var(--gold); opacity: 0.35; }
+  .cover-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
+  .cover-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; font-weight: 300; color: rgba(232,213,196,0.7); max-width: 480px; margin: 0 auto; line-height: 1.6; }
+
+  .body { max-width: 680px; margin: 0 auto; padding: 0 32px; }
+  .section-tag { display: inline-flex; align-items: center; gap: 8px; margin: 48px 0 20px; }
+  .tag-line { width: 24px; height: 0.5px; background: var(--gold); }
+  .tag-text { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+
+  h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 4vw, 34px); font-weight: 400; line-height: 1.3; color: var(--plum); margin-bottom: 20px; }
+  h2 em { font-style: italic; color: var(--gold); }
+
+  p { font-size: 16px; line-height: 1.9; color: #3A2840; margin-bottom: 22px; }
+  p.large { font-family: 'Cormorant Garamond', serif; font-size: clamp(19px, 3vw, 24px); font-style: italic; line-height: 1.65; color: var(--plum); }
+  p strong { font-weight: 500; color: var(--plum); }
+  p em { font-style: italic; color: var(--gold); }
+
+  .divider { display: flex; align-items: center; gap: 14px; margin: 40px 0; }
+  .divider-line { flex: 1; height: 0.5px; background: var(--gold); opacity: 0.3; }
+  .diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); }
+
+  blockquote { border-left: 2px solid var(--gold); padding: 18px 0 18px 24px; margin: 36px 0; }
+  blockquote p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(19px, 3vw, 25px); color: var(--plum); margin: 0; line-height: 1.5; }
+
+  .scripture { background: var(--light); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; padding: 18px 22px; margin: 32px 0; }
+  .scripture p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; color: var(--plum); line-height: 1.6; margin-bottom: 8px; }
+  .scripture .ref { font-family: 'Jost', sans-serif; font-style: normal; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+
+  .principle-box { background: var(--plum); border-radius: 12px; padding: 32px 30px; margin: 40px 0; text-align: center; }
+  .principle-label { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .principle-box p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: var(--ivory); margin: 0; line-height: 1.5; }
+
+  .step-box { background: white; border: 0.5px solid rgba(196,149,90,0.3); border-radius: 12px; padding: 28px 26px; margin: 28px 0; }
+  .step-num { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .step-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--plum); margin-bottom: 14px; line-height: 1.3; }
+
+  .reflection-box { background: var(--plum); border-radius: 12px; padding: 36px 30px; margin: 48px 0; }
+  .reflection-box .reflection-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--gold); margin-bottom: 22px; font-style: italic; }
+  .reflection-box p { color: rgba(232,213,196,0.88); margin-bottom: 18px; font-size: 16px; }
+  .reflection-box p:last-child { margin-bottom: 0; }
+  .reflection-box p strong { color: var(--gold); font-weight: 400; }
+
+  .prayer-box { background: var(--green); border-radius: 12px; padding: 36px 30px; margin: 48px 0; }
+  .prayer-box .prayer-title { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; }
+  .prayer-box p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; line-height: 1.75; color: rgba(232,213,196,0.92); margin-bottom: 14px; }
+  .prayer-box p:last-child { margin-bottom: 0; }
+
+  .closing { text-align: center; padding: 70px 0 30px; }
+  .closing p { font-family: 'Cormorant Garamond', serif; font-size: clamp(20px, 3.5vw, 28px); font-style: italic; color: var(--plum); line-height: 1.6; margin-bottom: 18px; }
+  .closing .sig { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-style: normal; font-family: 'Jost', sans-serif; font-weight: 400; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <p class="cover-eyebrow">Avizaya</p>
+  <p class="cover-school">School 1: The abandoned girl &nbsp;&middot;&nbsp; Episode 6</p>
+  <h1 class="cover-title">The <em>trauma bond.</em></h1>
+  <div class="cover-divider">
+    <div class="cover-line"></div>
+    <div class="cover-diamond"></div>
+    <div class="cover-line"></div>
+  </div>
+  <p class="cover-sub">A teaching on the love we have been confusing with bondage, and the freedom God has been calling us into all along.</p>
+</div>
+
+<div class="body">
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Welcome</span></div>
+
+  <p class="large">Daughter of Zion, we are stepping today into a teaching that asks to be walked through slowly, because what we name in this episode is going to explain patterns you have been quietly carrying for years, sometimes decades, often without ever understanding why you could not break free of them no matter how many times you swore you would.</p>
+
+  <p>A trauma bond is one of the most misunderstood dynamics in a woman's life. The world has been teaching us that it is a clinical term, something that happens in extreme abuse cases, something that does not apply to ordinary women in ordinary relationships, but the truth is that almost every woman who has carried the wounds of the previous episodes in this school has been forming trauma bonds in some form for most of her life and calling them love.</p>
+
+  <p>And the bondage of those bonds is what God has been trying to break in His daughters for as long as His daughters have been walking the earth, because He is a God of freedom, and the heart of every covenant He makes with His people is a covenant of liberation from anything that would master them other than Him.</p>
+
+  <div class="scripture">
+    <p>"It is for freedom that Christ has set us free. Stand firm, then, and do not let yourselves be burdened again by a yoke of slavery."</p>
+    <p class="ref">Galatians 5:1 NIV</p>
+  </div>
+
+  <p>Paul is naming the very dynamic of trauma bonding and calling it by its true biblical name, which is bondage. The yoke of slavery he is warning us about is not only the religious legalism the early church was struggling with, but the broader principle that any relationship, any pattern, any attachment that masters us in a way that only God should master us is a yoke we were never meant to wear. And we have been wearing yokes for a very long time without recognizing them as yokes, because the yokes had names like love and loyalty and faithfulness, and the world had taught us to romanticize what God has always called bondage.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 1</span></div>
+  <h2>What a trauma bond <em>actually is.</em></h2>
+
+  <p>A trauma bond, at its simplest, is what happens when a woman attaches herself not to the reality of who someone is but to the potential of who she imagines they could become. The relationship is built not on what is, but on what she sees underneath, what she believes is hidden in there waiting to come out if she just loves him well enough, prays for him long enough, stays patient enough, sacrifices herself completely enough.</p>
+
+  <p>The bond strengthens through cycles. There is harm, and then there is relief, and then there is harm again, and then there is relief again, and the nervous system, especially the nervous system of a woman who carried the wounds of the previous episodes in this school, mistakes the relief for love because the relief feels like rescue and the rescue feels like being chosen, when really she is only being released back into the same dynamic that wounded her in the first place.</p>
+
+  <p>The man does not have to be a monster for this to be a trauma bond. He only has to be inconsistent. He only has to be unable to give what he keeps almost giving. He only has to be a man whose potential is greater than his daily reality, whose words promise what his behavior cannot deliver, whose moments of tenderness make her doubt the longer pattern of his absence or cruelty. The bond is built in the gap between what he is and what she believes he could be, and that gap is where she has been pouring every drop of herself for years, trying to close it from her side because his side has not been doing the closing.</p>
+
+  <p>The brain is the first thing to misunderstand this. Intermittent reinforcement, which is the technical name for unpredictable cycles of reward and withdrawal, creates a stronger attachment than consistent reward ever could. The slot machine works the same way. The woman who knows what to expect from her man can walk away when what she gets is not enough. The woman who never quite knows what she will get, but who has tasted enough of the good to keep hoping the good will return, becomes the woman who cannot walk away no matter how much the bad is costing her. The unpredictability is the cage.</p>
+
+  <p>And so the trauma bond is not weakness on her part. It is not stupidity. It is not even bad judgment. It is the natural response of a nervous system that learned love this way somewhere early in her life, and is now being kept loyal to a pattern that the older parts of her brain have categorized as familiar even though the conscious mind knows it is harming her.</p>
+
+  <p>And the bond does not only appear in romantic relationships. It shows up in the friendship that drains you and then offers just enough kindness to keep you returning. It shows up with the parent who criticizes you for years and then has the rare warm moment that keeps you hoping for a closeness that never quite arrives. It shows up with the boss who praises you publicly and undermines you privately, with the church leader whose moments of mentorship are interrupted by long stretches of dismissal, with the adult sibling whose unpredictability has kept you walking on eggshells your whole life. The dynamic is the same wherever it appears. The cycle of harm and relief. The loyalty to who they could be instead of who they are. The exhaustion of holding the relationship together by yourself while the other person rests in their reality. Whatever name the relationship wears, the teaching of this episode is for you.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 2</span></div>
+  <h2>The <em>potential</em> trap.</h2>
+
+  <p>Here is the teaching that will free more women from trauma bonds than any other teaching I have ever given. The principle is so simple it sounds almost too small, and yet it is the foundation of every healthy relationship a woman will ever build.</p>
+
+  <p class="large">You are meant to marry the reality, not the potential.</p>
+
+  <p>The reality of a person is what they are actually doing today, with the resources they actually have, given the choices they have actually been making for the last six months or the last six years. The reality is not what they say they want to do, what they promise they will do, what they could do if only the conditions were different, what they used to do before life got hard, what they tell you they will do once you have helped them through this one last difficult season.</p>
+
+  <p>The reality is what is in front of you right now. Today. With no projection. No hope. No imagined future version of him. Just what is here, in the room, in the actual behavior of the actual person you are choosing to be with.</p>
+
+  <p>Few of us were ever taught to evaluate a man by his reality, because the culture has trained us to evaluate men by their potential. We have been taught to see the diamond inside the rough, to believe the best of him, to remember who he could be when he is at his finest and to weigh that version against the version standing in front of us. This sounds like love, and we have been told it is love, and the church has often reinforced the idea that loving him through his worst is a sign of holy faithfulness.</p>
+
+  <p>But it is not love. It is projection. And projection is one of the most spiritually dangerous patterns a woman can fall into, because she is essentially loving an image she has built in her own mind rather than the person God has placed in front of her, and no relationship can be healthy when one of the parties is in love with a fiction.</p>
+
+  <p>The man is comfortable in his reality. He has been living there his whole life. He knows exactly who he is. The woman in the trauma bond is exhausted, because she has been holding the weight of his potential, while he has been at rest in his reality, and the disparity is the very engine of her depletion. She is doing the work of two people. He is doing the work of zero, because the woman has been generously filling the gap his potential has not been closing on his own.</p>
+
+  <p>This is the teaching: you cannot love a person into their potential. Potential is between him and God. Reality is what you are meant to evaluate. And the moment a woman learns to love only the reality in front of her, while bringing the potential of every person in her life to God in prayer and leaving it there, she becomes unbondable to the patterns that have been holding her hostage for years.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">The inversion</span></div>
+  <h2>Your loyalty is <em>misplaced.</em></h2>
+
+  <p>The Word of God names something very specific about the kind of faithfulness you have been pouring into a person who could not receive it.</p>
+
+  <p class="large">Your loyalty to who someone could become is a misplaced faithfulness, and it belongs not to him but to God.</p>
+
+  <p>The patience you have been pouring into the man who keeps failing you was never meant for him in the first place. The hope you have been sustaining through years of his almost-changes, his half-promises, his repeated returns to the same pattern that wounded you the year before, that hope was meant for the Lord, not for a man who has been collecting it and converting it into permission to keep being who he has been all along.</p>
+
+  <p>The faithfulness you have been showing to a relationship that has not been showing faithfulness back to you is faithfulness God designed you to show Him, and you have been giving His portion to a man who could not steward it. This is not a small thing. The misplacement of devotion is one of the deepest patterns of idolatry the Word of God warns His daughters against, and the entire book of Hosea is built around it. The prophet was instructed by God to marry a woman who would keep returning to her bondage, and the whole story is God using that marriage as a picture of what His own people had been doing to Him, giving their devotion to gods who could not love them while the God who could was waiting in covenant for their return.</p>
+
+  <p>The trauma bond is, at its spiritual root, a misplaced covenant. The woman has been making a covenant in her heart with a person who has not entered the covenant with her, while God Himself, who has entered into covenant with her, has been watching her give to another man the kind of loyalty that was always meant to be His to receive first, and to be poured out of His abundance into the right relationships in His time.</p>
+
+  <p>When she finally redirects that loyalty back to God where it belongs, she does not become less loving. She becomes more rightly loving. She still loves the people in her life, but she loves them from a posture of being already loved by the only One whose love does not depend on their performance. The desperate, gap-filling, exhausted love she was offering before becomes a free, overflowing, sustainable love that does not require anyone to be different for her to give it. And that kind of love, she can give without losing herself, because the source is no longer the other person's response to her giving.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 3</span></div>
+  <h2>The container with <em>holes.</em></h2>
+
+  <p>Imagine you have spent twenty years pouring water into a container, faithfully, devotedly, refilling it every time it empties, working harder and harder to keep it full because something in you cannot bear to see it dry. The water keeps running out, and you keep pouring, and the running-out has become so normal to you that you stopped questioning whether the container is the problem.</p>
+
+  <p>One day a wise woman walks past your work and stops to watch you pour, and she says gently, &ldquo;The container has holes in the bottom.&rdquo;</p>
+
+  <p>You look. You see the holes. You have always seen the holes. But you have been telling yourself the whole time that if you just pour faster, pour more, pour with more love, eventually the level will rise and the container will hold what you have given it. You have been blaming yourself for the emptying. You have been calling your exhaustion a failure of devotion.</p>
+
+  <p>The container is not the wrong amount of pouring. The container is the wrong container.</p>
+
+  <p>This is the second half of the trauma bond teaching, and it sits right next to the first one. Some people are not capable, at this moment in their lives, of holding the love you have been pouring. Their containers have holes. The holes are not your fault. The holes are not the result of insufficient love on your part. The holes were there before you ever started pouring, and no amount of additional pouring will close them, because the holes are not closed by love being poured in. They are closed only by God Himself, working in the heart of the person, and only when that person has surrendered the holes to Him.</p>
+
+  <p>The woman who keeps pouring into a container with holes is not loving more. She is wasting the precious water she was meant to be giving from her own reserves into vessels designed to receive it. And while she has been pouring into the broken container, the people in her life with intact containers have been quietly empty, because her pouring has been going to the one who cannot hold what she has to give.</p>
+
+  <p>This is the redirection. Not less love. The same love, redirected. Out of the container that cannot hold it, into the One who designed your love to be received, and into the relationships where the containers are whole.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 4</span></div>
+  <h2>Potential as <em>a drug.</em></h2>
+
+  <p>There is one more thing we have to name about how trauma bonds actually function, because this is the piece that explains why so many women have intellectually understood that a man was not good for them and still could not leave.</p>
+
+  <p>Potential is a drug.</p>
+
+  <p>When a woman has tasted who a man could be at his best, when she has seen the version of him that comes out in his most charming moments, his most vulnerable moments, his most apologetic moments, her brain stores that version as the real him and categorizes everything else as the exception. She is not in love with the man he is. She is in love with the version of him she has seen flashes of, and her entire relational life has become a long campaign to get that version to come out and stay.</p>
+
+  <p>The flashes function exactly like any other addictive substance. They give her a hit of what could be. They keep her reaching. They make the long stretches of the actual relationship tolerable, because the brain is convinced that the real him is just around the corner, that this next argument will be the one that changes things, that this next breakthrough will finally be the one that sticks. The hope of him becomes the drug she keeps using to numb the disappointment of him.</p>
+
+  <p>And the cruelest part of this dynamic is that the man often knows, on some level, that the flashes are what keep her. He learns to give her just enough of his potential to keep her invested without ever having to actually deliver it. The crumbs become his strategy, and her starvation becomes her permanent condition, while he tells himself he is doing his best because his best, in those occasional moments, has been objectively very good.</p>
+
+  <p>The way out of this is not to wait for him to give her the real him. It is for her to wake up to the principle that the flashes were never the real him in the first place. The real him is the version that has been showing up most days of her life with him. The flashes are an exception, not a forecast. And the woman who can finally see this, and who can grieve the man she had been waiting for and accept the man who has actually been in front of her, has taken her freedom back from a dynamic that had been holding her hostage for years.</p>
+
+  <div class="principle-box">
+    <p class="principle-label">The principle</p>
+    <p>The flashes of who he could be are not a forecast of who he will be. The real him is the version that has been showing up most days. Free yourself by accepting the reality, and bring the potential to God in prayer.</p>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 5</span></div>
+  <h2>Come out from <em>among them.</em></h2>
+
+  <p>The Word of God is unflinching on this dynamic, and it gives the woman of God a clear and repeated command across both testaments. Come out from what is binding you. Do not be unequally yoked. Do not let yourself be made to wear what was never meant for your neck.</p>
+
+  <div class="scripture">
+    <p>"Do not be yoked together with unbelievers. For what do righteousness and wickedness have in common? Or what fellowship can light have with darkness?... Therefore, come out from them and be separate, says the Lord."</p>
+    <p class="ref">2 Corinthians 6:14, 17 NIV</p>
+  </div>
+
+  <p>Paul is naming a principle that applies far beyond the question of whether to marry someone of a different faith. He is naming the deeper principle that there are some yokes a woman of God is not meant to wear, and that the wearing of those yokes makes her less of who God made her to be, not more, no matter how loyal the wearing has felt to her. The command is not optional, and it is not cruel. It is the kindness of a Father who has watched His daughter being slowly diminished by a yoke that was never meant for her, telling her that she has His permission, His command even, to step out from under it.</p>
+
+  <p>The same theme repeats throughout Scripture. The Israelites were told repeatedly to come out of Egypt and not to return. Hosea was sent to bring his wife back from the bondage she kept returning to. Paul wrote to the early churches over and over again that the freedom Christ purchased for them must be guarded fiercely, because the human tendency is to slip back into the chains that had become familiar even after the chains had been broken.</p>
+
+  <div class="scripture">
+    <p>"Therefore I am now going to allure her; I will lead her into the wilderness and speak tenderly to her... There she will respond as in the days of her youth, as in the day she came up out of Egypt."</p>
+    <p class="ref">Hosea 2:14-15 NIV</p>
+  </div>
+
+  <p>God's pattern with the woman who has been in bondage is not condemnation but courtship. He does not shame her for the years she spent there. He leads her into a wilderness, away from what had been binding her, and there He speaks tenderly to her about who she truly is and who He has always been for her. The wilderness is not punishment. The wilderness is the quiet space where the addictive grip of the old attachment finally loosens, because the constant presence of the bond is no longer reinforcing the bond, and the woman remembers what it felt like to be free.</p>
+
+  <p>If you are still in the relationship, even physically, even by appearance, the wilderness can begin in your spirit before it begins in your circumstances. The withdrawal of your emotional pouring. The redirection of your prayers. The honest naming of the reality you have been excusing. These are all steps into the wilderness God is calling you into, and He will meet you there and speak tenderly to you in a way that the bond never has.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 6</span></div>
+  <h2>Three movements for <em>this week.</em></h2>
+
+  <p>Three movements to walk into this week. Together they form the practice of breaking the bond and stepping into the freedom that has been waiting for you.</p>
+
+  <div class="step-box">
+    <p class="step-num">Movement one</p>
+    <p class="step-title">Name the bond honestly.</p>
+    <p>Take a quiet hour this week and write out, slowly and without shame, the reality of the relationship as it has actually been, not as you have been telling yourself it has been. List the actual behaviors you have witnessed for the last twelve months, not the words that have been spoken, not the promises that have been made, but the behaviors. Write what is actually true, in the language you have been avoiding even with yourself.</p>
+    <p>And then, on the same page, write the version of him you have been holding in your mind. The potential you have been believing in. The hope you have been carrying. Set the two lists next to each other and look at them honestly in the presence of God, and ask Him to show you the gap between the two. The gap is the size of the projection. The gap is also the size of the work you have been doing that he has not been doing. Naming the gap is the first step out of it.</p>
+  </div>
+
+  <div class="step-box">
+    <p class="step-num">Movement two</p>
+    <p class="step-title">Redirect the loyalty.</p>
+    <p>For one week, every time you feel the pull to defend him in your own mind, to make excuses for him to others, to take responsibility for what is his to carry, pause and turn that loyalty toward God instead. Speak it out loud if you can. &ldquo;Father, this loyalty belongs to You. I am giving back what I have been misplacing.&rdquo;</p>
+    <p>This is not a one-time prayer, it is a practice. Every time the pull comes, redirect. Every time the urge to defend rises, redirect. The neural pathway of misplaced loyalty has been so well-worn in you for so many years that it will take repeated redirection to build a new pathway, but the new pathway is being built every time you do the redirecting, even when you cannot feel it being built.</p>
+  </div>
+
+  <div class="step-box">
+    <p class="step-num">Movement three</p>
+    <p class="step-title">Bring the potential to God.</p>
+    <p>This is the final practice and possibly the most freeing one. Every time you find yourself imagining who he could be, every time the hope rises that this time will be different, every time the flash of the better version flickers through your mind, bring it to God in prayer and leave it there. &ldquo;Lord, here is the version of him I have been carrying. I cannot make him become this. I never could. I am bringing this hope to You and leaving it with You.&rdquo;</p>
+    <p>Two things happen when you do this. The weight comes off your shoulders, because the work of becoming was never yours to carry in the first place. And the prayer becomes something God can actually work with, because His Spirit can move on a man in ways your striving never could. You may even, in the long run, see the very transformation you had been trying to force, but only after you have stopped forcing it, because the work was always going to be God's work and not yours, and the only thing your striving was ever doing was getting in His way.</p>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">A brief note</span></div>
+  <h2>On <em>my own walk.</em></h2>
+
+  <p>I have spent years of my life in trauma bonds I did not know to call by that name, pouring myself into people I believed would eventually become who I was seeing in their flashes. I learned the language of potential young, and I confused it for the language of love until well into my adulthood. I have prayed for men who could not be prayed into the men I needed them to be. I have stayed at tables I should have left, and I have left tables I should have stayed at, because my nervous system did not yet know how to distinguish between safety and the familiar.</p>
+
+  <p>What I have learned, slowly and through more than one valley, is that the principle of this episode is the one that finally set me free. Marry the reality. Bring the potential to God. Pour into containers that can hold. Receive love only from people who are showing up in their reality, not promising in their potential.</p>
+
+  <p>The principle is sound, and it holds, and it will hold for you the way it has held for me. The freedom is real. The wilderness is not punishment. The voice of God in the wilderness is the most tender voice you will ever hear in your life, and it is calling you out of the yoke you have been wearing into a freedom you have not yet imagined.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="reflection-box">
+    <p class="reflection-title">Five questions for this week</p>
+    <p>Read one a day. Sit with it. Bring it to God in prayer.</p>
+    <p><strong>One.</strong> Which relationship in your life are you maintaining based on the potential of the person rather than the reality of how they have been showing up?</p>
+    <p><strong>Two.</strong> Where have you been pouring loyalty that belonged to God, and how has that misplacement been depleting you in ways you have not been willing to admit?</p>
+    <p><strong>Three.</strong> What container in your life has holes, and have you been blaming yourself for the emptying instead of recognizing that the vessel itself cannot hold what you have been giving it?</p>
+    <p><strong>Four.</strong> What flashes of who he could be have been functioning as a drug in your relationship, and what would it cost you to grieve those flashes as exceptions rather than forecasts?</p>
+    <p><strong>Five.</strong> What wilderness is God calling you into, and what would it mean to begin that wilderness this week even before your circumstances change?</p>
+  </div>
+
+  <div class="prayer-box">
+    <p class="prayer-title">A prayer for the woman coming out of bondage</p>
+    <p>Father, I come to You with a heart that has been wearing a yoke for too long.</p>
+    <p>I confess that I have been confusing bondage with love, and that I have been giving to people the kind of loyalty that was always meant to be Yours first. I confess that I have been pouring into containers with holes and calling my exhaustion devotion. I confess that I have been waiting for a version of someone to appear who has not been appearing, and I have been weighing my whole life on that waiting.</p>
+    <p>Set me free. Lead me into the wilderness if You must, and speak tenderly to me there. Show me the difference between the reality and the projection. Teach me to love what is actually in front of me without projecting what is not, and to bring the potential of every person in my life to You and leave it with You.</p>
+    <p>I take back the loyalty I have misplaced. I give it back to You, where it has always belonged. And I receive, in its place, the freedom Christ purchased for me on the cross, which I have not been fully walking in until today.</p>
+    <p>In the name of Jesus, amen.</p>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Before you go</span></div>
+  <h2>One <em>honest</em> question.</h2>
+
+  <p>This week, just one practice. Ask yourself one honest question and answer it without softening, without explaining, without protecting anyone, including yourself.</p>
+
+  <p>If nothing about this person changed from today forward, if the version of him you have been seeing for the last twelve months is exactly the version you will be relating to for the next twelve, can you live the kind of life God called you to live alongside him? Yes or no.</p>
+
+  <p>The answer to that question is one of the most important answers you will give in your life, Darling, and the honesty of it will begin the work nothing else has been able to begin in you. You do not have to take action on the answer this week. You only have to let yourself know it. The knowing is what unlocks every step that comes after.</p>
+
+  <p>The Father who loves you is not asking you to stay in what is killing you. He is calling you out, gently, patiently, into a freedom He paid the highest price to give you. And the moment you start to honor the reality instead of the projection, the bond begins to lose its grip, and the woman God formed begins to breathe again.</p>
+
+  <div class="closing">
+    <p>You were not made to wear a yoke<br>that was never meant for your neck.<br><em>The freedom Christ purchased for you<br>was the freedom He wanted you to walk in,<br>not the chain you have been calling love.</em></p>
+    <p class="sig">Avizaya &nbsp;&middot;&nbsp; School 1, Episode 6</p>
+  </div>
+
+</div>
+</body>
+</html>

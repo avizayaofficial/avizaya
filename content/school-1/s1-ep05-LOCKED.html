@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avizaya: School 1, Episode 5</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --plum: #2C1A4A;
+    --gold: #C4955A;
+    --ivory: #F7F2EC;
+    --muted: #6B5A72;
+    --light: #FAF6F0;
+    --green: #1A3A2E;
+  }
+  body { background: var(--ivory); font-family: 'Jost', sans-serif; font-weight: 300; color: var(--plum); padding: 0 0 100px; -webkit-font-smoothing: antialiased; }
+
+  .cover { background: var(--plum); padding: 72px 40px 64px; text-align: center; }
+  .cover-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; }
+  .cover-school { font-size: 12px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(196,149,90,0.6); margin-bottom: 20px; }
+  .cover-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(34px, 6vw, 58px); font-weight: 300; line-height: 1.15; color: var(--ivory); margin-bottom: 24px; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .cover-title em { font-style: italic; color: var(--gold); }
+  .cover-divider { display: flex; align-items: center; gap: 14px; max-width: 320px; margin: 0 auto 24px; }
+  .cover-line { flex: 1; height: 0.5px; background: var(--gold); opacity: 0.35; }
+  .cover-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
+  .cover-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; font-weight: 300; color: rgba(232,213,196,0.7); max-width: 480px; margin: 0 auto; line-height: 1.6; }
+
+  .body { max-width: 680px; margin: 0 auto; padding: 0 32px; }
+  .section-tag { display: inline-flex; align-items: center; gap: 8px; margin: 48px 0 20px; }
+  .tag-line { width: 24px; height: 0.5px; background: var(--gold); }
+  .tag-text { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+
+  h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 4vw, 34px); font-weight: 400; line-height: 1.3; color: var(--plum); margin-bottom: 20px; }
+  h2 em { font-style: italic; color: var(--gold); }
+
+  p { font-size: 16px; line-height: 1.9; color: #3A2840; margin-bottom: 22px; }
+  p.large { font-family: 'Cormorant Garamond', serif; font-size: clamp(19px, 3vw, 24px); font-style: italic; line-height: 1.65; color: var(--plum); }
+  p strong { font-weight: 500; color: var(--plum); }
+  p em { font-style: italic; color: var(--gold); }
+
+  .divider { display: flex; align-items: center; gap: 14px; margin: 40px 0; }
+  .divider-line { flex: 1; height: 0.5px; background: var(--gold); opacity: 0.3; }
+  .diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); }
+
+  blockquote { border-left: 2px solid var(--gold); padding: 18px 0 18px 24px; margin: 36px 0; }
+  blockquote p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(19px, 3vw, 25px); color: var(--plum); margin: 0; line-height: 1.5; }
+
+  .scripture { background: var(--light); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; padding: 18px 22px; margin: 32px 0; }
+  .scripture p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; color: var(--plum); line-height: 1.6; margin-bottom: 8px; }
+  .scripture .ref { font-family: 'Jost', sans-serif; font-style: normal; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+
+  .principle-box { background: var(--plum); border-radius: 12px; padding: 32px 30px; margin: 40px 0; text-align: center; }
+  .principle-label { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .principle-box p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: var(--ivory); margin: 0; line-height: 1.5; }
+
+  .step-box { background: white; border: 0.5px solid rgba(196,149,90,0.3); border-radius: 12px; padding: 28px 26px; margin: 28px 0; }
+  .step-num { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .step-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--plum); margin-bottom: 14px; line-height: 1.3; }
+
+  .reflection-box { background: var(--plum); border-radius: 12px; padding: 36px 30px; margin: 48px 0; }
+  .reflection-box .reflection-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--gold); margin-bottom: 22px; font-style: italic; }
+  .reflection-box p { color: rgba(232,213,196,0.88); margin-bottom: 18px; font-size: 16px; }
+  .reflection-box p:last-child { margin-bottom: 0; }
+  .reflection-box p strong { color: var(--gold); font-weight: 400; }
+
+  .prayer-box { background: var(--green); border-radius: 12px; padding: 36px 30px; margin: 48px 0; }
+  .prayer-box .prayer-title { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; }
+  .prayer-box p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; line-height: 1.75; color: rgba(232,213,196,0.92); margin-bottom: 14px; }
+  .prayer-box p:last-child { margin-bottom: 0; }
+
+  .closing { text-align: center; padding: 70px 0 30px; }
+  .closing p { font-family: 'Cormorant Garamond', serif; font-size: clamp(20px, 3.5vw, 28px); font-style: italic; color: var(--plum); line-height: 1.6; margin-bottom: 18px; }
+  .closing .sig { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-style: normal; font-family: 'Jost', sans-serif; font-weight: 400; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <p class="cover-eyebrow">Avizaya</p>
+  <p class="cover-school">School 1: The abandoned girl &nbsp;&middot;&nbsp; Episode 5</p>
+  <h1 class="cover-title">Addiction is the language of <em>unmet love.</em></h1>
+  <div class="cover-divider">
+    <div class="cover-line"></div>
+    <div class="cover-diamond"></div>
+    <div class="cover-line"></div>
+  </div>
+  <p class="cover-sub">A teaching on the hungers we have been feeding the wrong way, and the only One whose love can satisfy them.</p>
+</div>
+
+<div class="body">
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Welcome</span></div>
+
+  <p class="large">We have walked together through four teachings in this school, and each one has been laying the foundation a woman needs in order to come home to who she really is. The promise of Psalm 27:10 that the Lord receives us. The identity God formed in us before the world had a word to say. The Father who has been running toward us. The God who mothers when our mother could not. And now we step into a teaching that touches something almost every woman is carrying, often in silence, often in shame, often without ever having heard it named the way it is actually working underneath her.</p>
+
+  <p>The teaching is this: every addiction in a woman's life is the language of an unmet love, and neither the substance nor the behavior is the real problem. The thing we keep returning to in the dark, the thing we promised ourselves we would stop and have not stopped, the habit we cannot seem to break no matter how much we try, that thing is not the wound itself. That thing is only the bandage we have been applying to a wound the world never showed us how to actually heal.</p>
+
+  <p>And until we understand that, we will keep fighting the bandage and never reach the wound.</p>
+
+  <p>The world has been teaching us to fight addictions with willpower, with shame, with accountability groups, with rules and restrictions and white-knuckled discipline, and some of that helps for a while. Some of it gets a woman through a week, a month, or a year, but none of it gets to the root, and any woman who has tried to fight an addiction by willpower alone has discovered, eventually, that the addiction comes back the moment the willpower runs out, because the hunger underneath was never fed.</p>
+
+  <p>The Word of God teaches us a different way. It teaches us that the hunger underneath every misdirected behavior is a real and holy hunger, a hunger God Himself placed inside us, and that the only thing that can finally satisfy that hunger is Him. When she stops feeding the wound at the wrong source and starts feeding it at the right one, the addiction does not have to be defeated by force. It loses its grip by being made irrelevant.</p>
+
+  <div class="scripture">
+    <p>"As the deer pants for streams of water, so my soul pants for you, my God. My soul thirsts for God, for the living God. When can I go and meet with God?"</p>
+    <p class="ref">Psalm 42:1-2 NIV</p>
+  </div>
+
+  <p>The Psalmist is describing thirst as the deepest condition of the human soul, not hunger for things, not longing for accomplishments, but thirst, the kind of thirst a deer feels when it has been running and the streams have gone dry and there is nothing left in its body to push it forward. And he names exactly what the thirst is for, which is God Himself, not a religion, not a doctrine, but the living God, present and personal, the only One who can fill the kind of hunger we were designed to carry.</p>
+
+  <p>You have been thirsty your whole life. You have been trying to satisfy that thirst with everything but the One who designed it. The food, the wine, the men, the shopping, the scrolling, the achievement, the perfectionism, the work, the religion, the substances, the relationships, the comfort of every kind. None of it has worked, because none of it was ever supposed to. The thirst was made for one thing only, and only that one thing can finally meet it.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 1</span></div>
+  <h2>What addiction <em>actually is.</em></h2>
+
+  <div class="scripture">
+    <p>"Come, all you who are thirsty, come to the waters; and you who have no money, come, buy and eat! Come, buy wine and milk without money and without cost. Why spend money on what is not bread, and your labor on what does not satisfy? Listen, listen to me, and eat what is good, and you will delight in the richest of fare."</p>
+    <p class="ref">Isaiah 55:1-2 NIV</p>
+  </div>
+
+  <p>God is asking, through the prophet Isaiah, a question that lands on the entire human race. Why are you spending your money on what is not bread, and your labor on what does not satisfy? Why are you giving the precious resources of your life, your time, your energy, your money, your attention, to things that have already proven they cannot fill you? And He is not asking it to shame us. He is asking it to wake us, because He is standing right there, with what we have actually been hungry for, offering it freely, without money, without cost, and the only thing keeping us from it is the fact that we have been busy reaching for what does not feed us.</p>
+
+  <p>Every addiction is a misdirected hunger, and the hunger itself is real, holy, and given by God. The direction of the hunger has been bent off course by pain, by trauma, by what was modeled to us, by what we reached for in a moment of need that worked for a few minutes and then trained us to keep reaching there forever.</p>
+
+  <p>Willpower alone never holds, because willpower fights the redirection without addressing the hunger, and a hunger that is not addressed will always, eventually, win against a will that is only suppressing it. The body knows what it needs and the soul knows what it needs, and they will keep reaching for it until they get it, so the only real question is whether the reaching will be turned in the right direction or kept stuck in the wrong one.</p>
+
+  <p>Our work in this school is not to make you stop reaching, because reaching is your design. Our work is to turn the direction of the reach toward the One who can actually satisfy the hunger, and to watch the misdirected reaches dissolve as the real hunger finally gets fed.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 2</span></div>
+  <h2>The buried <em>root.</em></h2>
+
+  <p>The substance is not the deepest problem. The substance is the lid we have been placing on a pain we did not want to feel. And when we try to fight the substance without addressing the pain it has been suppressing, we are essentially trying to lift the lid off a pot that is still boiling, and the moment the lid comes off the pain comes out, and the pain feels so much worse without the substance to numb it that we put the lid back on within hours, sometimes within minutes.</p>
+
+  <p>The only way through the pain is to walk through it, not to bury it, because what we bury does not actually die. The root just grows deeper in the ground, and one day, when we are not expecting it, it sprouts back up through the earth, only this time stronger and more powerful than before. The addiction we successfully white-knuckled away in our twenties comes back in our thirties as something else, often something more sophisticated, often something the world admires us for. The wine becomes the work, the food becomes the perfectionism, the man becomes the ministry. The substance changes, but the root that no one ever addressed keeps pushing the same pain up through the surface in whatever new form it can find.</p>
+
+  <p>This is why so many women have done years of recovery work and still feel like they are barely holding on, because they have been pruning the visible branches of a tree whose root system was never touched, and no amount of branch-pruning will heal a tree whose root is sick. The work has to go down to the root, and the root, for almost every addiction a woman carries, is the same one: an unmet love, a hunger God designed her to bring to Him that has been buried under so many years of misdirected reaching that she does not even remember it was there to begin with.</p>
+
+  <p>So we are going to walk through the pain, not around it. We are going to dig up the root, not just trim the leaves. And we are going to let the only One who can fill the original hunger come in and do the work that no substance and no willpower has ever been able to do.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">The inversion</span></div>
+  <h2>Addiction is not your <em>weakness.</em></h2>
+
+  <p>Beautiful one, here is what God Himself says about you.</p>
+
+  <p class="large">Your addiction is not evidence of how weak you are. It is evidence of how deeply you were designed to be loved.</p>
+
+  <p>The size of the hunger you have been carrying is the size of the original capacity for divine intimacy that was placed in you when God formed you in your mother's womb. The depth of the longing is the depth of the design. The intensity of the craving is the intensity of the love you were meant to receive from the One who made you. The world has been telling you that your hungers are too much, that your needs are excessive, that your longings are a problem to be managed and minimized, but the world is wrong, and your hungers are not too much at all. They are exactly the right size for the love you were created to carry, and the only reason they feel like too much is because they have been trying to be filled by sources that were never designed to fill them.</p>
+
+  <p>This changes how you look at yourself in the morning. The woman who reached for the wine last night, the food, the screen, the validation, the man, is not a woman of weakness. She is a woman whose capacity to be loved is greater than the world has been able to meet, and the reaching is the evidence of how vast that capacity actually is. When she finally turns that capacity toward the One who can fill it, she will become not a woman with less hunger, but a woman with the same hunger now finally satisfied at the only well that has ever been deep enough to reach it.</p>
+
+  <p>The thirsty woman is not your enemy, she is the version of you who knows she was made for more than this, and you are meant to honor her rather than shame her. She has been carrying the truth all along that the smaller, satisfied versions of women around her have been numbing. She has been telling you, through every craving, that there is more available than what you have been settling for, and now we direct her thirst to the well that was always meant for her.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 3</span></div>
+  <h2>The woman at the <em>well.</em></h2>
+
+  <p>In John 4, Jesus meets a woman at a well in the middle of the day.</p>
+
+  <div class="scripture">
+    <p>"Jesus answered, &lsquo;Everyone who drinks this water will be thirsty again, but whoever drinks the water I give them will never thirst. Indeed, the water I give them will become in them a spring of water welling up to eternal life.&rsquo;"</p>
+    <p class="ref">John 4:13-14 NIV</p>
+  </div>
+
+  <p>The woman had come to the well in the middle of the day, in the hottest part of the afternoon, alone. She came at that hour because the other women in her town came at dawn, and she was avoiding them. She had been married five times. She was currently living with a man who was not her husband. She was the woman everyone whispered about, the one the respectable women had stopped inviting to gatherings, the one whose reaching for love had been so visible that her entire community had used it as the reason to push her to the edges of itself.</p>
+
+  <p>She had been thirsty her whole life. She had tried to satisfy her thirst with one man after another, hoping each time that this one would finally fill her, and each time discovering that the well she had chosen was not deep enough to reach what she actually needed.</p>
+
+  <p>Jesus, knowing all of this, did not shame her and did not lecture her on her choices and did not give her a six-step program to break the pattern she had been stuck in. He offered her water, a different water, the kind that, once received, would settle the thirst that had been driving her to all those wrong wells for all those years.</p>
+
+  <p>And He said something profound about the nature of His offer. The water He gives, He said, becomes in you a spring of water welling up. He did not say He would carry the water for you and let you sip from His cup when you came to Him, He said the water would become in you a spring, so that the supply would no longer be external but internal. The thirst that had been driving you to wells outside yourself would be met by a well placed inside you, and you would never again have to chase what was already inside.</p>
+
+  <p>This is the way out of addiction, not external management of the cravings but internal satisfaction of the thirst, a spring of water welling up inside you, fed by the only Source that has ever been able to actually feed the hunger you have been carrying.</p>
+
+  <div class="scripture">
+    <p>"On the last and greatest day of the festival, Jesus stood and said in a loud voice, &lsquo;Let anyone who is thirsty come to me and drink. Whoever believes in me, as Scripture has said, rivers of living water will flow from within them.&rsquo;"</p>
+    <p class="ref">John 7:37-38 NIV</p>
+  </div>
+
+  <p>Rivers, not a trickle, not a manageable amount, but rivers of living water flowing from within the woman who finally drinks deeply from the only Source she was designed to drink from. This is what God has been offering you all along, while you have been reaching for substances and behaviors that could not fill a cup, let alone form a river.</p>
+
+  <div class="principle-box">
+    <p class="principle-label">The principle</p>
+    <p>Your addiction is not the disease. Your addiction is the symptom of an unfed hunger. Feed the hunger at the right Source, and the symptom loses its purpose in your life.</p>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 4</span></div>
+  <h2>The faces of <em>the hunger.</em></h2>
+
+  <p>The hunger underneath addiction shows up in many forms across a woman's life, and the form often determines what she has been reaching for to numb it.</p>
+
+  <p>Some women carry the hunger for unconditional love, the love they did not receive in their earliest relationships, and they have been pouring themselves into romantic partnerships that promise to deliver it and never quite do, where the men change but the hunger stays.</p>
+
+  <p>Some women carry the hunger for comfort that was missing in their childhood home, and they have been reaching for food, for wine, for the soft and immediate satisfaction of substances that fill the space the way no one filled it when they were small, where the food changes but the hunger stays.</p>
+
+  <p>Some women carry the hunger to be seen, the hunger of a daughter who grew up invisible in her own home, and they have been pouring themselves into scrolling, into posting, into building visible lives that promise to finally make them feel chosen, where the screens change but the hunger stays.</p>
+
+  <p>Some women carry the hunger for control over their own bodies, the hunger of a girl who was not protected when she was young, and they have been reaching for restriction, for the obsessive management of food and body that gives them an illusion of safety nothing else has ever given them, where the methods change but the hunger stays.</p>
+
+  <p>Some women carry the hunger to escape from a self they do not know how to live with, and they have been reaching for whatever puts them, even briefly, somewhere other than inside their own skin, where the substance changes but the hunger stays.</p>
+
+  <p>Each of these is the same hunger at the root, a hunger that was placed in you by God for the express purpose of driving you to Him, that has been redirected by pain into a thousand other targets that cannot satisfy it. The targets are different but the thirst is the same, And the redirection of the thirst back to its rightful Source is the same work for each woman, regardless of which substance has been holding her hostage.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">A note</span></div>
+  <h2>For the woman with the <em>respectable</em> addictions.</h2>
+
+  <p>Some of you are reading this thinking, &ldquo;This is not me. I do not drink, I do not use substances, I have never had an eating disorder. I am the disciplined one, the one everyone admires for her self-control.&rdquo; The principle of this episode applies to you just as deeply as it applies to the woman with the visible addictions, and you may need this teaching more than anyone else in the room.</p>
+
+  <p>Some addictions are respectable, and the culture even praises them. Overworking, overachieving, obsessive religion that performs for God instead of resting in Him, perfectionism, anxiety dressed up as conscientiousness, control of every detail of your environment and the lives of the people in it, excessive volunteering, compulsive busyness that keeps you from ever sitting still long enough to notice what is happening inside you, all of these belong to the same family.</p>
+
+  <p>Every one of these is the same dynamic as the woman reaching for the bottle. The hunger underneath is the same. The redirection of the hunger to a target that cannot satisfy it is the same. The willpower expended to maintain the pattern is the same. The only difference is that the world claps for your particular addiction while it judges hers, and that clap has been keeping you from recognizing that the same medicine she needs is the same medicine you need.</p>
+
+  <p>The disciplined woman who runs her business, her family, her ministry, her body, her schedule, her face, her closet, every detail of her visible life, may be the most addicted woman in the room. She is just addicted to the kind of control the culture rewards her for. And the rivers of living water Jesus offered to the woman at the well are exactly what He is offering you, today, in this teaching, if you will set down your impressive cup and accept a different one.</p>
+
+  <p>The principle does not care which addiction you carry. The principle is the same for all of them. Feed the hunger at the right Source. Watch the misdirected reaching dissolve.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 5</span></div>
+  <h2>The mastery <em>question.</em></h2>
+
+  <p>One verse from Paul draws the line that every woman walking out of addiction has to learn to draw inside herself.</p>
+
+  <div class="scripture">
+    <p>"&lsquo;I have the right to do anything,&rsquo; you say. But not everything is beneficial. &lsquo;I have the right to do anything,&rsquo; but I will not be mastered by anything."</p>
+    <p class="ref">1 Corinthians 6:12 NIV</p>
+  </div>
+
+  <p>Paul is naming the principle that separates freedom from bondage, and he is not saying everything is forbidden, nor is he handing the woman of God a list of substances and behaviors she must avoid forever. He is teaching her a deeper test, where the question is not whether you can have something but whether something can have you. The question to ask of anything in your life, whether it is the wine, the food, the man, the screen, the work, the volunteer commitment, the religion, the relationship, is this: can I take it or leave it, or has it begun to take me?</p>
+
+  <p>The moment something has begun to take you, the moment you cannot imagine your day without it, the moment the thought of going one day or one week without it causes anxiety to rise inside you, you have been mastered by it, and the principle of 1 Corinthians 6:12 says that no woman of God is meant to be mastered by anything other than the God who made her.</p>
+
+  <p>This is the diagnostic, not whether something is technically permissible, but whether it has authority over you that belongs only to God. And if it has been taking that authority, the work is not to feel ashamed of having been mastered, but to gently and deliberately, with the help of the only One who is meant to master you, take that authority back.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 6</span></div>
+  <h2>Three movements for <em>this week.</em></h2>
+
+  <p>Three movements to carry with us this week. Together they form the practice of redirecting your thirst from the wells that have not been filling you to the One Source that always has been.</p>
+
+  <div class="step-box">
+    <p class="step-num">Movement one</p>
+    <p class="step-title">Name the hunger underneath.</p>
+    <p>Take a quiet hour this week and write out, slowly and without shame, what you have been reaching for, and what you believe you have been trying to get from it.</p>
+    <p>The food has not been about the food. The wine has not been about the wine. The man has not been about the man. The work has not been about the work. Underneath each of those, there is a hunger with a name. Comfort. Connection. Worth. Safety. Belonging. Being chosen. Being seen. Being held. Name the specific hunger that has been driving the specific reaching, because the moment you can name the hunger, the substance you have been using to numb it loses its disguise.</p>
+    <p>Do not write this list to shame yourself. Write it the way David wrote his Psalms, openly, in the presence of God, with the full understanding that He has already seen all of it and is waiting for you to bring it to Him.</p>
+  </div>
+
+  <div class="step-box">
+    <p class="step-num">Movement two</p>
+    <p class="step-title">Bring the hunger to the right Source.</p>
+    <p>For every specific hunger you named in the first movement, find the corresponding promise of God's heart and bring the hunger to Him directly.</p>
+    <p>If you named hunger for unconditional love, bring it to the One who loved you before you did anything to earn it. Romans 5:8 says that while we were still sinners, Christ died for us.</p>
+    <p>If you named hunger for comfort, bring it to the One who comforts as a mother comforts her child. Isaiah 66:13.</p>
+    <p>If you named hunger to be seen, bring it to the God who sees, the One Hagar called El Roi in the desert. Genesis 16:13.</p>
+    <p>If you named hunger to be held, bring it to the One who has been waiting to gather you under His wings the way a hen gathers her chicks. Matthew 23:37.</p>
+    <p>If you named hunger for safety, bring it to the One who shelters you under the shadow of His wings. Psalm 91.</p>
+    <p>The work is not to convince Him to give. The work is to receive what He has already declared Himself to be for you, and to bring the specific hunger to the specific promise, again and again and again, until your nervous system learns where the real Source actually lives.</p>
+  </div>
+
+  <div class="step-box">
+    <p class="step-num">Movement three</p>
+    <p class="step-title">Walk through the pain, do not bury it.</p>
+    <p>This week, when the craving rises, do not reach for the usual lid. Sit with what is underneath it for as long as you can, even if all you can manage is sixty seconds the first time. Let the pain come up, let the grief come up, let the loneliness come up, let whatever has been buried come up, and bring it, raw and unedited, to God in prayer.</p>
+    <p>The pain you have been numbing is the very pain He has been waiting to meet you in. The substance has been keeping Him out of the very places He most wanted to come close. The work is not to fight the substance. The work is to let Him into the place the substance has been guarding.</p>
+    <p>It will not feel good the first time you do this, and it may not feel good the tenth time either. But every time you walk through the pain instead of burying it, the root weakens. Every time you bring the hunger to the right Source instead of the wrong one, the redirected pathway loses a little of its grip. And one day, sometimes much sooner than you expect, you will reach for the substance and discover that the urge is not there the way it used to be, not because you fought it harder but because the hunger underneath it has finally been fed.</p>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">A brief note</span></div>
+  <h2>On <em>my own walk.</em></h2>
+
+  <p>I have walked through this teaching from the inside, because after my mother moved away when I was thirteen, I fell into food addictions and eating disorders that lasted for years, and the food was never really about the food. It was about the love I had not received and did not know how to receive any other way, and every reaching for food was a reaching for what my mother had not been able to give me. The food would work for a few minutes, and then it would stop working, and I would reach for it again, because I had not yet learned that there was a different well I could drink from.</p>
+
+  <p>The pain underneath was so deep that I buried it for years before I started reaching for the right Source, and the longer I buried it the deeper the root grew, until I was in a depression so heavy that even the food stopped numbing it. That is when the lid finally came off, not because I had the strength to lift it, but because the pain underneath had grown so large that no lid I had built was strong enough to keep it down anymore.</p>
+
+  <p>The only thing that ever fed the hunger underneath the addiction was God Himself, not my willpower, not my discipline, not my shame, not my hatred of what I had been doing to my own body. His presence, brought specifically to the specific hunger, was what finally let me put the food down without it coming back as something else, because He filled the place the food had been guarding, and once He was in that place the food did not have a job in my life anymore.</p>
+
+  <p>I am not telling you this work is fast. It took me years to learn it the first time, and it has taken me years to keep applying it as new hungers have surfaced in new seasons of my life. But the principle is sound, and it holds, and it will hold for you the way it held for me, because the Source is real, the well is deep, and He is the only One who has ever been able to feed the kind of hunger you have been carrying.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="reflection-box">
+    <p class="reflection-title">Five questions for this week</p>
+    <p>Read one a day. Sit with it. Bring it to God in prayer.</p>
+    <p><strong>One.</strong> What have you been reaching for, in the small private moments no one sees, and what hunger have you been trying to satisfy with it?</p>
+    <p><strong>Two.</strong> What pain has the substance or behavior been keeping a lid on, and what would it cost you to let that lid come off in the presence of God?</p>
+    <p><strong>Three.</strong> Which respectable addiction have you been wearing as a virtue, and how has it been keeping you from sitting still long enough to feel what is underneath?</p>
+    <p><strong>Four.</strong> What scripture or promise of God's heart speaks most directly to the specific hunger you have been carrying, and have you ever brought the hunger to Him in those specific words?</p>
+    <p><strong>Five.</strong> If you truly believed today that there is a spring of living water inside you, placed there by the only Source that can satisfy your thirst, what would you stop chasing this week? What would you finally let yourself receive?</p>
+  </div>
+
+  <div class="prayer-box">
+    <p class="prayer-title">A prayer for the woman bringing her thirst home</p>
+    <p>Father, I come to You with the cup I have been drinking from for too long, the one I know in my heart is not filling me, the one I have been ashamed of, the one I have promised to put down a thousand times and have not been able to.</p>
+    <p>I confess to You that I have been reaching for substances and behaviors that were never going to satisfy what I have been hungry for. I confess that I have been fighting the substance and ignoring the hunger underneath it, and the hunger has been growing every single year I have not been bringing it to You.</p>
+    <p>Show me the unmet love beneath the reaching. Show me the specific hunger that has been driving the specific pattern. And then teach me, gently and patiently, how to bring that hunger to You instead of to the well that cannot reach it.</p>
+    <p>Make me a woman who drinks from Your spring. Let rivers of living water flow from within me, the way You promised they would, when I finally learn to come to You first.</p>
+    <p>I am thirsty, Father, and I have been thirsty my whole life, and today I bring my thirst home.</p>
+    <p>In the name of Jesus, amen.</p>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Before you go</span></div>
+  <h2>One small <em>redirection.</em></h2>
+
+  <p>This week, just one practice. The next time the craving rises, before you reach for the usual thing, pause for sixty seconds, just sixty, and place your hand on your heart and ask the hunger underneath what it is actually asking for. And then, in those sixty seconds, bring whatever it names to God instead of to the substance.</p>
+
+  <p>You will not do this perfectly, and you may not do it at all the first few times the craving comes, and that is alright, because the practice is not perfection but the redirection of the path, sixty seconds at a time, until the new pathway becomes stronger than the old one. Every time you redirect the reaching toward God instead of toward the substance, you are weakening the buried root and strengthening the new one. The work is happening even when you cannot feel it happening.</p>
+
+  <p>And one day, sometimes much sooner than you expect, the craving will rise and you will discover it has lost its weight in your body. The new pathway will have become the dominant one. The Source you have been drinking from will be flowing inside you the way Jesus promised it would. And the woman you have been waiting to become, the one whose hunger is finally fed at the only well deep enough to reach her, will simply be the woman you are.</p>
+
+  <div class="closing">
+    <p>Your addiction is not your weakness.<br>It is the witness, however bent,<br>that you were designed for a love<br>the world could not give you.<br><em>Everything else, child of God,<br>was always too small a well<br>for the woman God formed to drink rivers.</em></p>
+    <p class="sig">Avizaya &nbsp;&middot;&nbsp; School 1, Episode 5</p>
+  </div>
+
+</div>
+</body>
+</html>

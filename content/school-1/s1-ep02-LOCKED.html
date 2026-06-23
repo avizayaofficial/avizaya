@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avizaya: School 1, Episode 2</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --plum: #2C1A4A;
+    --gold: #C4955A;
+    --ivory: #F7F2EC;
+    --muted: #6B5A72;
+    --light: #FAF6F0;
+    --green: #1A3A2E;
+  }
+  body { background: var(--ivory); font-family: 'Jost', sans-serif; font-weight: 300; color: var(--plum); padding: 0 0 100px; -webkit-font-smoothing: antialiased; }
+
+  .cover { background: var(--plum); padding: 72px 40px 64px; text-align: center; }
+  .cover-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; }
+  .cover-school { font-size: 12px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(196,149,90,0.6); margin-bottom: 20px; }
+  .cover-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(34px, 6vw, 58px); font-weight: 300; line-height: 1.15; color: var(--ivory); margin-bottom: 24px; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .cover-title em { font-style: italic; color: var(--gold); }
+  .cover-divider { display: flex; align-items: center; gap: 14px; max-width: 320px; margin: 0 auto 24px; }
+  .cover-line { flex: 1; height: 0.5px; background: var(--gold); opacity: 0.35; }
+  .cover-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
+  .cover-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; font-weight: 300; color: rgba(232,213,196,0.7); max-width: 480px; margin: 0 auto; line-height: 1.6; }
+
+  .body { max-width: 680px; margin: 0 auto; padding: 0 32px; }
+  .section-tag { display: inline-flex; align-items: center; gap: 8px; margin: 48px 0 20px; }
+  .tag-line { width: 24px; height: 0.5px; background: var(--gold); }
+  .tag-text { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+
+  h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 4vw, 34px); font-weight: 400; line-height: 1.3; color: var(--plum); margin-bottom: 20px; }
+  h2 em { font-style: italic; color: var(--gold); }
+
+  p { font-size: 16px; line-height: 1.9; color: #3A2840; margin-bottom: 22px; }
+  p.large { font-family: 'Cormorant Garamond', serif; font-size: clamp(19px, 3vw, 24px); font-style: italic; line-height: 1.65; color: var(--plum); }
+  p strong { font-weight: 500; color: var(--plum); }
+  p em { font-style: italic; color: var(--gold); }
+
+  .divider { display: flex; align-items: center; gap: 14px; margin: 40px 0; }
+  .divider-line { flex: 1; height: 0.5px; background: var(--gold); opacity: 0.3; }
+  .diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); }
+
+  blockquote { border-left: 2px solid var(--gold); padding: 18px 0 18px 24px; margin: 36px 0; }
+  blockquote p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(19px, 3vw, 25px); color: var(--plum); margin: 0; line-height: 1.5; }
+
+  .scripture { background: var(--light); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; padding: 18px 22px; margin: 32px 0; }
+  .scripture p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; color: var(--plum); line-height: 1.6; margin-bottom: 8px; }
+  .scripture .ref { font-family: 'Jost', sans-serif; font-style: normal; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+
+  .principle-box { background: var(--plum); border-radius: 12px; padding: 32px 30px; margin: 40px 0; text-align: center; }
+  .principle-label { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .principle-box p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: var(--ivory); margin: 0; line-height: 1.5; }
+
+  .step-box { background: white; border: 0.5px solid rgba(196,149,90,0.3); border-radius: 12px; padding: 28px 26px; margin: 28px 0; }
+  .step-num { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .step-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--plum); margin-bottom: 14px; line-height: 1.3; }
+
+  .reflection-box { background: var(--plum); border-radius: 12px; padding: 36px 30px; margin: 48px 0; }
+  .reflection-box .reflection-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--gold); margin-bottom: 22px; font-style: italic; }
+  .reflection-box p { color: rgba(232,213,196,0.88); margin-bottom: 18px; font-size: 16px; }
+  .reflection-box p:last-child { margin-bottom: 0; }
+  .reflection-box p strong { color: var(--gold); font-weight: 400; }
+
+  .prayer-box { background: var(--green); border-radius: 12px; padding: 36px 30px; margin: 48px 0; }
+  .prayer-box .prayer-title { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; }
+  .prayer-box p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; line-height: 1.75; color: rgba(232,213,196,0.92); margin-bottom: 14px; }
+  .prayer-box p:last-child { margin-bottom: 0; }
+
+  .closing { text-align: center; padding: 70px 0 30px; }
+  .closing p { font-family: 'Cormorant Garamond', serif; font-size: clamp(20px, 3.5vw, 28px); font-style: italic; color: var(--plum); line-height: 1.6; margin-bottom: 18px; }
+  .closing .sig { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-style: normal; font-family: 'Jost', sans-serif; font-weight: 400; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <p class="cover-eyebrow">Avizaya</p>
+  <p class="cover-school">School 1: The abandoned girl &nbsp;&middot;&nbsp; Episode 2</p>
+  <h1 class="cover-title">Who you are when <em>no one is watching.</em></h1>
+  <div class="cover-divider">
+    <div class="cover-line"></div>
+    <div class="cover-diamond"></div>
+    <div class="cover-line"></div>
+  </div>
+  <p class="cover-sub">A homecoming to the woman God formed before the world had a word to say.</p>
+</div>
+
+<div class="body">
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Welcome</span></div>
+
+  <p class="large">Darling, in our last conversation together we laid the very first stone of everything we are about to build in this school, and that stone was Psalm 27:10, the holy promise that though our father and mother forsake us, the Lord Himself receives us, and we rested ourselves on that promise because there is no other foundation in this world that can hold the weight of a woman becoming who she was made to be.</p>
+
+  <p>This second teaching sits directly on top of that first one, because once we know who is holding us, the very next question that must be answered is the question of who we are inside His hands.</p>
+
+  <p>And so we come together today to talk about identity, which is really the question of who you are when no one is watching. Not the woman who stands before her husband, her children, her employer, her followers, or her pastor, because that woman is always being shaped by who is sitting in the room with her. The woman I want to introduce you to today is the one in the silence, the one who exists when the door has closed behind you and the phone has gone dark and no one is asking anything of you anymore, and she is the only you that is truly real, because she is the only one who is not being shaped by who else is watching her.</p>
+
+  <p>Most of us, have never met her. We have been performing for so long that the performance has become the woman we believe ourselves to be, and the moment the room empties out we feel anxious instead of free, because the silence threatens to expose what the performance has been covering all along.</p>
+
+  <p>This teaching, is about meeting her. The real you. The one God formed long before any voice in this world had a word to say about who you should be.</p>
+
+  <div class="scripture">
+    <p>"For you created my inmost being; you knit me together in my mother's womb. I praise you because I am fearfully and wonderfully made; your works are wonderful, I know that full well."</p>
+    <p class="ref">Psalm 139:13-14 NIV</p>
+  </div>
+
+  <p>This, is your identity in seed form. Before your father held you in his arms, before your mother gave you a name, before culture told you who to be and how to look and what to want from your one short life, before the wounds and the words and the labels and the loves and the losses had ever found their way to you, the woman God knit together in your mother's womb was already there. And so our work today is not to invent her. Our work is to remember her.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 1</span></div>
+  <h2>The first <em>attack.</em></h2>
+
+  <p>If you want to understand how a woman's identity gets stolen, go back with me to Genesis 3 and read it slowly, with new eyes, because there is something happening underneath that story that we were never quite taught to see.</p>
+
+  <p>The serpent did not approach Eve, with a temptation about food. He approached her with a temptation about identity.</p>
+
+  <div class="scripture">
+    <p>"You will not certainly die," the serpent said to the woman. "For God knows that when you eat from it your eyes will be opened, and you will be like God, knowing good and evil."</p>
+    <p class="ref">Genesis 3:4-5 NIV</p>
+  </div>
+
+  <p>Hear what the serpent actually whispered to her. <em>You will be like God.</em> He was telling Eve, in the gentlest voice he could find, that she was missing something. He was suggesting to her that the woman God had just formed with His own hands was somehow incomplete, that there was a higher version of her she did not yet have access to, that the One who had breathed her into being had withheld something essential from her formation.</p>
+
+  <p>And this, is where everything broke for her, and where everything still breaks for us. It was not the eating that broke her. It was the believing. Eve believed that she was not enough as she was, and she believed that she needed something more to become who she was meant to be, and every daughter of Eve who has ever lived has inherited that very same wound.</p>
+
+  <p>Now here, my love, is what I want you to truly understand, because this is the very heart of the entire teaching, and if you receive nothing else from this episode, I want you to receive this.</p>
+
+  <p class="large">Had Eve already known who she was, had she remembered in that moment that she was already made in the very image of God, she could never have been tempted by the suggestion that she needed to become more like Him.</p>
+
+  <p>The whole strategy of the serpent, depended entirely on her forgetting what God had said about her in the beginning. A woman who knows she already bears the image of God cannot be persuaded to reach for what she has already been given. Eve fell, not because she was weak, but because in that one moment she had lost contact with the truth of her own formation, and any one of us, in any moment when we lose contact with that same truth, becomes equally vulnerable to the very same lie.</p>
+
+  <p>But the reverse, is also true, and this is the most freeing truth in this entire episode. The woman who remembers her identity in God cannot be tempted into chasing it. She already has it. The enemy can only steal what we have forgotten we possess, and so the holy work of remembering is the very work of becoming unshakeable.</p>
+
+  <p>The enemy has not changed his strategy across the thousands of years since that garden. The fruit changes, but the lie is always the same. You are not enough. You are missing something. The other woman has what you do not. The version of you that everyone would love is not the version of you that you are right now. Be more, do more, perform more, earn more, become more. And so we spend our entire lives, trying to fill what was never empty in us to begin with.</p>
+
+  <p>You were made in the image of God. You were not made to be God, and you were not made to need an upgrade. You were made in His image, with His likeness, for His purposes, with His own breath in your lungs, and anything in this world that tries to tell you otherwise is the same whispering voice that came to Eve in the garden, and the women who learn to recognize that voice stop falling for it.</p>
+
+  <p>And this very same attack, continues throughout the entire Word of God. When Christ Himself stood in the wilderness, the enemy did not begin by tempting Him with bread or with power. He began, by attacking His identity.</p>
+
+  <div class="scripture">
+    <p>"If you are the Son of God, tell these stones to become bread."</p>
+    <p class="ref">Matthew 4:3 NIV</p>
+  </div>
+
+  <p>If. The very first word out of his mouth. Such a small word, and yet so strategically placed. <em>If</em> you are who God said you are, then prove it. <em>If</em> you are who you say you are, then perform it. <em>If</em> the Father really loves you, then He will give you what I am telling you to demand from Him.</p>
+
+  <p>But Christ, did not take the bait. He did not need to prove anything to a voice that He already knew was a liar from the beginning. He stood in His identity without performing it for the enemy who questioned it, and that quiet certainty was what defeated the temptation in the wilderness, and the principle He modeled there is the same one our Father is teaching you to walk in today. You do not have to prove who you are to the voices that question you. You only have to know who you are, and the knowing is its own protection.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 2</span></div>
+  <h2>The <em>original</em> you.</h2>
+
+  <p>Now sit with this scripture with me for a moment, slowly, with your whole self, because what we are about to read changes everything when we let it.</p>
+
+  <div class="scripture">
+    <p>"Before I formed you in the womb I knew you, before you were born I set you apart."</p>
+    <p class="ref">Jeremiah 1:5 NIV</p>
+  </div>
+
+  <p>Before. Before you were anything that anyone in this world could see with their eyes, you were known by the only One whose eyes were ever the first to see you. You were named by Him. You were set apart by Him. You had an identity established by God Himself before you ever arrived in the world that would later try to redefine you, and that identity has never once been revoked.</p>
+
+  <p>This matters more than I could possibly tell you in a single teaching. So many of us have walked through our entire lives without ever being told that we were known first by God, and so we let everyone else do the telling for Him. Our parents told us who we were, and we believed them. Our culture told us, and we believed it. Our country told us, and we adapted ourselves to fit. Our church told us, and we adjusted to match. The boys who liked us told us, and the boys who did not told us, and the friends who chose us told us, and the friends who left told us by their leaving. The teachers who saw us told us, and the teachers who overlooked us told us by their overlooking. The magazines and the men and the markets and the moods of the people around us told us, in a thousand soft ways every single day, who we were and who we were supposed to be.</p>
+
+  <p>And we, mistook all of that for who we actually were.</p>
+
+  <p>But none of that, is who you are. All of that is who you were assigned to be by people who did not form you, and not one of them had the authority to tell you who you were in the first place. The only One who has that authority is the One whose hands made you, and He had a word about you long before any other voice in this world had a chance to speak.</p>
+
+  <div class="scripture">
+    <p>"So God created mankind in his own image, in the image of God he created them; male and female he created them."</p>
+    <p class="ref">Genesis 1:27 NIV</p>
+  </div>
+
+  <p>You bear the image of the very Creator of the universe. That is the deepest truth there is about you, and it is the truth that everything else in your life has to bend itself around, not the other way around. The world has been trying to make you bend yourself around its small definitions of you for a very long time, and it is time, for the world to bend itself around the One who formed you instead.</p>
+
+  <p>Fearfully and wonderfully made. Hear those words again, slowly. Not casually made. Not accidentally made. Not made as a second draft of someone better. The woman God formed in your mother's womb was an intentional creation, with a divine purpose attached to her, with a holy calling stitched right into her DNA, with gifts hidden deep inside her that this world needs desperately and that only she has been given to offer.</p>
+
+  <p>That, is who you are. And so our work is not to become her. Our work, is to gently peel away everything that has been covering her, and to remember her.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 3</span></div>
+  <h2>The layers you have been <em>wearing.</em></h2>
+
+  <p>Here is the question I want you to sit with now, before we go any further into this teaching.</p>
+
+  <p class="large">Whose voice has been telling you who you are?</p>
+
+  <p>For most of us, the honest answer is everyone except God. The mother who praised us when we performed well and went quiet when we did not, who taught us by her silences that love comes only when we earn it. The father who looked at us sideways and made us wonder what was wrong with us, who taught us by his looking that we are somehow not quite right. The culture that decided for us what beauty was, and what success was, and what a good woman was supposed to want, and what made her acceptable in the eyes of the people around her. The man who told us what kind of wife we should be. The church that handed us a small script of who a godly woman is permitted to be and quietly suggested that anything outside that script was rebellion. The internet that whispers to us, in a thousand soft and persistent ways, that the woman we are is not the woman we should be becoming.</p>
+
+  <p>And each one of these voices, laid something onto us. The woman we walk around in today is not really us. She is us covered. She is the layered woman, with so many veils placed on top of her over so many long years that the original woman God formed has been buried beneath them, and sometimes, she has been buried so deeply that we cannot even remember her name anymore.</p>
+
+  <p>There are layers most of us never even noticed we were putting on. The good girl layer, which we put on the day we learned that being chosen depended on being agreeable. The strong woman layer, which we put on the day we learned that no one was coming to save us so we had to become the one who would do all of the saving. The spiritual performer layer, which we put on the day we sensed that the church preferred a polished version of us to a true one. The achiever layer, the caretaker layer, the peacemaker layer, the rebel layer, the helper layer, the funny one layer, the silent one layer. Some of these layers, protected us in their season, and we owe them gratitude for the protection they gave us when we had nothing else, but not one of them is who we actually are.</p>
+
+  <p>And so the work of this school, is excavation. Not invention.</p>
+
+  <p>You do not need to become a new woman. You need to remember the one God already made, because she is in there, and every layer that did not come from Him needs to come off, and the moment we begin that work, the woman underneath begins to breathe again for the first time in years.</p>
+
+  <p>This is not psychological self-discovery. This is spiritual restoration. The world will tell you to look inside yourself for the answers, because the world has forgotten the One who put those answers into you to begin with. But we, are going to look to the One who made you, because He alone has the original blueprint of who you were always meant to be, and the blueprint He drew is more beautiful than anything you could have ever designed for yourself if you had been left to invent yourself from scratch.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">A note</span></div>
+  <h2>For the woman who has worn the mask <em>too long.</em></h2>
+
+  <p>Beloved, before we walk any further into this teaching, I want to set everything aside for a moment and speak directly to a particular woman who I know is reading this. She is the one who has been performing for so long that she does not even know she is performing anymore. The one who looks like she has it all together, because she has worked very, very hard to look like she has it all together.</p>
+
+  <p>She wakes up before everyone else. She holds it all together. She is the friend that everyone calls when they are falling apart, but she does not have a single soul she calls when she herself is falling apart. She runs the home and the business and the relationships and the ministry and the family, and she does it well, and she does it without help, and she is praised for it constantly, and yet she has never felt more invisible in her life than she does now.</p>
+
+  <p>She has built herself a fortress of competence, and inside that fortress she is starving.</p>
+
+  <p>This is the mask. And the mask is what she sees when she looks in her own mirror, because by now the mask has become the only version of herself she remembers. The performance has become the woman.</p>
+
+  <p>If you recognize yourself here, hear me now.</p>
+
+  <p>The mask is not the enemy. The mask was a survival strategy, and it worked. It got you through what would have destroyed a less resilient woman. It earned you the respect and the approval that protected you when nothing else could. It is a testament to your strength, not to your weakness, that you built it in the first place, and I want you to honor that strength even as we begin the gentle work of laying it down.</p>
+
+  <p>But the mask, was always meant to be temporary. It was a covering until you got somewhere safe, and the place you have been trying to get to, all of this time, is here. With God. In the truth of who you actually are. And the mask, is now the very thing standing between you and the rest you have been working your whole life to deserve.</p>
+
+  <p>You do not have to take the entire mask off in a single day. You just have to begin to ask yourself the question, gently and without judgment. Where am I performing right now, and what would happen if I stopped, even for ten minutes, even in private, even with the God who already sees everything underneath?</p>
+
+  <p>That question, is the beginning of coming home.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 4</span></div>
+  <h2>What <em>He</em> sees.</h2>
+
+  <div class="scripture">
+    <p>"But the Lord said to Samuel, 'Do not consider his appearance or his height, for I have rejected him. The Lord does not look at the things people look at. People look at the outward appearance, but the Lord looks at the heart.'"</p>
+    <p class="ref">1 Samuel 16:7 NIV</p>
+  </div>
+
+  <p>Let me tell you the story behind that verse, because the principle inside it will change the way you walk through every room you ever enter again for the rest of your life.</p>
+
+  <p>The prophet Samuel had been sent to anoint the next king of Israel, and he went to the house of Jesse, and Jesse paraded all of his impressive-looking sons in front of the prophet, one after the other. The eldest was tall and striking, and Samuel was so certain this must be the one God had chosen that he was already preparing the anointing oil, and God said no to him. Then the second son came forward, then the third, then the fourth, and on it went all the way through seven of them. Each one, looked the part, and God said no to every single one of them.</p>
+
+  <p>And then they had to call David in from the fields where he had been forgotten, because no one in his own family had even thought to invite him to the room where his own future was being decided. He had been overlooked his entire life, by people who could not see past the surface, but God, had been watching him for years and years out in those fields, and God knew exactly who David really was underneath all of his family's overlooking.</p>
+
+  <p>The contrast in that chapter, is the entire principle. Saul, the king they were replacing, had been chosen because he looked the part. He was head and shoulders above every other man in Israel. He looked like a king from the very first moment you saw him. But he did not have the heart of one. And David, who would later be called a man after God's own heart, did not look the part at all, but God had been watching his heart in the field while no one else was paying any attention, and the heart was the thing God was actually evaluating the entire time.</p>
+
+  <p>This, is the principle. People see the surface, and they cannot help it. God sees underneath, and He cannot help that either, because seeing underneath is the very nature of His love for you. The room can be fooled. God cannot be. And there is something profoundly freeing, about being truly known by the One who has been seeing what no one else has bothered to look at.</p>
+
+  <p>Most of us spend our whole lives trying desperately to be seen by the people in whatever room we are standing in. The woman of God, learns instead to be seen by the One who has been watching her the entire time, and that shift, from performing for the visible audience to resting in the gaze of the invisible One, is the most liberating shift a woman ever makes in her life.</p>
+
+  <p>You do not have to convince Him. He already knows you. You do not have to prove yourself to Him. He already chose you. You do not have to perform for Him. He prefers your honesty to your polish, your truth to your presentation, your raw heart to your composed performance. The God who looks at the heart, is the only audience whose opinion is permanent, and He had settled His opinion about you long before you ever had the chance to be performed by anyone in this world.</p>
+
+  <div class="principle-box">
+    <p class="principle-label">The principle</p>
+    <p>What no one else can see, He has always seen. You are not waiting to be discovered. You are waiting to remember that you already were.</p>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 5</span></div>
+  <h2>The work of <em>returning.</em></h2>
+
+  <p>Now this work, is going to take time. You did not become the woman you are in a single day, and you will not return to the woman God formed in a single day either. But the work itself is straightforward. Not easy, but straightforward, and I will walk it with you, every step.</p>
+
+  <p>We strip the layers, one at a time. Every time a belief surfaces in us, or a self-judgment, or an old fear, or a familiar pattern, we ask one quiet question. Where did this come from?</p>
+
+  <p>Not from God. From whom?</p>
+
+  <p>From your mother. From your father. From a man who left and took a piece of your identity with him when he went. From a teacher who said something cruel to you when you were eight and you have been quietly carrying it inside you ever since. From an ex who told you exactly what was wrong with you and made you believe him. From a culture that defined beauty in a way that excluded you. From a friend group that rewarded shrinking. From a church that handed you a small list of what a godly woman is supposed to want and called anything off the list rebellion against God.</p>
+
+  <p>Whatever it is, we name it. We hold it up to the light of who God formed in the beginning, and if it does not match, we take it off, gently, with thanks for what it once was, but without keeping it any longer than it needs to stay.</p>
+
+  <p>Some layers come off easily. Others have been worn for so long they feel like skin, and those are the ones that take time, and patience, and tears, and grace. But every single layer we remove uncovers more of the woman who was always there underneath the layers all along, and eventually, she emerges. The version of us that God formed in the beginning. The one who does not need anyone's approval because she already has His. The one who does not need anyone to see her because she has been seen all along.</p>
+
+  <p>Scripture has a beautiful word for this work. It is called pruning.</p>
+
+  <div class="scripture">
+    <p>"I am the true vine, and my Father is the gardener. He cuts off every branch in me that bears no fruit, while every branch that does bear fruit he prunes so that it will be even more fruitful."</p>
+    <p class="ref">John 15:1-2 NIV</p>
+  </div>
+
+  <p>Pruning is not destruction. Pruning is liberation. The gardener removes the branches that have been consuming the vine's energy without producing any fruit, not because the vine has done anything wrong, but because the gardener wants more fruit to come from the vine than the vine could ever produce while its energy was being drained by branches it was never meant to carry in the first place. The branches being pruned, feel like loss to the vine. They are not loss. They are the very obstacle between the vine and the harvest she was always meant to bear.</p>
+
+  <p>Every borrowed layer of identity you have been carrying, is a branch your Father is asking to prune from you. It served you for a season, and He is not unkind for taking it from you now. He is being a good and tender Gardener, because what He is positioning you for cannot grow underneath a tangle of branches that were never yours to begin with.</p>
+
+  <p>And so the woman who lets Him do this work, becomes unshakeable. The world cannot define her, because God already did. The room cannot move her, because she is rooted in the only opinion that ultimately matters. Wounds cannot disqualify her, because God uses what the world rejects. She walks differently. She speaks differently. She loves differently. Because she has finally come, to know who she actually is.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 6</span></div>
+  <h2>Three movements for <em>this week.</em></h2>
+
+  <p>And now, I want to give you three small movements to carry with you into this week. These are not random exercises. They are the same three movements the women of Scripture made, in their own way and in their own time, when they were rebuilding their identity in God after the world had tried to define them.</p>
+
+  <div class="step-box">
+    <p class="step-num">Movement one</p>
+    <p class="step-title">Audit what you have been carrying.</p>
+    <p>For one week, every single time you find yourself making a decision, pause for just a moment and ask yourself these three quiet questions. Whose voice is in my head right now? Whose definition am I trying to satisfy? Whose approval am I performing for?</p>
+    <p>Hannah was barren, and her entire culture had told her that this made her less of a woman. She carried that voice around in her head for years and years, until one day she finally carried that whole burden into the very presence of God Himself, and she let the temple priest see her cry openly, and from that moment forward she stopped carrying what was never hers to carry in the first place. Her audit was honest, and so must yours be.</p>
+    <p>Take out a piece of paper this week, and write down every single belief about yourself that you have been quietly operating by. Then go through that list, slowly and prayerfully, and ask of each one, did God say this about me, or did someone else? The beliefs that did not come from God, do not get to stay in you any longer.</p>
+  </div>
+
+  <div class="step-box">
+    <p class="step-num">Movement two</p>
+    <p class="step-title">Return to what God said about you.</p>
+    <p>You cannot replace borrowed identity with nothing. You have to replace it with the truth, because nature abhors a vacuum and a heart abhors one even more. So this week, find three scriptures about who you are in God, and speak them out loud over yourself every single morning before the world has had a chance to speak its own old definitions over you first.</p>
+    <p>Mary, the mother of Jesus, called herself the Lord's servant before she was anyone's mother or anyone's wife or anyone's heroine in any of the stories that would later be told about her. Her identity was anchored in her relationship with God first, and from that one anchor every other relationship in her life was able to flow rightly. That, is the order. God first. Everything else follows from there.</p>
+    <p>Make yourself a small list. Print it out. Tape it where you will see it every morning when you first open your eyes. And every time the borrowed voice tries to whisper its old lies, you speak the truth back over yourself. Not in your head. Out loud. Because what we speak rewrites what we have been hearing.</p>
+  </div>
+
+  <div class="step-box">
+    <p class="step-num">Movement three</p>
+    <p class="step-title">Practice being her in private.</p>
+    <p>Identity, becomes real not through performance and not through public declaration, but through small private acts of alignment that no one in this world will ever see except you and God. The quiet daily decisions that say to yourself, gently and certainly, this is who I am.</p>
+    <p>Esther stepped into her queenly identity not by announcing it from the rooftops, but by quietly living it from her own private places, and the living of it changed an entire nation. You do not have to tell anyone what you are becoming. You just have to begin to be her in the quiet, in the small ordinary moments, when no one is watching you become anything at all.</p>
+    <p>What is one thing the woman God formed would do today, that you have been quietly avoiding because some old borrowed voice told you that you were not yet allowed to be her? Do that one thing today. Not because anyone will see you do it. Do it because she would. Because she is you, and you are her, and it is time to stop waiting for permission to become who you have always been.</p>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">A brief note</span></div>
+  <h2>On <em>my own walk.</em></h2>
+
+  <p>I will tell you, that I spent many years of my own life not knowing who I was, and the work of finding her, the woman God had formed me to be from the very beginning, took longer than I would like to admit to you in writing. I built masks too. I performed. I tried, for years, to be the woman that various people in my life expected me to be. None of it was real, and none of it satisfied the longing inside me, because the longing inside me, was always longing for the real woman underneath everything I was performing.</p>
+
+  <p>The day everything began to shift for me, was the day I finally stopped asking the question that had been exhausting me my entire life, which was who do they want me to be, and started asking instead a different question, which was who did God form me to be in the beginning. The first question, is exhausting and has no end. The second question has an answer, and the answer was written by His own hand before I ever arrived in this world to look for it.</p>
+
+  <p>I am not telling you, that this work is fast. I am telling you that it is real, and that it works, and that it works because the principle underneath it is sound. God formed you. He knows you. Nothing in this world has covered you so deeply that He cannot uncover you. The same holy hands that knit you together in your mother's womb can do the gentle unknitting work too, of every borrowed thing that has been added on top of you since.</p>
+
+  <p>This is the work of this school. And we are walking it together.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="reflection-box">
+    <p class="reflection-title">Five questions for this week</p>
+    <p>Read one a day. Sit with it. Bring it to God in prayer.</p>
+    <p><strong>One.</strong> Whose voice is loudest in your head when you make decisions, and where did that voice come from in the first place?</p>
+    <p><strong>Two.</strong> What is one belief about yourself that you have been quietly operating by, that you have never actually held up to the light of Scripture? What does the Word of God say about you instead?</p>
+    <p><strong>Three.</strong> Where are you performing right now for an audience that does not actually exist, or for an audience whose opinion you have given far more weight than God's?</p>
+    <p><strong>Four.</strong> If you truly believed today exactly what God says about you in Psalm 139 and Jeremiah 1:5, what is the very first thing you would stop doing? And what would you finally let yourself begin?</p>
+    <p><strong>Five.</strong> Who is the woman God formed you to be in the beginning, and how would she be different from the woman you have been performing as until now?</p>
+  </div>
+
+  <div class="prayer-box">
+    <p class="prayer-title">A prayer for the woman remembering herself</p>
+    <p>Father, I come to You as I actually am, not as I have been pretending to be.</p>
+    <p>I confess to You that I have not always known who I am, and that I have looked to people and to performance and to the world to tell me who I should become. I have worn masks I did not even know I was wearing. I have built a self out of what others have expected of me, and the self I built, Father, has not held me.</p>
+    <p>Today I lay all of it down at Your feet. The voices that were not Yours. The opinions I have been carrying for too long. The masks. The borrowed beliefs. The version of me that was assembled by everyone except You.</p>
+    <p>Show me the woman You formed in the beginning, Father. Let me see her the way You have been seeing her since before I arrived. Help me to remember her, and then help me to slowly become her, one small private act of alignment at a time.</p>
+    <p>I want to be known by You, Father. I want to walk in the identity You established for me before the world had a word to say. I want to live, finally, as the woman You had in mind when You knit me together in my mother's womb.</p>
+    <p>In the name of Jesus, amen.</p>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Before you go</span></div>
+  <h2>One private act of <em>alignment.</em></h2>
+
+  <p>This week, just one small thing. When no one is watching, do one thing the woman God formed would do, that you have been avoiding because some old borrowed voice convinced you that you were not yet allowed to be her.</p>
+
+  <p>Maybe it is opening your Bible in the morning instead of opening your phone. Maybe it is saying a quiet no to something you would normally say yes to, because she would say no. Maybe it is walking through your day with your shoulders back, the way she walks. Maybe it is praying for something audacious that you have been too small to ask for. Maybe it is treating yourself with the kind of tender, careful, attentive love you have only ever offered to other people, because she knows in her bones, that she is worth that same love too.</p>
+
+  <p>It does not matter what it is, only that you do it, and that you do it when no one is watching. Because the only audience that has ever mattered has been watching the whole time, and He is the One you are becoming her for.</p>
+
+  <p>Every small private act of alignment, is a vote you cast for the woman God formed and against the woman who was assembled out of everyone else's expectations. Cast enough of those votes in her direction, and one day you will lift your head from your daily life and realize that you have actually become her. Not performed her. Become her.</p>
+
+  <p>And that, is the woman this school is gently building. The one who is the very same woman in the silence as she is in the spotlight. The one who does not need a witness in order to be real. The one who walks through this world unshakeable, because the foundation she is standing on was poured by the only hands that ever had the authority to define her.</p>
+
+  <div class="closing">
+    <p>Who you are when no one is watching,<br>is the only you that ever truly mattered.<br><em>Everything else, Darling,<br>was always too small a destiny<br>for the woman God formed.</em></p>
+    <p class="sig">Avizaya &nbsp;&middot;&nbsp; School 1, Episode 2</p>
+  </div>
+
+</div>
+</body>
+</html>

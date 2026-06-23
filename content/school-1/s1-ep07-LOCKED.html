@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avizaya: School 1, Episode 7</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --plum: #2C1A4A;
+    --gold: #C4955A;
+    --ivory: #F7F2EC;
+    --muted: #6B5A72;
+    --light: #FAF6F0;
+    --green: #1A3A2E;
+  }
+  body { background: var(--ivory); font-family: 'Jost', sans-serif; font-weight: 300; color: var(--plum); padding: 0 0 100px; -webkit-font-smoothing: antialiased; }
+
+  .cover { background: var(--plum); padding: 72px 40px 64px; text-align: center; }
+  .cover-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; }
+  .cover-school { font-size: 12px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(196,149,90,0.6); margin-bottom: 20px; }
+  .cover-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(34px, 6vw, 58px); font-weight: 300; line-height: 1.15; color: var(--ivory); margin-bottom: 24px; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .cover-title em { font-style: italic; color: var(--gold); }
+  .cover-divider { display: flex; align-items: center; gap: 14px; max-width: 320px; margin: 0 auto 24px; }
+  .cover-line { flex: 1; height: 0.5px; background: var(--gold); opacity: 0.35; }
+  .cover-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
+  .cover-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; font-weight: 300; color: rgba(232,213,196,0.7); max-width: 480px; margin: 0 auto; line-height: 1.6; }
+
+  .body { max-width: 680px; margin: 0 auto; padding: 0 32px; }
+  .section-tag { display: inline-flex; align-items: center; gap: 8px; margin: 48px 0 20px; }
+  .tag-line { width: 24px; height: 0.5px; background: var(--gold); }
+  .tag-text { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+
+  h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 4vw, 34px); font-weight: 400; line-height: 1.3; color: var(--plum); margin-bottom: 20px; }
+  h2 em { font-style: italic; color: var(--gold); }
+
+  p { font-size: 16px; line-height: 1.9; color: #3A2840; margin-bottom: 22px; }
+  p.large { font-family: 'Cormorant Garamond', serif; font-size: clamp(19px, 3vw, 24px); font-style: italic; line-height: 1.65; color: var(--plum); }
+  p strong { font-weight: 500; color: var(--plum); }
+  p em { font-style: italic; color: var(--gold); }
+
+  .divider { display: flex; align-items: center; gap: 14px; margin: 40px 0; }
+  .divider-line { flex: 1; height: 0.5px; background: var(--gold); opacity: 0.3; }
+  .diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); }
+
+  blockquote { border-left: 2px solid var(--gold); padding: 18px 0 18px 24px; margin: 36px 0; }
+  blockquote p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(19px, 3vw, 25px); color: var(--plum); margin: 0; line-height: 1.5; }
+
+  .scripture { background: var(--light); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; padding: 18px 22px; margin: 32px 0; }
+  .scripture p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; color: var(--plum); line-height: 1.6; margin-bottom: 8px; }
+  .scripture .ref { font-family: 'Jost', sans-serif; font-style: normal; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+
+  .principle-box { background: var(--plum); border-radius: 12px; padding: 32px 30px; margin: 40px 0; text-align: center; }
+  .principle-label { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .principle-box p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: var(--ivory); margin: 0; line-height: 1.5; }
+
+  .step-box { background: white; border: 0.5px solid rgba(196,149,90,0.3); border-radius: 12px; padding: 28px 26px; margin: 28px 0; }
+  .step-num { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .step-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--plum); margin-bottom: 14px; line-height: 1.3; }
+
+  .reflection-box { background: var(--plum); border-radius: 12px; padding: 36px 30px; margin: 48px 0; }
+  .reflection-box .reflection-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--gold); margin-bottom: 22px; font-style: italic; }
+  .reflection-box p { color: rgba(232,213,196,0.88); margin-bottom: 18px; font-size: 16px; }
+  .reflection-box p:last-child { margin-bottom: 0; }
+  .reflection-box p strong { color: var(--gold); font-weight: 400; }
+
+  .prayer-box { background: var(--green); border-radius: 12px; padding: 36px 30px; margin: 48px 0; }
+  .prayer-box .prayer-title { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; }
+  .prayer-box p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; line-height: 1.75; color: rgba(232,213,196,0.92); margin-bottom: 14px; }
+  .prayer-box p:last-child { margin-bottom: 0; }
+
+  .closing { text-align: center; padding: 70px 0 30px; }
+  .closing p { font-family: 'Cormorant Garamond', serif; font-size: clamp(20px, 3.5vw, 28px); font-style: italic; color: var(--plum); line-height: 1.6; margin-bottom: 18px; }
+  .closing .sig { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-style: normal; font-family: 'Jost', sans-serif; font-weight: 400; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <p class="cover-eyebrow">Avizaya</p>
+  <p class="cover-school">School 1: The abandoned girl &nbsp;&middot;&nbsp; Episode 7</p>
+  <h1 class="cover-title">Why you keep choosing <em>the same love.</em></h1>
+  <div class="cover-divider">
+    <div class="cover-line"></div>
+    <div class="cover-diamond"></div>
+    <div class="cover-line"></div>
+  </div>
+  <p class="cover-sub">A teaching on the patterns we mistake for chemistry, and the renewing of the mind that finally sets us free.</p>
+</div>
+
+<div class="body">
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Welcome</span></div>
+
+  <p class="large">We come now to a question almost every woman has asked herself at some point, often with confusion and sometimes with despair, which is why she keeps ending up with the same kind of love no matter how many times she promises herself this one will be different.</p>
+
+  <p>The faces change. The names change. The cities change. The seasons of life change. And yet the dynamic underneath the relationship turns out, often months or years in, to be the same dynamic she has lived through before, with the same kinds of disappointments, the same kinds of misunderstandings, the same kinds of slow disappearances of a man who looked so different at the beginning, the same loneliness inside what was supposed to be a different kind of love.</p>
+
+  <p>The world tells her she has bad luck with men. Her friends tell her she has a type. Her own heart tells her she must be broken in some way that keeps drawing the same kind of person to her again and again. None of those explanations have been getting to the root, and so none of them have been able to free her from the cycle.</p>
+
+  <p>The Word of God names the root with clarity. The patterns we repeat in love are not random and they are not bad luck. They are the patterns our nervous system was trained to recognize as love before we had any words to question them, and until those patterns are renewed at the level God Himself works at, the level of the mind and the spirit, the cycle will keep finding new faces to play out the same old story through.</p>
+
+  <div class="scripture">
+    <p>"Do not conform to the pattern of this world, but be transformed by the renewing of your mind. Then you will be able to test and approve what God&rsquo;s will is, his good, pleasing and perfect will."</p>
+    <p class="ref">Romans 12:2 NIV</p>
+  </div>
+
+  <p>Paul is naming the very mechanism of change in a woman's life. Conformity to the old pattern is the default. The mind has been shaped by everything that happened to her before she was old enough to consent to that shaping, and the shape is now the lens through which she sees every choice she makes, especially in love. Transformation, the kind Paul is pointing toward, is not behavioral. It is mental. The mind has to be renewed before the choices can be renewed, because the choices are the fruit of the mind that is making them. And the renewing happens through the Word of God working on the deep places in her, slowly and faithfully, until she begins to recognize love differently than her wounds have trained her to recognize it.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 1</span></div>
+  <h2>Familiar is not <em>the same as right.</em></h2>
+
+  <p>The first principle she must understand is so simple it sounds almost insulting at first, and yet it explains nearly every confusing pattern she has lived through in love.</p>
+
+  <p>She does not choose what feels good. She chooses what feels familiar.</p>
+
+  <p>Her nervous system was trained, somewhere in the earliest years of her life, to recognize a particular kind of relational energy as love. That training was not a choice. It happened to her, the way the shape of her face happened to her, through the people she was placed near in the first years of being alive. If those people were warm and consistent and present, she now recognizes warm and consistent and present as love, and a man who shows up with those qualities will feel like home to her. But if those people were unpredictable, or absent, or critical, or anxious, or any of a hundred other shapes that did not match the holy design of love, then she now recognizes those shapes as love, and the man who shows up with the qualities of her childhood will feel like the man she has been looking for all along.</p>
+
+  <p>This is why a woman can meet a kind, steady, available man and feel almost nothing for him, while a man with the same patterns that hurt her in childhood can make her feel an electric pull she will spend the rest of the year trying to explain. She is not feeling chemistry. She is feeling recognition. Her nervous system has met someone who matches her training, and the relief of being on familiar ground is so strong it gets misread as love at first sight.</p>
+
+  <p>The chemistry, in those cases, is the chemistry of the cycle she has been waiting to play out again. The energy is the energy of an old pattern recognizing one of its own. None of that is love. It is the soul saying, in a language we have not been taught to translate, &ldquo;Here is what I know. Here is the room I was raised in. Here is the dynamic I have been preparing to enter for as long as I can remember.&rdquo;</p>
+
+  <p>And so she enters it, again, calling it love, and a year or two or five into the relationship she finds herself in the exact spot she swore she would never return to, wondering how she keeps ending up here. She keeps ending up here because here is where her wounds have been waiting for her, and her wounds are louder than her wisdom until her wisdom has been renewed by something stronger than her wounds.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 2</span></div>
+  <h2>The mask of <em>competence.</em></h2>
+
+  <p>There is one shape of this pattern that deserves its own teaching, because the women who carry it are often the last to realize they have been carrying it, and the world has been praising them for the very thing that is keeping them stuck.</p>
+
+  <p>It is the mask of competence.</p>
+
+  <p>The woman who learned, early in life, that her needs were not going to be met by the adults around her, often becomes the woman who specializes in not needing anything. She builds herself into the most capable person in every room. She becomes the friend everyone calls when they are falling apart, the daughter the family relies on, the employee who never drops a ball, the woman who has it all together while quietly carrying alone what would crush a less resilient woman. The mask serves her well. It earns her respect, approval, and the kind of self-sufficiency that protects her from the disappointment of needing someone who will not show up.</p>
+
+  <p>But the mask has a price, and the price shows up most painfully in her love life. Because the same competence that protects her also keeps her from being met, and the men she attracts are usually one of two kinds.</p>
+
+  <p>The first kind is the man who admires her competence but cannot meet her depth. He loves how strong she is. He loves how little she asks of him. He loves how easy she makes things for him. What he is loving is the version of her that does not need him, and the longer she stays with him the lonelier she becomes, because no one is meeting the woman underneath the mask. He does not even know that woman exists, because she has been so careful never to show her to him.</p>
+
+  <p>The second kind is the man who is drawn to her competence because he himself is in some kind of crisis or chaos, and he senses she will hold him through it. She does. She holds him through it for years. She becomes the strong one in a relationship that was supposed to be mutual, and by the time the relief of being needed by him wears off, she has built her entire identity around being his caretaker, and she does not know who she is without that role.</p>
+
+  <p>Either dynamic is the same problem underneath. The mask of competence has been keeping the real woman invisible, and the men who can only see the mask have been the only men she has been attracting. The woman who lives behind the mask is never going to be met by the kind of man God designed to meet her until she is willing to set the mask down and be seen as she actually is.</p>
+
+  <p>This is not weakness. This is wholeness. The strongest woman in any room is not the one who needs nothing. She is the one who knows what she needs and is not afraid to receive it from the right people, including God Himself, who designed her for relationships of mutual giving, not one-way giving from a fortress of pretended self-sufficiency.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">The inversion</span></div>
+  <h2>The strange will feel like <em>love now.</em></h2>
+
+  <p>Beautiful one, the most disorienting part of this entire teaching is the part you have to understand before you can walk into the love God has been preparing for you.</p>
+
+  <p class="large">When real love finally appears, it will feel strange to you at first. It may even feel boring. Peace and consistency and steadiness do not match what your nervous system has been calling love, and the absence of the old cycle will register, for a long time, as the absence of love itself.</p>
+
+  <p>This is the test many a woman fails without ever knowing she failed it. The kind, present, available man comes along. He does not play games. He does not disappear and reappear. He does not give her the highs and the lows her body has been trained to interpret as passion. He is just there, steadily, consistently, with the same warm attention day after day. And she finds herself wondering whether something is missing. She tells herself there is no chemistry. She tells her friends he is a great guy but she does not feel that thing for him. And she walks away from the very love God had been preparing for her years, because it did not feel like the love she was used to.</p>
+
+  <p>The love she was used to was not love. It was the cycle of her wounds. And until she is willing to re-learn what love actually is from the One who designed it, she will keep mistaking calm for absence, peace for boredom, and steadiness for a lack of the spark she has been pursuing her whole life.</p>
+
+  <p>This is why the renewing of the mind is the only way out of the cycle. Behavioral changes will not hold. Vow-making will not hold. Forcing yourself to date the steady man when your whole body is screaming for the unsteady one will not hold. The mind has to be renewed at the deepest level, and the renewing happens through the Word of God working on the inner places where the old definitions of love were planted. The Word teaches her, slowly and patiently, what love actually is, and once her mind has been renewed by that teaching her feelings begin to follow. She begins to feel safe with the safe man. She begins to feel drawn to the steady man. She begins to feel that what had been registering as nothing is actually a deeper kind of something she had never been able to receive before because she had not yet been trained to recognize it.</p>
+
+  <p>This is what Paul means by being transformed by the renewing of the mind. It is not a metaphor. It is the literal process of being given new eyes and a new heart and new instincts, through the slow daily work of the Holy Spirit and the Word, until the woman who used to chase the cycle becomes the woman who chooses the covenant.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 3</span></div>
+  <h2>The deceitful <em>heart.</em></h2>
+
+  <p>Scripture is more unflinching about the human heart than most modern teaching is willing to be, and the woman of God needs to hear it before she can walk into the freedom this episode is offering her.</p>
+
+  <div class="scripture">
+    <p>"The heart is deceitful above all things and beyond cure. Who can understand it? I the Lord search the heart and examine the mind, to reward each person according to their conduct, according to what their deeds deserve."</p>
+    <p class="ref">Jeremiah 17:9-10 NIV</p>
+  </div>
+
+  <p>The culture has been telling her to follow her heart, and the church has often softened the warning of Scripture by adding the caveat that her heart, if it is renewed in Christ, can be trusted. There is some truth in that. But the deeper truth, the one Jeremiah is naming, is that the unrenewed heart will deceive a woman about love, and the wounds in her are precisely the places her heart has been most successfully deceiving her about.</p>
+
+  <p>Her heart tells her this man is different. Her heart tells her she has never felt this way before. Her heart tells her the warning signs are not real. Her heart tells her she would know if something were wrong, because she has chemistry and she has connection and she has all the markers her body has been trained to read as love. Her heart is, in those moments, the very organ that has been compromised by her wounds. It is not a trustworthy witness. The Lord searches the heart, the prophet says, because only the Lord can see what the heart itself is hiding from the woman who carries it.</p>
+
+  <p>This is why the woman of God learns to bring her feelings to the Lord and ask Him to tell her what is actually happening, instead of asking her own heart for the verdict. Her heart has too much invested. Her heart wants the relief of the familiar. Her heart will tell her whatever story keeps the cycle going if she lets it write the verdict. The Lord, who searches the heart, is the only impartial witness, and the woman who has learned to ask Him for the truth instead of trusting her own internal weather has taken back the authority her heart has been quietly seizing in the name of love.</p>
+
+  <div class="scripture">
+    <p>"Above all else, guard your heart, for everything you do flows from it."</p>
+    <p class="ref">Proverbs 4:23 NIV</p>
+  </div>
+
+  <p>The same Scripture that warns her not to follow her unrenewed heart also commands her to guard it. The guarding is the work of paying attention to what she lets in, what she lets near, what she lets shape her. Every conversation she has with a man, every man she allows into her thinking, every relationship she begins to build is a withdrawal from or a deposit into the heart she is responsible to guard. Guarding the heart is not coldness. It is wisdom. It is the practice of refusing to let her wounds make decisions for her by recognizing, in real time, when her wounds are trying to make those decisions.</p>
+
+  <div class="principle-box">
+    <p class="principle-label">The principle</p>
+    <p>Your heart, until it has been renewed by the Word, will keep telling you that the familiar is love. Bring your feelings to the Lord and let Him tell you what is actually true. The renewing of the mind is the only way the cycle ends.</p>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 4</span></div>
+  <h2>What healthy love <em>actually feels like.</em></h2>
+
+  <p>If the wounded woman has been mistaking the cycle for love, she has to be given a new picture of what love actually looks like when it is healthy, because nothing in her current wiring will recognize it without instruction.</p>
+
+  <p>Healthy love does not feel like a roller coaster. It feels like ground.</p>
+
+  <p>Healthy love is consistent in small things. The man who says he will call when he says he will call. The man whose energy in the room today is the same as his energy in the room yesterday. The man whose words and actions match. There are no dramatic highs because there are no dramatic lows to swing back from, and the absence of the swing is the very evidence that the love is real.</p>
+
+  <p>Healthy love makes you more yourself, not less. You do not have to shrink to keep it. You do not have to perform to deserve it. You do not have to manage his moods to maintain his presence. You bring your real self to the table and he meets you there, and at the end of the conversation you feel known, not exhausted.</p>
+
+  <p>Healthy love does not cost you your wholeness. The right love adds to you. It strengthens you. It frees you to step into more of who God formed you to be, because the man beside you is rooting for that woman and not for the smaller version of you that is easier for him to handle.</p>
+
+  <p>Healthy love can disagree without disappearing. You can have a hard conversation and both still be there at the end of it. The relationship is not built on the absence of conflict but on the way you both handle the conflict that comes. There is no withdrawing of love as a punishment. There is no silent treatment as a weapon. There is only the work of two people committed to staying in the room and figuring it out together.</p>
+
+  <p>Healthy love does not require you to be his savior, and it does not require you to be his project. Both of you are doing your own work. Both of you are coming to the relationship from a place of having already brought your wholeness to God, so that what you offer each other is the overflow of what He has been giving you, not the desperate filling-up that only depletes you both in the long run.</p>
+
+  <p>And yes, healthy love can feel strange at first, especially if you have been trained on the cycle. The newness may register as a lack of intensity for a long season. That is alright. Stay in the strangeness. Pray through it. Let your mind keep being renewed by the Word, and watch the steadiness become the very thing your soul has been thirsting for all along.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 5</span></div>
+  <h2>Taking captive the <em>thought.</em></h2>
+
+  <div class="scripture">
+    <p>"We demolish arguments and every pretension that sets itself up against the knowledge of God, and we take captive every thought to make it obedient to Christ."</p>
+    <p class="ref">2 Corinthians 10:5 NIV</p>
+  </div>
+
+  <p>Paul is naming the practice that the renewing of the mind actually requires of a woman. Every thought, taken captive, made obedient to Christ. Not every thought left to wander where it will. Not every feeling indulged as if feelings were always telling the truth. Every thought brought into alignment with what God has said about love, about you, about the man in front of you, about the wounds that have been whispering their old definitions to you.</p>
+
+  <p>This is the active work the wounded woman must do as her mind is being renewed. The old thought rises. She does not simply receive it. She takes it captive. She holds it up against the Word of God and asks whether it matches. If it matches, she keeps it. If it does not match, she releases it, knowing that it was the voice of the cycle and not the voice of the Lord. Over time, the old thoughts begin to rise less often, because they are no longer being agreed with. The new thoughts, the ones aligned with what God says, become the louder voice inside her, and the choices she makes from those new thoughts begin to draw the kind of love she had been unconsciously refusing to receive for years.</p>
+
+  <p>The taking captive is the discipline of the renewed mind. It is not done once. It is done a hundred times a day in the beginning, then ten times a day a year in, then occasionally, then almost never, because the renewed mind eventually becomes the default, and the wounded mind becomes the exception you remember as the way you used to think back when you did not yet know who you were.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 6</span></div>
+  <h2>Three movements for <em>this week.</em></h2>
+
+  <p>Three movements to walk into this week. Together they form the practice of the renewed mind that breaks the cycle and prepares you to recognize the love God has been preparing for you.</p>
+
+  <div class="step-box">
+    <p class="step-num">Movement one</p>
+    <p class="step-title">Map the pattern.</p>
+    <p>Take a quiet hour this week and write out, slowly, the last three significant relationships you have been in. For each one, list the qualities that drew you, the dynamic that developed once you were a few months in, and the way the relationship ended or shifted. Then look across all three lists and ask yourself the honest question. What is the same?</p>
+    <p>The pattern will surface. It always does once it is laid out on paper. The pattern will tell you something about what your nervous system has been calling love, and the naming of it is the first act of breaking it. You cannot transform what you cannot see, and the writing it down is the seeing.</p>
+  </div>
+
+  <div class="step-box">
+    <p class="step-num">Movement two</p>
+    <p class="step-title">Renew the definition with the Word.</p>
+    <p>Find three to five passages of Scripture that describe what love actually is. 1 Corinthians 13. Song of Solomon 8:6-7. Ephesians 5. Read them out loud over yourself every morning this week, slowly, letting the words enter the places your old definitions have been living. Let the Word do the renewing it was designed to do, by giving your mind a new picture to compare every potential relationship against.</p>
+    <p>The renewing is slow. You may not feel different after one week. But the deposits are being made, and over months and years of this daily renewing your mind will be shaped into a different lens. The lens is what changes the choices. The choices come downstream from the lens.</p>
+  </div>
+
+  <div class="step-box">
+    <p class="step-num">Movement three</p>
+    <p class="step-title">Take captive the next ten thoughts.</p>
+    <p>For the next time you find yourself feeling a strong pull toward someone, or a strong resistance toward someone, pause and take the thought captive. Ask yourself, &ldquo;Is this the voice of my wounds, or the voice of the Lord? Is this familiarity, or is this peace?&rdquo; Then bring the thought to God in prayer and let Him sort it for you.</p>
+    <p>You will not be able to tell the difference at first. That is alright. The asking is the practice. The asking trains your mind to pause instead of obey the old wiring, and the pause is where the renewing actually happens. Over time, the difference between your wounds and the Lord becomes obvious. But the pause has to come first, and the pause is what this movement is training in you.</p>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">A brief note</span></div>
+  <h2>On <em>my own walk.</em></h2>
+
+  <p>I had to learn this teaching the long way. For years I was the woman whose nervous system had been trained to call instability passion, and the steady men who came along felt almost invisible to me, while the unstable ones felt like the love I had been waiting my whole life to find. I did not yet know I was choosing the familiar and calling it chemistry. I did not yet know that the warmth in my body when I was around a particular kind of man was not the Lord confirming the relationship, but my wounds recognizing the dynamic they had been trained for.</p>
+
+  <p>The renewing of my mind came slowly. It came through the Word of God being read aloud over my soul every morning, sometimes for years before I noticed the shift. It came through learning to take my feelings to the Lord and ask Him what was actually happening, instead of asking my own heart for the verdict on what I was feeling. It came through finally setting down the mask of competence, the one that had been keeping me unmet for too long, and learning to let myself be seen as a woman who has needs, not just a woman who meets the needs of others.</p>
+
+  <p>The principle is sound, and it holds, and it will hold for you the way it has held for me. The cycle ends in the renewing of the mind. There is no shortcut, and there does not need to be one. The renewing is the work, and the work is the very thing the Lord is doing in you right now as you read this episode, whether you can feel it being done or not.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="reflection-box">
+    <p class="reflection-title">Five questions for this week</p>
+    <p>Read one a day. Sit with it. Bring it to God in prayer.</p>
+    <p><strong>One.</strong> What is the pattern that has been repeating in your relationships, and where did you first learn to recognize that pattern as love?</p>
+    <p><strong>Two.</strong> Have you been wearing a mask of competence that has been keeping you from being met by the right people? What would it look like to begin to set that mask down?</p>
+    <p><strong>Three.</strong> When was the last time a kind, steady, available person came into your life, and how did you respond to them? What was your nervous system telling you about them, and was that voice the voice of the Lord or the voice of your wounds?</p>
+    <p><strong>Four.</strong> What scripture about love is the Lord asking you to plant in your mind this season, and what would it look like to read it over yourself every morning until it begins to renew the lens through which you see your relationships?</p>
+    <p><strong>Five.</strong> Where have you been following your heart in a way that has cost you, and what would it look like to bring your heart to the Lord for examination instead of asking it for the verdict?</p>
+  </div>
+
+  <div class="prayer-box">
+    <p class="prayer-title">A prayer for the woman whose mind is being renewed</p>
+    <p>Father, I come to You with a mind that has been shaped by what happened to me long before I was old enough to consent to that shaping.</p>
+    <p>I confess that I have been choosing what felt familiar and calling it love. I confess that I have walked past the steady ones because my wounds did not recognize them, and that I have run toward the unstable ones because my wounds knew them by name. I confess that I have followed my heart in places where my heart was not yet a trustworthy witness, and that I have paid the cost of that following for years.</p>
+    <p>Renew my mind. Do the deep work in me that nothing else has been able to do. Teach me what love actually is, the love You designed me to give and receive. Train my eyes to recognize peace. Train my body to relax in steadiness. Train my heart to be drawn toward what is whole and not toward what is broken in the same way I have been broken.</p>
+    <p>I take captive the thoughts that have been writing the old story in me, and I bring them to You for the truth. I trust You to do this work even when I cannot feel it being done.</p>
+    <p>In the name of Jesus, amen.</p>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Before you go</span></div>
+  <h2>One thought, <em>taken captive.</em></h2>
+
+  <p>This week, dear woman, just one practice. The next time you feel a strong pull, or a strong dismissal, toward someone in your life, pause. Place your hand on your chest. And ask the simple question: is this familiarity, or is this peace?</p>
+
+  <p>Do not answer the question yourself. Bring it to the Lord. Let Him answer. The honest answer may take days to come, or it may come in the moment. Either way, the asking is the practice, and the practice is what trains your mind to pause where it used to obey.</p>
+
+  <p>Over time, you will begin to notice that what used to feel like nothing is starting to feel like peace, and what used to feel like everything is starting to feel like a cycle you no longer wish to play out. That is the renewing working. That is the mind God promised would be transformed by the slow, faithful planting of His Word in your inner places.</p>
+
+  <p>You are not stuck in the cycle. You are being renewed, even now, even today, even in the small reading of this episode. The Lord is doing what only He can do in you. And the love He has been preparing for you, the kind that does not look like your wounds but like His design, is waiting for the woman you are becoming to be ready to receive it.</p>
+
+  <div class="closing">
+    <p>The love your wounds taught you to recognize<br>was never the love God designed you to live in.<br><em>The renewing of the mind is the doorway<br>to a love that finally feels like home<br>without ever having to cost you yourself.</em></p>
+    <p class="sig">Avizaya &nbsp;&middot;&nbsp; School 1, Episode 7</p>
+  </div>
+
+</div>
+</body>
+</html>

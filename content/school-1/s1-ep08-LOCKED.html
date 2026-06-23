@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avizaya: School 1, Episode 8</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --plum: #2C1A4A;
+    --gold: #C4955A;
+    --ivory: #F7F2EC;
+    --muted: #6B5A72;
+    --light: #FAF6F0;
+    --green: #1A3A2E;
+  }
+  body { background: var(--ivory); font-family: 'Jost', sans-serif; font-weight: 300; color: var(--plum); padding: 0 0 100px; -webkit-font-smoothing: antialiased; }
+
+  .cover { background: var(--plum); padding: 72px 40px 64px; text-align: center; }
+  .cover-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; }
+  .cover-school { font-size: 12px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(196,149,90,0.6); margin-bottom: 20px; }
+  .cover-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(34px, 6vw, 58px); font-weight: 300; line-height: 1.15; color: var(--ivory); margin-bottom: 24px; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .cover-title em { font-style: italic; color: var(--gold); }
+  .cover-divider { display: flex; align-items: center; gap: 14px; max-width: 320px; margin: 0 auto 24px; }
+  .cover-line { flex: 1; height: 0.5px; background: var(--gold); opacity: 0.35; }
+  .cover-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
+  .cover-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; font-weight: 300; color: rgba(232,213,196,0.7); max-width: 480px; margin: 0 auto; line-height: 1.6; }
+
+  .body { max-width: 680px; margin: 0 auto; padding: 0 32px; }
+  .section-tag { display: inline-flex; align-items: center; gap: 8px; margin: 48px 0 20px; }
+  .tag-line { width: 24px; height: 0.5px; background: var(--gold); }
+  .tag-text { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+
+  h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 4vw, 34px); font-weight: 400; line-height: 1.3; color: var(--plum); margin-bottom: 20px; }
+  h2 em { font-style: italic; color: var(--gold); }
+
+  p { font-size: 16px; line-height: 1.9; color: #3A2840; margin-bottom: 22px; }
+  p.large { font-family: 'Cormorant Garamond', serif; font-size: clamp(19px, 3vw, 24px); font-style: italic; line-height: 1.65; color: var(--plum); }
+  p strong { font-weight: 500; color: var(--plum); }
+  p em { font-style: italic; color: var(--gold); }
+
+  .divider { display: flex; align-items: center; gap: 14px; margin: 40px 0; }
+  .divider-line { flex: 1; height: 0.5px; background: var(--gold); opacity: 0.3; }
+  .diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); }
+
+  blockquote { border-left: 2px solid var(--gold); padding: 18px 0 18px 24px; margin: 36px 0; }
+  blockquote p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(19px, 3vw, 25px); color: var(--plum); margin: 0; line-height: 1.5; }
+
+  .scripture { background: var(--light); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; padding: 18px 22px; margin: 32px 0; }
+  .scripture p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; color: var(--plum); line-height: 1.6; margin-bottom: 8px; }
+  .scripture .ref { font-family: 'Jost', sans-serif; font-style: normal; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+
+  .principle-box { background: var(--plum); border-radius: 12px; padding: 32px 30px; margin: 40px 0; text-align: center; }
+  .principle-label { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .principle-box p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: var(--ivory); margin: 0; line-height: 1.5; }
+
+  .step-box { background: white; border: 0.5px solid rgba(196,149,90,0.3); border-radius: 12px; padding: 28px 26px; margin: 28px 0; }
+  .step-num { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .step-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--plum); margin-bottom: 14px; line-height: 1.3; }
+
+  .reflection-box { background: var(--plum); border-radius: 12px; padding: 36px 30px; margin: 48px 0; }
+  .reflection-box .reflection-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--gold); margin-bottom: 22px; font-style: italic; }
+  .reflection-box p { color: rgba(232,213,196,0.88); margin-bottom: 18px; font-size: 16px; }
+  .reflection-box p:last-child { margin-bottom: 0; }
+  .reflection-box p strong { color: var(--gold); font-weight: 400; }
+
+  .prayer-box { background: var(--green); border-radius: 12px; padding: 36px 30px; margin: 48px 0; }
+  .prayer-box .prayer-title { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; }
+  .prayer-box p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; line-height: 1.75; color: rgba(232,213,196,0.92); margin-bottom: 14px; }
+  .prayer-box p:last-child { margin-bottom: 0; }
+
+  .closing { text-align: center; padding: 70px 0 30px; }
+  .closing p { font-family: 'Cormorant Garamond', serif; font-size: clamp(20px, 3.5vw, 28px); font-style: italic; color: var(--plum); line-height: 1.6; margin-bottom: 18px; }
+  .closing .sig { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-style: normal; font-family: 'Jost', sans-serif; font-weight: 400; }
+
+  .poem { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 19px; line-height: 1.85; color: var(--plum); text-align: center; margin: 40px 0; padding: 28px 24px; border-top: 0.5px solid rgba(196,149,90,0.3); border-bottom: 0.5px solid rgba(196,149,90,0.3); }
+  .poem .stanza { margin-bottom: 22px; }
+  .poem .stanza:last-child { margin-bottom: 0; }
+  .poem em { color: var(--gold); font-style: italic; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <p class="cover-eyebrow">Avizaya</p>
+  <p class="cover-school">School 1: The abandoned girl &nbsp;&middot;&nbsp; Episode 8</p>
+  <h1 class="cover-title">What real healing <em>actually looks like.</em></h1>
+  <div class="cover-divider">
+    <div class="cover-line"></div>
+    <div class="cover-diamond"></div>
+    <div class="cover-line"></div>
+  </div>
+  <p class="cover-sub">A teaching on the wholeness God has been preparing for you, and the work of walking into what has already been bought.</p>
+</div>
+
+<div class="body">
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Welcome</span></div>
+
+  <p class="large">We come now to a teaching that almost every woman in this program has been quietly aching for since the very first episode, which is the question of what real healing actually looks like when it happens in a woman's life.</p>
+
+  <p>The culture has been giving us a definition of healing that has not been working, and the reason it has not been working is that the definition itself is wrong. Culture has been telling us that healing is the absence of pain, the absence of memory, the absence of any reaction to what hurt us. Culture has been telling us that a healed woman is one who is no longer affected, no longer triggered, no longer remembering, no longer feeling. Culture has been selling us a healing that looks like numbness with a different name.</p>
+
+  <p>The Word of God names healing differently, and the women who walk in the healing Scripture is describing become unrecognizable to the world over time, because the kind of woman God forms through real healing is not a woman who has forgotten what happened to her, but a woman who has been made whole around what happened to her, and the wholeness is the very thing that makes her formidable.</p>
+
+  <div class="scripture">
+    <p>"He heals the brokenhearted and binds up their wounds."</p>
+    <p class="ref">Psalm 147:3 NIV</p>
+  </div>
+
+  <p>This is the foundation. He heals. He binds. He does both, intentionally and lovingly, in His own timing and in His own way, and the binding is not the erasure of the wound but the careful gathering of the broken edges back together so that they can knit into something stronger than they were before the breaking. The woman who has been bound up by the Lord carries the evidence of the binding inside her for the rest of her life, but the evidence is no longer a wound. It is a place where God has been particularly close, and where He continues to be particularly close, and where she has become particularly aware of His presence because that is the place she most needed Him to come.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 1</span></div>
+  <h2>What healing is <em>not.</em></h2>
+
+  <p>Before we name what healing is, we have to clear away what it is not, because almost every woman walking into this teaching has been chasing a version of healing that does not exist, and the chasing has been exhausting her.</p>
+
+  <p>Real healing is not the absence of memory. You will remember what happened to you for the rest of your life. The memory is not the problem. The memory becomes a problem only when it is connected to a wound that has not been bound. Once the wound is bound, the memory remains, but it no longer holds the same charge it once held. You can think about what happened without your body bracing for impact. You can speak of it without your voice catching. The memory has become information instead of injury, and the difference is the work the Lord has been doing in you.</p>
+
+  <p>The healing of the soul follows the same pattern as the healing of the body. When the body sustains a wound, the body never forgets that wound. A scar forms over the place where the skin was broken, and the scar remains for the rest of that person's life. You can run your fingers over a scar from a childhood injury decades later and still feel where the skin had to knit back together. But the scar does not hurt anymore. The scar is the evidence that healing happened, not that the injury is still active. The skin is whole again, even though the mark of what it survived is still visible.</p>
+
+  <p>The same pattern holds in the soul. The wounds you have carried will leave their evidence in you for the rest of your life, and that is not a failure of healing, it is the very nature of what healing produces. The memory becomes a scar instead of a wound. You can touch it and still see where it happened, but the touching does not bring pain anymore. The healing has been done in the place beneath the skin, and the skin remembers, but no longer cries out when you press on it.</p>
+
+  <p>The danger comes not from the scar remaining but from what we do with the wound before the scar can form. A wound on the body needs time. If it is rushed, ignored, or repeatedly interrupted, infection sets in, and what could have been a quiet scar becomes a deep and dangerous problem that affects the whole body. The same is true of the wounds of the soul. The woman who tries to skip the binding, who covers the wound without cleaning it, who pretends she is already healed before the Lord has actually done the work, develops a kind of spiritual infection that spreads into every area of her life. The wound goes deeper. The bondage becomes more entangled. The dysfunction shows up in places that seem unrelated to the original injury, because the unhealed wound has been quietly compromising the whole system.</p>
+
+  <p>And the woman who keeps picking at the scab is the one whose wound never finishes closing. Every time she returns to the conversation she should have left behind, every time she rehearses the offense to herself or to her friends, every time she re-enters the relationship that caused the injury, she is picking at the scab and pulling the healing open just before it could complete. The Lord has been faithfully knitting the edges back together, and she has been pulling them apart again, often without realizing what she is doing. Real healing requires her to leave the wound alone long enough for the Lord to finish what He started.</p>
+
+  <p>Real healing is not the absence of triggers. You will still encounter situations, people, smells, songs, seasons that remind you of what hurt you. The triggers will keep arising for a long time, sometimes for life. But the woman who is healing learns to greet the trigger with curiosity instead of fear, because she has the practiced confidence that the rising emotion is information about what is still tender in her, and she knows where to bring the tenderness. She brings it to the Lord. She does not panic at the rising. She lets it rise, lets Him meet her in it, and lets the meeting do the deeper work that no avoidance of triggers would have ever done.</p>
+
+  <p>Real healing is not the absence of feeling. The woman who has felt nothing for years because she buried everything is not healed, she is numb, and numbness is not the goal. The goal is the capacity to feel deeply without being destroyed by what you are feeling. The healed woman cries when something is sad, gets angry when something is unjust, grieves when something is lost, laughs from her belly when something is funny. Her emotional life is more vivid than it was when she was wounded, not less, because she is no longer spending her whole nervous system trying to manage what is unfelt inside her.</p>
+
+  <p>Real healing is not a destination you arrive at on a particular Tuesday. It is a posture you walk in for the rest of your life, deepening, expanding, becoming more whole every season of your life that you keep bringing yourself to the One who has been binding you. The end of healing is not a finish line. It is a way of moving through the world that the wounded woman cannot yet imagine but the healed woman cannot remember not having.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 2</span></div>
+  <h2>What healing <em>is.</em></h2>
+
+  <p>Real healing is wholeness. The English word healing in Scripture is woven from the same root as the words for wholeness, for completeness, for the restoration of something to its original integrity. The Greek word translated as healed in many New Testament passages is the same word translated as saved in others, and the doubling is intentional, because in God's design the healing of a woman is part of the same work as the saving of her.</p>
+
+  <p>So when we ask what real healing looks like, the answer is that it looks like a woman becoming whole, not perfect and not finished but whole, with every part of her gathered into who she is, with no part of her hidden, with no part of her cut off, with no part of her quietly running the show from a place she does not even know about anymore. The wounded woman is fragmented, with pieces of her doing things she did not authorize, with parts of her stuck in old seasons of her life, with patterns running in her that she cannot trace back to a source. The healing woman is being gathered, brought home to herself, re-integrated one tender place at a time into the woman God formed before any wounding ever touched her.</p>
+
+  <p>This is why real healing changes the way she walks into a room. Her energy is different. She is not divided against herself anymore. She is one woman, present and whole, and the integration is felt by everyone who comes near her even before they have words for what they are sensing. The wounded woman walks into a room and the room can feel the parts of her that are missing. The whole woman walks into a room and the room can feel the parts of her that have come home.</p>
+
+  <div class="scripture">
+    <p>"But he was pierced for our transgressions, he was crushed for our iniquities; the punishment that brought us peace was on him, and by his wounds we are healed."</p>
+    <p class="ref">Isaiah 53:5 NIV</p>
+  </div>
+
+  <p>The wholeness was bought on the Cross. This is the foundation of every healing teaching in the Word of God, and we cannot move past it casually. The wounds that you have been carrying have already been carried by Him. The pain you have been quietly bearing has already been borne by Him. The price for your wholeness was paid before you knew you needed it paid, by the only One who could pay it without it costing Him anything He was not willing to give.</p>
+
+  <p>This changes the entire orientation of your healing work. You are not earning your wholeness. You are not striving for it. You are not somehow finally becoming worthy of being made whole by working hard enough at your own healing. The work has already been done. The wholeness is already yours. Your work is reception, not achievement, and the difference is the relief your striving has been refusing to receive.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">The inversion</span></div>
+  <h2>You are not <em>waiting</em> for healing.</h2>
+
+  <p>Child of God, the inversion at the heart of this teaching is the one that finally sets a striving woman free, and you cannot afford to walk past it.</p>
+
+  <p class="large">You are not waiting for healing to happen to you. Healing has already been purchased for you. Your work is to walk into what has already been bought, not to earn what is being withheld.</p>
+
+  <p>The wounded woman has been operating under the assumption that healing is something the Lord will eventually grant her if she prays long enough, serves hard enough, suffers patiently enough, proves herself worthy enough. She has been waiting for permission to be whole. She has been waiting for the Lord to decide she has earned it.</p>
+
+  <p>But the Lord settled the question of her wholeness on the Cross. The wholeness is purchased. The provision is paid. The healing is in the storehouse with her name on it. What remains is for her to walk into the storehouse and take what is hers. This is what is meant by faith in this context. Not believing that the Lord might one day heal her if she is good enough, but believing that He already has, and walking forward in agreement with what He has already declared about her.</p>
+
+  <p>The Cross did not buy a probationary healing. The Cross did not buy a conditional wholeness contingent on her future performance. The Cross bought completeness, fullness, wholeness, restoration, for every daughter who would receive it. The reception is the only thing remaining for the woman who has not yet walked in what is already hers.</p>
+
+  <p>Your life transforms the second you stop living like a version of yourself that pain created and start living like the person God anointed. The wounded version of you is real. She has been real for years. But she is not the truest you. The truest you is the one God spoke into being before the wounding ever happened, and she has been waiting under the surface of every season of your life for you to finally let her come out. The healing is the work of letting her come out.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 3</span></div>
+  <h2>The question Jesus <em>asked.</em></h2>
+
+  <p>There is a moment in the gospels that lays bare the principle of how a woman cooperates with the healing that has been prepared for her, and the moment is small enough to miss, but it carries the entire weight of how the Lord works with His daughters.</p>
+
+  <div class="scripture">
+    <p>"When Jesus saw him lying there and learned that he had been in this condition for a long time, he asked him, &lsquo;Do you want to get well?&rsquo;"</p>
+    <p class="ref">John 5:6 NIV</p>
+  </div>
+
+  <p>A man had been lying by the pool of Bethesda for thirty-eight years, waiting for someone to put him into the water when it stirred so he could be healed. Thirty-eight years of waiting, thirty-eight years of identity built around being the one who could not get well, thirty-eight years of an entire community knowing him as the lame man at the pool. And when Jesus came to him, the Lord did not lay His hands on the man and heal him without consultation. He asked him a question first. &ldquo;Do you want to get well?&rdquo;</p>
+
+  <p>The question sounds strange at first. Of course the man wants to get well. He has been waiting by the pool for almost four decades. But the question is not actually rhetorical, and Jesus did not ask it lightly. The Lord was honoring the man's will, because healing always involves a yes from the one who is being healed. A woman who has built her identity around her wound, who has organized her life around the wound, who has come to recognize herself by the wound, has to consent to becoming someone who is no longer defined by what hurt her. Without that consent, the healing cannot reach all the way in, because part of her is still holding onto the wound as her sense of self.</p>
+
+  <p>This is the hidden question every woman of God must answer before her healing can become complete. &ldquo;Do you want to get well?&rdquo; Are you willing to be a woman who is no longer the woman with that story? Are you willing to let go of the identity you built around what happened to you, even if the new identity feels unfamiliar at first, even if you do not yet know who you are without the wound being the loudest part of you?</p>
+
+  <p>The honest answer is harder than we expect. Many women have been the wounded one for so long that being the whole one feels like a kind of grief, a small death of the self they have known. But the death is the doorway. The yes to wholeness is the consent the Lord has been waiting for, and the moment a woman gives that yes, the healing already purchased for her begins to flow into her in ways the striving never could.</p>
+
+  <div class="principle-box">
+    <p class="principle-label">The principle</p>
+    <p>Healing requires your yes. Not your striving. Your consent to become a woman who is no longer defined by what hurt her. The Lord will not heal you against your will, because the wholeness He is offering requires you to receive a new identity that the wound has been crowding out for too long.</p>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 4</span></div>
+  <h2>The locust <em>years.</em></h2>
+
+  <p>One of the deepest promises in the entire Word of God is the promise the Lord makes about what He intends to do with the years a wounded woman has lost to what hurt her.</p>
+
+  <div class="scripture">
+    <p>"I will repay you for the years the locusts have eaten."</p>
+    <p class="ref">Joel 2:25 NIV</p>
+  </div>
+
+  <p>The locusts are whatever has been consuming her seasons: the trauma, the wrong relationships, the addictions, the depressions, the years she spent surviving when she should have been thriving. The decades she has been carrying weight she was never meant to carry. The Lord names those years specifically, and He promises restoration of them, which is more than mere forgetting, more than mere recovery. Restoration. The years the locusts ate are not lost. They are being given back to her, in a form she may not yet recognize but will eventually see when she looks back on her life from a different vantage.</p>
+
+  <p>The restoration looks different in every woman's life, but the pattern is consistent. The woman who lost years to a wrong relationship often finds herself, ten years later, ministering to other women in wrong relationships with a depth no untouched woman could have offered. The woman who lost years to addiction often becomes the safe person other addicted women find when they are ready to come out. The woman who lost decades to depression often becomes the voice that pulls other women out of theirs, because she has been to the bottom and come back, and her testimony is the very rope another woman needs to grab.</p>
+
+  <p>And here is the truth that gives a woman strength while she waits for that restoration to fully unfold. God&rsquo;s promises never come without God&rsquo;s process. The Lord is not a vending machine. He is a vinedresser. The promise of restoration that He has spoken over your life is being formed in you through a process that takes longer than the modern impatient heart wants to allow, but every day of the process is the very fabric of the restoration itself. You are not delayed. You are being made.</p>
+
+  <p>The locusts did not have the final word. The Lord did. And the final word He is speaking over your lost years is restoration, not erasure. The years are coming back to you, transformed into something more valuable than they would have been had the locusts never touched them, because the years He is giving back have His fingerprints on them, and that makes them holier than any unmarked years could have been.</p>
+
+  <div class="scripture">
+    <p>"I will restore you to health and heal your wounds, declares the Lord."</p>
+    <p class="ref">Jeremiah 30:17 NIV</p>
+  </div>
+
+  <p>This is the Lord speaking in the first person about His direct intention for the wounded daughter, saying &ldquo;I will restore&rdquo; and &ldquo;I will heal.&rdquo; The future tense is more certain than any past tense could ever be, because when God says I will, the thing is already done in the eternal realm and only the unfolding remains in time. Your healing is not a hope. It is a promise, signed by the Lord Himself, with the date of completion already settled in eternity. The only question is your participation in the unfolding.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 5</span></div>
+  <h2>The trap of <em>service.</em></h2>
+
+  <p>There is one specific pattern that masquerades as healing in the lives of many wounded women, and we have to name it, because it has been keeping more daughters from real wholeness than almost any other dynamic.</p>
+
+  <p>The trap is service.</p>
+
+  <p>The wounded woman often discovers, somewhere in her teens or twenties, that serving other people brings relief from her own pain. She helps a friend through a crisis and feels better for a day, volunteers at a ministry and feels purposeful for a week, becomes the person everyone calls in their hardest moments, and she becomes addicted to the relief that helping others gives her, because in the helping she gets to leave her own inner room for a little while and live in someone else's.</p>
+
+  <p>The service feels holy and looks like virtue, the church often praises her for it, her family relies on it, and the world calls her selfless, generous, kind. And underneath all of that, she is hiding, because the giving has become the very thing keeping her from receiving, and she cannot heal what she is too busy avoiding to feel.</p>
+
+  <p>This is the trap. Service is not the same as healing. Service can become the most sophisticated form of self-abandonment a woman ever practices, because it has been culturally sanctified and spiritually applauded, and so she cannot even see what she has been doing to herself by doing what looked like virtue.</p>
+
+  <p>Real healing requires her to be receiving from the Lord before she can sustainably give from Him. The pour-out-of-overflow principle is not optional. The woman who pours out of an empty vessel is the woman who eventually collapses, often in mid-life, often in confusion about why her years of devotion have left her depleted instead of fulfilled. She has been giving from her own dwindling reserves while telling herself she was giving from the Lord, and the gap between the two is the gap her healing has been waiting for her to address.</p>
+
+  <p>The work of this season is to allow yourself to be ministered to before you minister, to allow yourself to be loved before you love, to allow yourself to be filled by the Lord Himself before you pour yourself out for anyone else. This is not selfishness. This is the order God established, where He pours into you first and you pour out of the overflow He has placed in you. Anyone who tells you otherwise is teaching you a kind of service that will eventually destroy you, no matter how holy the destruction may look from the outside.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 6</span></div>
+  <h2>What healing <em>looks like</em> in a woman's life.</h2>
+
+  <p>The healed woman is recognizable by certain qualities that emerge in her over time, often slowly, often without her noticing them until other women begin to point them out. These are the markers of the kind of wholeness God forms in a daughter who has been letting Him do the deeper work in her.</p>
+
+  <p>She has peace where she used to have panic. The situations that used to send her into a spiral now arrive, are noticed, and pass through her without disrupting the deeper steadiness she has built in the Lord. The peace is not the absence of feeling. It is the presence of a foundation that the feeling cannot shake.</p>
+
+  <p>She has discernment where she used to have desperation. She can tell, often quickly, the difference between a relationship she is meant to be in and one she is being drawn into by her old wounds. She can tell the difference between an opportunity from the Lord and an opportunity from her striving. She can tell the difference between a yes that comes from peace and a yes that comes from fear of saying no.</p>
+
+  <p>She has clear voice where she used to have silenced apology. She can speak her actual thoughts without rehearsing them for the comfort of the room. She can ask for what she needs without hating herself for needing it. She can say no without explaining the no for an hour afterward to anyone who might not understand it.</p>
+
+  <p>She has receiving capacity where she used to have only giving capacity. She can let people love her. She can let people serve her. She can let people see her when she is not at her best. She has stopped requiring herself to be impressive in order to be lovable, because she has finally let herself be loved as she actually is by the One who loved her first.</p>
+
+  <p>She has presence where she used to have performance. She is the same woman in the silence as she is in the spotlight. She has nothing to prove and nothing to hide. The mask that she used to wear has been gently lifted off her, not by her own striving but by the Lord's patient work, and she is finally simply herself, with no rehearsed lines and no managed image.</p>
+
+  <p>And she has gratitude where she used to have grief. Not because the grief is gone, but because the grief has been integrated into a larger story, and the larger story is one of redemption, of restoration, of the locust years being given back to her in a form she could not have imagined when she was still in them. Grief is love with nowhere to go, and the healed woman has learned to give her grief somewhere to land, in the heart of the Father who carries it with her. The gratitude is not naive. It is informed. It has walked through everything she has walked through and chosen, on the other side, to thank the Lord for what He has built in her through the walking.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 7</span></div>
+  <h2>Three movements for <em>this week.</em></h2>
+
+  <p>Three movements to walk into this week. Together they form the practice of receiving the healing already purchased for you.</p>
+
+  <div class="step-box">
+    <p class="step-num">Movement one</p>
+    <p class="step-title">Answer the hidden question.</p>
+    <p>Sit quietly with the Lord this week, alone, and let Him ask you the question He asked the man at the pool. &ldquo;Do you want to get well?&rdquo; Answer honestly, and pay attention to the parts of you that hesitate, that resist, that have grown attached to the identity of the wounded one. Do not shame those parts. Acknowledge them. Bring them to the Lord and ask Him to help you say yes to the wholeness He is offering, even in the places where the wholeness feels unfamiliar.</p>
+    <p>The yes does not have to be perfect to count. A trembling yes is still a yes. A partial yes is still a yes. The Lord works with what you bring Him, and a small honest yes is more powerful than a loud performed one. Give Him whatever yes you can give Him today, and watch what He does with it in the weeks that follow.</p>
+  </div>
+
+  <div class="step-box">
+    <p class="step-num">Movement two</p>
+    <p class="step-title">Receive before you give.</p>
+    <p>For one week, before you do any of your usual serving, pouring out, helping, holding, or fixing, sit with the Lord for ten minutes and ask Him to fill you. Receive whatever He has to give you in those ten minutes. A scripture. A word. A peace. A tear. Whatever He brings, receive it. And only after you have been filled, step into the giving day that is waiting for you.</p>
+    <p>This reverses the order many wounded women have been operating in for years, where the giving comes first and the asking for refill comes after, an order that has been quietly depleting us. The order He established is the opposite. Receive first. Give from the overflow. Practice this for one week and watch what happens to your energy by Friday.</p>
+  </div>
+
+  <div class="step-box">
+    <p class="step-num">Movement three</p>
+    <p class="step-title">Name one locust year that is being restored.</p>
+    <p>Look back across your life and identify one specific year, or season, that you would have called wasted by the locusts. Now look at what the Lord has been building in you since that season. What has come out of it. Who you have become because of it. What you can now offer other women that you could not have offered without having walked through it.</p>
+    <p>Write down the connection. The line from the lost year to the restored fruit. The locusts ate, and the Lord is repaying. The year is not lost. It is being given back, transformed, holy now in a way the unbroken years could never have been. Naming this is part of the receiving, and the receiving is what makes the restoration real in your life instead of a doctrine you nod at on Sunday.</p>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">A brief note</span></div>
+  <h2>On <em>my own walk.</em></h2>
+
+  <p>I will share with you that the healing I now walk in did not arrive the way I expected it to. I expected a moment. I expected a breakthrough. I expected to wake up one day and find that everything that had been hurting me had been lifted, and I would emerge from the bedroom a new woman with no trace of the woman I had been the day before. That is not what happened.</p>
+
+  <p>What happened was slower, deeper, and more beautiful than the version I had been waiting for. The Lord did not erase what had hurt me. He bound it. The binding took years. The binding is still happening in some places. But the binding was so faithful, so patient, so persistent that one day I looked up and realized I was no longer the woman who had been walking through the previous decade. The wounds had become places of strange beauty in my life, places where I was particularly close to the Lord because that is where He had been particularly close to me, and the places that had once been my greatest pain had become the places I was most useful to the women He was sending into my life.</p>
+
+  <p>I wrote this in a season when the Lord was teaching me that the breaking was not the end of me, but the doorway through which the woman He was forming was finally able to come out.</p>
+
+  <div class="poem">
+    <div class="stanza">
+      And there I was, broken.<br>
+      And it was so beautiful,<br>
+      for now I was open<br>
+      to grow my heart and soul<br>
+      toward something greater still<br>
+      than they had ever known.<br>
+      But they couldn&rsquo;t until<br>
+      there was no more pride shown.<br>
+      But when I was broken<br>
+      humility arose.<br>
+      My being unspoken,<br>
+      to next level transpose.
+    </div>
+  </div>
+
+  <p>The principle is sound, and it holds, and it will hold for you. The healing has been purchased. The yes is yours to give. The locust years are being restored, even when you cannot yet see the restoration. And the woman you are becoming, through all of this, is the very woman God formed you to be in the beginning, finally walking in the wholeness that was always meant to be your inheritance.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="reflection-box">
+    <p class="reflection-title">Five questions for this week</p>
+    <p>Read one a day. Sit with it. Bring it to God in prayer.</p>
+    <p><strong>One.</strong> Where have you been chasing a version of healing the culture sold you that has not been working, and what would it mean to lay that version down and receive the wholeness the Lord is actually offering?</p>
+    <p><strong>Two.</strong> Have you given the Lord your yes to becoming a woman who is no longer defined by what hurt you, and if not, what part of you is still holding the wound as your identity?</p>
+    <p><strong>Three.</strong> What service have you been doing that has been masquerading as healing in your life, and what would change if you allowed yourself to receive before you give for one full week?</p>
+    <p><strong>Four.</strong> Which years would you call your locust years, and where can you already see the Lord beginning to repay them in ways you may not have noticed until now?</p>
+    <p><strong>Five.</strong> What would the woman God is forming in this season do differently this week than the wounded woman you have been, and what is one small step you can take in her direction starting today?</p>
+  </div>
+
+  <div class="prayer-box">
+    <p class="prayer-title">A prayer for the daughter walking into her wholeness</p>
+    <p>Father, I come to You with a heart that has been waiting for healing, and a mind that has been chasing definitions of healing that have not been the ones You wrote.</p>
+    <p>I confess that I have been striving for what You have already purchased for me. I confess that I have been serving from an empty vessel and calling it holiness. I confess that I have built parts of my identity around what hurt me, and that some of me is still afraid to let those parts go because I have not yet imagined who I am without them.</p>
+    <p>Teach me the wholeness You designed. Show me the difference between the absence of feeling and the integration of feeling. Help me to say yes to being a woman who is no longer defined by her wound, and walk me into the storehouse where my healing has been waiting with my name on it.</p>
+    <p>Restore the years the locusts have eaten. Give them back to me transformed. Make me a woman whose locust years became the very places You met me most deeply, so that I can become a sanctuary for other women who are still inside theirs.</p>
+    <p>I receive what You have already given. I stop striving for what You have already finished. I say yes to the wholeness You have been preparing for me.</p>
+    <p>In the name of Jesus, amen.</p>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Before you go</span></div>
+  <h2>One yes, <em>small and trembling.</em></h2>
+
+  <p>Dear woman, this week, just one practice. Find a quiet place, sit with the Lord, and speak one small yes out loud. Yes to wholeness. Yes to being a woman who is no longer defined by what hurt her. Yes to receiving what the Cross already purchased for you.</p>
+
+  <p>The yes can be trembling. The yes can be uncertain. The yes can be partial. The Lord works with whatever yes you can offer, and the moment you offer it, something shifts in the unseen realm that you may not feel for weeks or months. But the shift is real. The healing already purchased begins to move toward you in a new way the moment you stop standing in front of it with the question still unanswered.</p>
+
+  <p>The man at the pool waited thirty-eight years before he was asked the question. He had been waiting for the water to stir, for someone to put him in, for the right conditions to align. The Lord came to him and short-circuited all of it with one question and one command. &ldquo;Do you want to get well?&rdquo; &ldquo;Get up, take up your mat, and walk.&rdquo;</p>
+
+  <p>The same Lord is standing in front of you with the same question, and the moment you say yes, the same command is waiting on His lips. &ldquo;Get up. The wholeness is yours. Walk into it.&rdquo;</p>
+
+  <div class="closing">
+    <p>Stop giving power to what hurt you.<br>Start glorifying the One who called you.<br><em>The wholeness the Cross bought<br>is waiting in the storehouse with your name on it.<br>Walk in.</em></p>
+    <p class="sig">Avizaya &nbsp;&middot;&nbsp; School 1, Episode 8</p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avizaya: School 1, Episode 10</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --plum: #2C1A4A;
+    --gold: #C4955A;
+    --ivory: #F7F2EC;
+    --muted: #6B5A72;
+    --light: #FAF6F0;
+    --green: #1A3A2E;
+  }
+  body { background: var(--ivory); font-family: 'Jost', sans-serif; font-weight: 300; color: var(--plum); padding: 0 0 100px; -webkit-font-smoothing: antialiased; }
+
+  .cover { background: var(--plum); padding: 72px 40px 64px; text-align: center; }
+  .cover-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; }
+  .cover-school { font-size: 12px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(196,149,90,0.6); margin-bottom: 20px; }
+  .cover-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(34px, 6vw, 58px); font-weight: 300; line-height: 1.15; color: var(--ivory); margin-bottom: 24px; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .cover-title em { font-style: italic; color: var(--gold); }
+  .cover-divider { display: flex; align-items: center; gap: 14px; max-width: 320px; margin: 0 auto 24px; }
+  .cover-line { flex: 1; height: 0.5px; background: var(--gold); opacity: 0.35; }
+  .cover-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
+  .cover-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; font-weight: 300; color: rgba(232,213,196,0.7); max-width: 480px; margin: 0 auto; line-height: 1.6; }
+
+  .body { max-width: 680px; margin: 0 auto; padding: 0 32px; }
+  .section-tag { display: inline-flex; align-items: center; gap: 8px; margin: 48px 0 20px; }
+  .tag-line { width: 24px; height: 0.5px; background: var(--gold); }
+  .tag-text { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+
+  h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 4vw, 34px); font-weight: 400; line-height: 1.3; color: var(--plum); margin-bottom: 20px; }
+  h2 em { font-style: italic; color: var(--gold); }
+
+  p { font-size: 16px; line-height: 1.9; color: #3A2840; margin-bottom: 22px; }
+  p.large { font-family: 'Cormorant Garamond', serif; font-size: clamp(19px, 3vw, 24px); font-style: italic; line-height: 1.65; color: var(--plum); }
+  p strong { font-weight: 500; color: var(--plum); }
+  p em { font-style: italic; color: var(--gold); }
+
+  .divider { display: flex; align-items: center; gap: 14px; margin: 40px 0; }
+  .divider-line { flex: 1; height: 0.5px; background: var(--gold); opacity: 0.3; }
+  .diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); }
+
+  blockquote { border-left: 2px solid var(--gold); padding: 18px 0 18px 24px; margin: 36px 0; }
+  blockquote p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(19px, 3vw, 25px); color: var(--plum); margin: 0; line-height: 1.5; }
+
+  .scripture { background: var(--light); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; padding: 18px 22px; margin: 32px 0; }
+  .scripture p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; color: var(--plum); line-height: 1.6; margin-bottom: 8px; }
+  .scripture .ref { font-family: 'Jost', sans-serif; font-style: normal; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+
+  .principle-box { background: var(--plum); border-radius: 12px; padding: 32px 30px; margin: 40px 0; text-align: center; }
+  .principle-label { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .principle-box p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: var(--ivory); margin: 0; line-height: 1.5; }
+
+  .step-box { background: white; border: 0.5px solid rgba(196,149,90,0.3); border-radius: 12px; padding: 28px 26px; margin: 28px 0; }
+  .step-num { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .step-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--plum); margin-bottom: 14px; line-height: 1.3; }
+
+  .reflection-box { background: var(--plum); border-radius: 12px; padding: 36px 30px; margin: 48px 0; }
+  .reflection-box .reflection-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--gold); margin-bottom: 22px; font-style: italic; }
+  .reflection-box p { color: rgba(232,213,196,0.88); margin-bottom: 18px; font-size: 16px; }
+  .reflection-box p:last-child { margin-bottom: 0; }
+  .reflection-box p strong { color: var(--gold); font-weight: 400; }
+
+  .prayer-box { background: var(--green); border-radius: 12px; padding: 36px 30px; margin: 48px 0; }
+  .prayer-box .prayer-title { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; }
+  .prayer-box p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; line-height: 1.75; color: rgba(232,213,196,0.92); margin-bottom: 14px; }
+  .prayer-box p:last-child { margin-bottom: 0; }
+
+  .declaration-box { background: white; border: 1px solid rgba(196,149,90,0.4); border-radius: 12px; padding: 40px 28px; margin: 44px 0; text-align: center; box-shadow: 0 2px 12px rgba(44,26,74,0.04); }
+  .declaration-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: var(--gold); margin-bottom: 28px; }
+  .declaration-line { font-family: 'Cormorant Garamond', serif; font-size: 18px; line-height: 2.1; color: var(--plum); margin: 0; padding: 3px 0; }
+  .declaration-line em { font-style: italic; color: var(--gold); }
+  .declaration-divider { width: 30px; height: 0.5px; background: var(--gold); opacity: 0.4; margin: 18px auto; }
+  .declaration-finale { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: var(--gold); margin-top: 22px; line-height: 1.6; }
+
+  .closing { text-align: center; padding: 70px 0 30px; }
+  .closing p { font-family: 'Cormorant Garamond', serif; font-size: clamp(20px, 3.5vw, 28px); font-style: italic; color: var(--plum); line-height: 1.6; margin-bottom: 18px; }
+  .closing .sig { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-style: normal; font-family: 'Jost', sans-serif; font-weight: 400; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <p class="cover-eyebrow">Avizaya</p>
+  <p class="cover-school">School 1: The abandoned girl &nbsp;&middot;&nbsp; Episode 10</p>
+  <h1 class="cover-title">The <em>orphan spirit.</em></h1>
+  <div class="cover-divider">
+    <div class="cover-line"></div>
+    <div class="cover-diamond"></div>
+    <div class="cover-line"></div>
+  </div>
+  <p class="cover-sub">A teaching on the spirit that has been operating you from the inside, and the Father who has been calling you home as His daughter all along.</p>
+</div>
+
+<div class="body">
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Welcome</span></div>
+
+  <p class="large">What we name in this episode is not a behavior or a pattern or a wound, but a spirit. A spirit that has been operating quietly inside the daughter of God for so long that she has confused it for her own personality, and she has been making decisions out of its voice for years without knowing that there was another voice available to her.</p>
+
+  <p>The orphan spirit is not the absence of parents. Many women who had loving parents grew up with an orphan spirit, and many women who had no parents at all have learned to walk in a daughter spirit through the long faithful work of the Lord. The orphan spirit is a way of moving through the world as if you are alone, unclaimed, unprotected, and ultimately responsible for your own survival. It is the silent voice underneath every decision that says, &ldquo;If I do not handle this, no one will. If I do not provide for myself, I will go without. If I do not stay vigilant, I will be left behind.&rdquo; The voice sounds reasonable. It even sounds responsible. But it is the voice of an orphan, not the voice of a daughter, and the woman of God is not meant to live another day as if she were the former when the Cross declared her the latter.</p>
+
+  <div class="scripture">
+    <p>"The Spirit you received does not make you slaves, so that you live in fear again, rather, the Spirit you received brought about your adoption to sonship. And by him we cry, &lsquo;Abba, Father.&rsquo;"</p>
+    <p class="ref">Romans 8:15 NIV</p>
+  </div>
+
+  <p>Paul is naming the precise dynamic this episode confronts. The spirit she received when she was given to Christ was not a spirit of slavery to fear. It was a spirit of adoption, of belonging, of being claimed by a Father who calls her His own and authorizes her to call Him &ldquo;Abba.&rdquo; That word is the most intimate Hebrew word for father, the word a small child used to call out to her papa in the moments she needed him most. The Lord Himself has given her the right to use it. And yet many of His daughters have been walking through their entire spiritual lives as if they were still slaves to fear, never having claimed the adoption they were given, never having lived inside the spirit that was placed inside them at the moment they were saved.</p>
+
+  <p>This episode is the work of finally claiming what has already been given. The orphan spirit must be named, and the daughter spirit must be received, and the difference between the two is the difference between exhaustion and rest, between striving and abiding, between the woman you have been and the woman God has always called you to be.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 1</span></div>
+  <h2>How the orphan spirit <em>operates.</em></h2>
+
+  <p>The orphan spirit shows up in a woman's life in ways so familiar that she does not even recognize them as spiritual issues. She thinks they are personality traits. She thinks they are her work ethic. She thinks they are her independence. She thinks they are her ambition. But when she looks closely, what she finds is a single spirit underneath all of them, the spirit of a girl who learned, somewhere in her earliest years, that she had to take care of herself because no one else was going to.</p>
+
+  <p>The orphan spirit operates through scarcity. There is never enough. Not enough time. Not enough resources. Not enough love. Not enough opportunity. Not enough rest. Every decision is colored by the unconscious belief that supply is running out and she must hustle to secure what she needs before it disappears. Even when she has plenty in front of her, she cannot fully receive it, because the orphan part of her is already calculating what she will need tomorrow and next month and next year.</p>
+
+  <p>The orphan spirit operates through urgency. Everything is right now. Everything has to be solved this minute. The constant background tension of her nervous system tells her that if she rests, she will fall behind, that if she pauses, the world will leave her without what she needs. She cannot sit still. She cannot truly relax. The orphan in her has not yet learned that there is a Father who has been providing for her timeline before she ever asked Him to.</p>
+
+  <p>The orphan spirit operates through performance. Love must be earned. Belonging must be earned. Provision must be earned. Approval must be earned. She has built her whole life around being useful, productive, helpful, impressive, because the orphan in her does not yet believe that she would be loved if she stopped producing. She is exhausted from the producing, and she suspects that if she stopped, she would discover she was never loved for who she was, only for what she did.</p>
+
+  <p>The orphan spirit operates through isolation. She does not ask for help. She does not let people see her need. She does not trust that anyone will come for her if she calls. So she carries everything alone, even the things that were never meant to be carried alone, and she calls her isolation strength, when really it is the orphan in her, refusing to believe that a Father has been waiting for her to lean on Him.</p>
+
+  <p>The orphan spirit operates through hypervigilance. She is always watching for the next thing that could go wrong. Always scanning for the threat. Always ready to brace. The nervous system of an orphan is permanently on alert, because the orphan has not yet been able to settle into the safety of someone else being in charge of her wellbeing. So she stays in charge, even of things she was never meant to be in charge of, and her body pays the price for the vigilance she has never been able to set down.</p>
+
+  <p>Read those five paragraphs again, slowly. Almost every woman in this program will see herself in at least three of those operating patterns, and many will see themselves in all five. The orphan spirit has been hidden in plain sight, dressed in the language of capability and independence and strength, and it has been quietly running the operating system of her life for as long as she can remember.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 2</span></div>
+  <h2>The promise Jesus <em>made.</em></h2>
+
+  <p>Jesus Himself addressed the orphan spirit directly, in His own words, on the night before He was crucified. He was preparing His disciples for the season in which He would no longer be physically present with them, and what He chose to say to them in that moment is the very promise that defines the daughter spirit for every woman of God who has come after them.</p>
+
+  <div class="scripture">
+    <p>"I will not leave you as orphans. I will come to you."</p>
+    <p class="ref">John 14:18 NIV</p>
+  </div>
+
+  <p>Christ knew. He saw the human capacity for the orphan spirit. He saw the way His followers would, after His ascension, be tempted to live as if they had been abandoned, to operate out of fear, to hustle for what He had already promised them, to forget who their Father was. And He made them a promise that was meant to cover every season they would walk through after Him. He would not leave them as orphans. He would come to them. The promise has not expired. The promise is for every daughter of God who is alive today, including you.</p>
+
+  <p>You have not been left as an orphan. Whatever your earthly father did or did not do. Whatever your earthly mother did or did not give you. Whatever happened in your childhood that taught you to carry everything alone. None of that has the final word on whether you are alone in the universe. The Father who has been with you since before the foundation of the world has never been absent from you, even in the moments you could not feel Him, even in the years you spent operating as if He were not there. He has been present, He has been pursuing, He has been preparing the very moment you would finally turn around and let Him claim you as His own.</p>
+
+  <div class="scripture">
+    <p>"Because you are his sons and daughters, God sent the Spirit of his Son into our hearts, the Spirit who calls out, &lsquo;Abba, Father.&rsquo; So you are no longer a slave, but God&rsquo;s child, and since you are his child, God has made you also an heir."</p>
+    <p class="ref">Galatians 4:6-7 NIV</p>
+  </div>
+
+  <p>Paul is repeating the same gospel a different way, and the repetition matters, because the orphan spirit is so persistent that the daughter of God needs to hear the truth in multiple forms before it finally takes root. You are no longer a slave. You are God&rsquo;s child. And because you are His child, you are also an heir. The inheritance is not earned, it is inherited. The provision is not hustled for, it is given. The love is not performed for, it is freely poured out by a Father whose nature is to love what He has created and called His own.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">The inversion</span></div>
+  <h2>The reframe that changes <em>everything.</em></h2>
+
+  <p>Daughter of Zion, there is a single reframe that, when a woman finally receives it, dissolves the orphan spirit at its root and opens the door to the daughter identity God has been holding out to her all along.</p>
+
+  <p class="large">You are not unlovable. You are under-recognized. Your tenderness and devotion and empathy have been poured into places that did not know how to hold them, and the absence of mirroring was never the absence of your worth.</p>
+
+  <p>The orphan spirit has been telling you, in a hundred subtle ways for a hundred different years, that the reason you have felt the way you have felt is because something is wrong with you. The truth is the opposite. Nothing is wrong with you. You are not unlovable. You have simply been loving in environments that could not return what you were giving, and the absence of the return created a void that the orphan spirit interpreted as evidence of your unworthiness, when really it was only evidence that you had been placed in soil too shallow for the depth of you.</p>
+
+  <p>The wound is real, but the wound is not the verdict. The wound is information about the environment, not information about your value. Your capacity for love has never been the problem. The problem has been the receivers, the soil, the seasons in which you have been planted. And the daughter spirit knows this, because the daughter spirit hears the Father naming her value before any environment has the chance to mis-mirror her, and she walks through her life rooted in that naming, no longer dependent on whether the people around her are capable of seeing her clearly.</p>
+
+  <div class="principle-box">
+    <p class="principle-label">The principle</p>
+    <p>You are loved, even now. You just were not met properly. Receiving from God before you give to anyone else is the work that ends the orphan spirit at its root.</p>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 3</span></div>
+  <h2>How the daughter spirit <em>operates.</em></h2>
+
+  <p>If the orphan spirit runs on scarcity, urgency, performance, isolation and hypervigilance, the daughter spirit runs on the opposite of each, and the difference is felt in the body before it is understood in the mind. The daughter spirit operates from provision, peace, identity, belonging and trust, and these five operating patterns are the spiritual posture the woman of God is being called to walk in for the rest of her life.</p>
+
+  <p>The daughter spirit operates from provision. She believes there is enough. There is enough time, because the One who gave her time is the One who governs it. There is enough resource, because the Father who owns the cattle on a thousand hills has more than enough to give His daughter what she needs. There is enough love, because the love of God does not divide when it is given. It multiplies. Each of His daughters receives the whole of it, not a fraction, and the giving to her does not diminish the giving to another. The daughter does not have to hustle. She has only to receive what has already been set aside for her.</p>
+
+  <p>The daughter spirit operates from peace. She does not need everything solved this minute, because she has a Father who has been working on her behalf in the moments she could not see Him. She can rest. She can be still. She can sleep deeply at night, because the world is not depending on her vigilance to stay safe. The Lord has been keeping watch over her, and the keeping does not cease when she closes her eyes.</p>
+
+  <p>The daughter spirit operates from identity. She does not have to earn her place. She has been claimed, named, secured. Her belonging is not contingent on her performance. She can serve from love, she can give from fullness, she can work from gladness, all because the work is no longer the source of her worth. The work is the expression of a worth that was settled before she ever lifted a finger.</p>
+
+  <p>The daughter spirit operates from belonging. She is in a family. She is not alone. She has a Father, she has brothers and sisters in Christ, she has the long fellowship of saints who have walked before her and the company of saints who are walking beside her now. She does not carry her life alone, because she was never meant to, and the moment she begins to ask for help, the help comes, because the family she belongs to has been waiting for her to remember she is theirs.</p>
+
+  <p>The daughter spirit operates from trust. She no longer scans for the next disaster, because she has settled into the protection of a Father whose timing she cannot always predict but whose character she has come to know. She does not understand everything that happens in her life. She does not have to. She has come to trust the heart of the One who is governing the unfolding, and the trust is the soil out of which her peace continues to grow, year after year, season after season, deepening over time.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 4</span></div>
+  <h2>Facts, not lies, <em>about you.</em></h2>
+
+  <p>Years ago, in the deepest pit of the season I now call my dark ages, I sat down and wrote out what I called &ldquo;Facts, Not Lies, About Me.&rdquo; I wrote it in the form of declarations, line by line, the lies on one side, the truth on the other, and I read it back to myself again and again until the truth began to be louder than the lies the orphan spirit had been telling me. I am giving the same declaration to you now, because the daughter of God who is finally laying down the orphan spirit needs a new vocabulary for who she is, and this is the vocabulary the Lord gave me when I was learning to receive what He had been giving me all along.</p>
+
+  <div class="declaration-box">
+    <p class="declaration-title">Facts, not lies, about me.</p>
+    <p class="declaration-line">I am a <em>plan</em>, not a mistake.</p>
+    <p class="declaration-line">I am a <em>solution</em>, not a problem.</p>
+    <p class="declaration-line">I am a <em>royal</em>, not a pauper.</p>
+    <p class="declaration-line">I am a <em>daughter</em>, not an orphan.</p>
+    <div class="declaration-divider"></div>
+    <p class="declaration-line">I will find <em>reasons</em>, not excuses.</p>
+    <p class="declaration-line">I will be a <em>stepping stone</em>, not a burden.</p>
+    <p class="declaration-line">I will <em>empower</em>, not belittle.</p>
+    <p class="declaration-line">I will <em>create</em>, not destroy.</p>
+    <div class="declaration-divider"></div>
+    <p class="declaration-line">I have a <em>love</em>, not a religion.</p>
+    <p class="declaration-line">I have a <em>God</em>, not a stone.</p>
+    <p class="declaration-line">I have a <em>future</em>, not a death bed.</p>
+    <p class="declaration-line">I have a <em>destiny</em>, not a wish.</p>
+    <div class="declaration-divider"></div>
+    <p class="declaration-line">I live by <em>faith</em>, not by sight.</p>
+    <p class="declaration-line">I live in <em>love</em>, not in fear.</p>
+    <p class="declaration-line">I live in <em>hope</em>, not in loss.</p>
+    <p class="declaration-line">I live my <em>life</em>, not just exist.</p>
+    <p class="declaration-finale">A legend has been born.<br>A destiny will be fulfilled.<br>And at the end of it all,<br>I will sing. All glory to God.</p>
+  </div>
+
+  <p>Read those declarations every morning of every day until they replace the orphan vocabulary that has been speaking to you all your life. Every line is a fact the Word of God has already established about you. You are a plan, because Jeremiah names that the Lord knew His plans for you before you were formed. You are a solution, because Ephesians names that you were prepared in advance for good works the Father had already prepared for you to walk in. You are royal, because First Peter names you a royal priesthood and a holy nation. You are a daughter, because John names that you have been given the right to be called a child of God.</p>
+
+  <p>None of these are aspirations. All of these are facts. The work is not to earn them, the work is to receive what is already true and to let the truth begin to replace the lies the orphan spirit has been telling for years.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 5</span></div>
+  <h2>The worth that <em>nothing changes.</em></h2>
+
+  <p>There is one more piece of this teaching that the daughter of God needs to receive, because the orphan spirit has been quietly convincing her, for years, that what has happened to her has somehow lowered her value. The Word of God says the opposite, and the everyday world gives us pictures that make the truth of it impossible to argue with.</p>
+
+  <p>A one-hundred-dollar bill that has been trampled on, folded, dropped in the dirt and left on the ground for a week is no less valuable than a freshly printed one-hundred-dollar bill at the bank. The treatment of the bill does not change the amount printed on the bill. The value was set by the one who issued it, not by anyone who handled it after it was issued.</p>
+
+  <p>A diamond that has become encrusted in dirt over time is still a precious diamond. The diamond&rsquo;s value does not depend on whether it is currently being displayed under a velvet cloth at a jeweler&rsquo;s window or whether it has been temporarily lost in the back of a drawer. The value was placed in the diamond when it was formed, not when it was discovered.</p>
+
+  <p>An apple seed that got mixed up and thrown into a bag of pear seeds is still an apple seed, no matter how long it sits in the wrong bag. The seed&rsquo;s identity does not change because of where it has been stored. The seed is what the Lord made the seed to be, and given the right soil and water, the seed will still grow into the very tree it was made to grow into.</p>
+
+  <p>The principle applies to you. The treatment you received from people who did not know how to hold you did not change what God placed in you when He formed you. The seasons you spent in the wrong soil did not change what was planted in your very being from before the foundation of the world. The orphan spirit has been telling you that what has happened to you has lowered your worth, but the Father who issued you is the only one whose voice can set or change your worth, and He has never wavered in His naming of you as priceless, claimed and His.</p>
+
+  <p>Receive this. Sit with it. Let it land deeper than the wounds that have been arguing the opposite for years. Your value is not negotiable, and nothing that has happened to you has the authority to lower what God set when He formed you.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 6</span></div>
+  <h2>The Father has been <em>here.</em></h2>
+
+  <p>We opened this entire school with a verse, and we return to that same verse now as we begin to close the heart of this teaching, because the verse is the bookend the Holy Spirit pressed on this entire school from the very beginning.</p>
+
+  <div class="scripture">
+    <p>"Though my father and mother forsake me, the Lord will receive me."</p>
+    <p class="ref">Psalm 27:10 NIV</p>
+  </div>
+
+  <p>This was the verse that opened Episode 1, and it returns here in Episode 10 because the whole arc of this school has been about the daughter who learned, in a thousand different ways across ten different teachings, that the Father had been receiving her all along. Even when she felt forsaken. Even when she felt abandoned. Even when her circumstances looked like the proof of her aloneness, the Father had been there, He had been receiving her, He had never once turned His face away from her.</p>
+
+  <div class="scripture">
+    <p>"See what great love the Father has lavished on us, that we should be called children of God. And that is what we are."</p>
+    <p class="ref">1 John 3:1 NIV</p>
+  </div>
+
+  <p>The word lavished is a generous word. It does not say given. It does not say offered. It says lavished, poured out in extravagant measure, without restraint, without holding back. The love of the Father has been lavished on you, and the orphan spirit has been telling you for years that the lavishing was for someone else. The truth is that the lavishing was for you, has always been for you, and the only thing standing between you and the experience of it has been the orphan spirit telling you it could not possibly be true.</p>
+
+  <p>Today is the day the orphan spirit lays down. Today is the day the daughter spirit is received. You do not have to earn the transition, you only have to consent to it. The Father has been waiting on this moment for the whole of your life.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Part 7</span></div>
+  <h2>Three movements for <em>this week.</em></h2>
+
+  <p>Three movements to begin walking in this week. Each one is a practice of laying down the orphan spirit and stepping more fully into the daughter spirit you have already been given.</p>
+
+  <div class="step-box">
+    <p class="step-num">Movement one</p>
+    <p class="step-title">Read the declaration every morning.</p>
+    <p>Print out the Facts, Not Lies declaration from Part 4. Tape it to your bathroom mirror, or to the wall beside your bed, or carry it in the front of your journal. Every morning of this week, read the entire declaration out loud, line by line, slowly enough that your spirit has time to receive each line as the fact it is.</p>
+    <p>The orphan spirit has been speaking lies to you for years, often in your own voice. The way you replace those lies is by giving your own voice a new vocabulary and using that vocabulary daily until it becomes the new default. The declaration is not magic. It is the basic work of renewing the mind, and the renewing requires repetition.</p>
+  </div>
+
+  <div class="step-box">
+    <p class="step-num">Movement two</p>
+    <p class="step-title">Ask the Father how He sees you.</p>
+    <p>Set aside fifteen minutes this week, alone and quiet, and ask the Father one question. &ldquo;Lord, how do You see me?&rdquo; And then sit, with your hand on your chest, and let Him answer. He will. He has been wanting to tell you for years, and the only reason you have not heard Him is that you have not yet given Him the silent space in which He could speak.</p>
+    <p>Write down whatever you hear, sense, or receive. Test it against the Word. If it is consistent with how Scripture describes His daughters, it is from Him. Trust what He gives you. Read it back to yourself for the rest of the week, and let His voice begin to be the voice that defines you, instead of the voices of the people who have spoken over you in the past.</p>
+  </div>
+
+  <div class="step-box">
+    <p class="step-num">Movement three</p>
+    <p class="step-title">Receive before you give.</p>
+    <p>For one full week, every time you are about to give to someone, pause and ask yourself one question first. &ldquo;Have I received today?&rdquo; If the answer is no, sit down with the Father before you do anything else. Let Him pour into you. Read His Word. Listen to a song that lifts your spirit. Pray a prayer of gratitude. Receive something from Him before you give something to anyone else.</p>
+    <p>The orphan spirit has trained you to give from empty. The daughter spirit gives from full. The whole transformation of the next chapter of your life depends on which posture you give from, because what comes out of you carries the spirit you gave from when you gave it.</p>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">A brief note</span></div>
+  <h2>On <em>my own walk.</em></h2>
+
+  <p>The declaration in Part 4 is not a teaching tool I created for this episode. It is what I wrote for myself, years ago, in the deepest pit of the season I now call my dark ages, when the orphan spirit had been speaking lies over me for so long that I had forgotten there was any other voice available to me. I wrote those lines as a kind of weapon against the lies, and I read them to myself, alone, in my room, again and again, until the words began to be louder than the despair.</p>
+
+  <p>What I did not know at the time was that I was learning the practice the daughter spirit is built on. The practice of speaking the truth back to the lies until the truth wins. The Lord met me in that practice in a way He had not been able to meet me while I was still listening to the orphan voice. The declarations became a kind of doorway, and on the other side of the doorway was a Father who had been waiting on me for years, who had never been absent, who had never stopped loving me, who only needed me to consent to being claimed by Him as His own.</p>
+
+  <p>I am still walking in the daughter spirit, day after day. There are still moments when the orphan voice tries to return, particularly in seasons of pressure or loss, but the difference now is that I know it is a lie the moment it speaks, and I have the vocabulary to answer it. The vocabulary I am giving you in this episode is the same vocabulary the Lord gave to me. Receive it, and the same Father who has been with me will be with you, in exactly the same way, for the rest of your life.</p>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="reflection-box">
+    <p class="reflection-title">Five questions for this week</p>
+    <p>Read one a day. Sit with it. Bring it to God in prayer.</p>
+    <p><strong>One.</strong> Of the five orphan-spirit operating patterns named in Part 1, which one have you been mistaking for your personality, and what would it cost you to lay it down?</p>
+    <p><strong>Two.</strong> Where have you been believing you are unlovable, when the truth is that you have only been under-recognized? What changes inside you when you let that reframe become real?</p>
+    <p><strong>Three.</strong> Which line of the Facts, Not Lies declaration meets you most, and which line do you most struggle to believe? Sit with the struggle in prayer and ask the Father to anchor that line in you.</p>
+    <p><strong>Four.</strong> When was the last time you received from the Father before you gave to someone else, and what would it look like to make receiving first your daily practice for the rest of this season?</p>
+    <p><strong>Five.</strong> What has your life been quietly telling you about your worth, and what is the Father saying about your worth, and what would it look like to live this week from His verdict instead of from yours?</p>
+  </div>
+
+  <div class="prayer-box">
+    <p class="prayer-title">A prayer for the orphan becoming a daughter</p>
+    <p>Father, I come to You today not as a stranger but as Your child. I confess that I have been operating in a spirit that is not the spirit You gave me. I have been moving through my life as if I were alone, as if I had to carry everything, as if no one was coming for me. I confess this not as a sin to be punished for but as a habit I am ready to lay down.</p>
+    <p>Today I receive the spirit of adoption You placed inside me the moment I came to You. I receive my place in Your family. I receive my inheritance as Your daughter. I lay down the scarcity, the urgency, the performance, the isolation, the hypervigilance. I trade them for Your provision, Your peace, Your identity, Your belonging, Your trust.</p>
+    <p>Speak to me about how You see me. Pour into me before I pour into anyone else. Let the rest of my life be lived from the posture of a claimed and secured daughter, and never again from the posture of an orphan. Teach me to call You Abba.</p>
+    <p>In the name of Jesus, amen.</p>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="diamond"></div><div class="divider-line"></div></div>
+
+  <div class="section-tag"><div class="tag-line"></div><span class="tag-text">Before you go</span></div>
+  <h2>One practice <em>for the week.</em></h2>
+
+  <p>Place your hand on your chest, beautiful one, and breathe in slowly. Say the four lines of the first stanza of the declaration out loud, every morning, until they sink past the orphan voice and settle into the place where the daughter spirit lives.</p>
+
+  <p><em>I am a plan, not a mistake. I am a solution, not a problem. I am a royal, not a pauper. I am a daughter, not an orphan.</em></p>
+
+  <p>The Father has been waiting on this exchange for the whole of your life. The orphan lays down. The daughter rises. And the rest of your days are lived in the spirit He gave you in the beginning, the spirit you were always meant to walk in, the spirit that finally, today, becomes yours.</p>
+
+  <div class="closing">
+    <p>You were never an orphan.<br>You have always been a daughter.<br><em>And the Father who has been here<br>since before you were formed<br>is the One who calls you home.</em></p>
+    <p class="sig">Avizaya &nbsp;&middot;&nbsp; School 1, Episode 10</p>
+  </div>
+
+</div>
+</body>
+</html>
