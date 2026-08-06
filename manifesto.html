@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avizaya — The Manifesto</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --plum: #2C1A4A;
+    --plum-mid: #3D2460;
+    --gold: #C4955A;
+    --gold-light: #D4AA78;
+    --blush: #E8D5C4;
+    --ivory: #F7F2EC;
+    --green: #1A3A2E;
+    --text: #1C1018;
+    --text-muted: #6B5A72;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ivory);
+    color: var(--text);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 80px 40px 120px;
+    position: relative;
+  }
+
+  .border-left {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--gold);
+    opacity: 0;
+    animation: fadeIn 1.2s ease 0.3s forwards;
+  }
+
+  .eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: riseIn 0.9s ease 0.4s forwards;
+  }
+
+  .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(52px, 10vw, 88px);
+    letter-spacing: 0.12em;
+    color: var(--plum);
+    line-height: 1;
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: riseIn 1s ease 0.5s forwards;
+  }
+
+  .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 18px;
+    color: var(--text-muted);
+    margin-bottom: 56px;
+    opacity: 0;
+    animation: riseIn 1s ease 0.7s forwards;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 48px 0;
+    opacity: 0;
+    animation: fadeIn 1s ease 1.2s forwards;
+  }
+
+  .divider-line {
+    flex: 1;
+    height: 0.5px;
+    background: var(--gold);
+    opacity: 0.4;
+  }
+
+  .divider-diamond {
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  .opening {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 400;
+    line-height: 1.55;
+    color: var(--plum);
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: riseIn 1s ease 0.9s forwards;
+  }
+
+  .opening em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .body-text {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.9;
+    color: #3A2840;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: riseIn 0.8s ease var(--delay, 1.1s) forwards;
+  }
+
+  .body-text strong {
+    font-weight: 500;
+    color: var(--plum);
+  }
+
+  .pull-quote {
+    border-left: 2px solid var(--gold);
+    padding: 20px 0 20px 28px;
+    margin: 48px 0;
+    opacity: 0;
+    animation: riseIn 0.8s ease var(--delay, 1.3s) forwards;
+  }
+
+  .pull-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(20px, 3.5vw, 26px);
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--plum-mid);
+  }
+
+  .pillars {
+    margin: 48px 0;
+    opacity: 0;
+    animation: riseIn 0.8s ease 1.6s forwards;
+  }
+
+  .pillar {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 20px 0;
+    border-bottom: 0.5px solid rgba(196, 149, 90, 0.25);
+  }
+
+  .pillar:first-child { border-top: 0.5px solid rgba(196, 149, 90, 0.25); }
+
+  .pillar-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    padding-top: 3px;
+    min-width: 24px;
+  }
+
+  .pillar-content { flex: 1; }
+
+  .pillar-name {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--plum);
+    margin-bottom: 6px;
+  }
+
+  .pillar-text {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  .closing {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 3.5vw, 26px);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--plum);
+    text-align: center;
+    margin: 56px 0 40px;
+    opacity: 0;
+    animation: riseIn 0.8s ease 1.8s forwards;
+  }
+
+  .closing em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .signature {
+    text-align: center;
+    opacity: 0;
+    animation: riseIn 0.8s ease 2s forwards;
+  }
+
+  .signature-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    color: var(--plum);
+    margin-bottom: 6px;
+  }
+
+  .signature-sub {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .seal {
+    width: 64px;
+    height: 64px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    margin: 24px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeIn 1s ease 2.2s forwards;
+  }
+
+  .seal-inner {
+    width: 48px;
+    height: 48px;
+    border: 0.5px solid rgba(196,149,90,0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+  }
+
+  @keyframes riseIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @media print {
+    .border-left { display: none; }
+    * { animation: none !important; opacity: 1 !important; }
+    body { background: white; }
+    .page { padding: 40px; }
+  }
+</style>
+<link rel="stylesheet" href="assets/avizaya.css">
+<link rel="icon" type="image/svg+xml" href="assets/avizaya-seal-transparent.svg">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-brand">
+    <img src="assets/avizaya-seal-ivory.svg" alt="Avizaya seal">
+    <span>Avizaya</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#schools">The Schools</a>
+    <a href="manifesto.html" class="active">The Manifesto</a>
+    <a href="school-1/index.html">Start School 1</a>
+  </div>
+</nav>
+
+
+<div class="border-left"></div>
+
+<div class="page">
+
+  <p class="eyebrow">The founding manifesto</p>
+  <h1 class="brand-name">Avizaya</h1>
+  <p class="subtitle">A declaration for the woman who is done being half of herself.</p>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-diamond"></div>
+    <div class="divider-line"></div>
+  </div>
+
+  <p class="opening">
+    There is a woman who has been <em>everything to everyone</em> — and nothing to herself.<br><br>
+    She is spiritual, but scattered.<br>
+    She is strong, but exhausted.<br>
+    She is capable, but held back by something she can't name.<br><br>
+    This is for her.
+  </p>
+
+  <p class="body-text" style="--delay: 1.1s;">
+    Avizaya was born from the belief that a woman's transformation is not a single breakthrough — it is a <strong>complete rebuilding</strong>. Not a makeover. Not a mindset shift. A reconstruction of who she is at every level: her spirit, her body, her mind, and her wealth.
+  </p>
+
+  <p class="body-text" style="--delay: 1.2s;">
+    Too many women are told to choose. Be spiritual or be strategic. Be soft or be successful. Heal your body or build your empire. We reject that entirely.
+  </p>
+
+  <div class="pull-quote" style="--delay: 1.3s;">
+    <p>"The whole woman does not compartmentalize her healing. She understands that her nervous system and her net worth are connected. That her relationship with God and her relationship with money tell the same story. That the way she treats her body is the way she treats her dreams."</p>
+  </div>
+
+  <p class="body-text" style="--delay: 1.4s;">
+    Avizaya is not a coaching brand. It is not a course. It is not content.<br>
+    It is a <strong>standard</strong> — a way of becoming that women carry for the rest of their lives and pour into the women who come after them.
+  </p>
+
+  <p class="body-text" style="--delay: 1.5s;">
+    We build on four unbreakable pillars. Not because someone told us to. Because a woman who is broken in any one of these areas is never fully free.
+  </p>
+
+  <div class="pillars">
+    <div class="pillar">
+      <span class="pillar-num">I</span>
+      <div class="pillar-content">
+        <p class="pillar-name">Spirit — Identity and purpose</p>
+        <p class="pillar-text">She knows who she is before God. Her identity is not borrowed from a relationship, a title, or a following. It is rooted in something older and deeper than all of it.</p>
+      </div>
+    </div>
+    <div class="pillar">
+      <span class="pillar-num">II</span>
+      <div class="pillar-content">
+        <p class="pillar-name">Body — Healing and embodiment</p>
+        <p class="pillar-text">She lives in her body — not at war with it. She understands that physical restoration is not vanity. It is the vessel through which everything else flows.</p>
+      </div>
+    </div>
+    <div class="pillar">
+      <span class="pillar-num">III</span>
+      <div class="pillar-content">
+        <p class="pillar-name">Mind — Discipline and becoming</p>
+        <p class="pillar-text">She is not managed by her emotions. She has built an inner architecture that holds her on the hard days. Her habits are her devotion.</p>
+      </div>
+    </div>
+    <div class="pillar">
+      <span class="pillar-num">IV</span>
+      <div class="pillar-content">
+        <p class="pillar-name">Wealth — Freedom and legacy</p>
+        <p class="pillar-text">She builds systems, not just income. She understands that financial sovereignty is not about greed — it is about having the freedom to live her calling without permission from anyone.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="body-text" style="--delay: 1.6s;">
+    The woman who walks through Avizaya does not come out the same. She comes out <strong>whole</strong>. And because she is whole, she heals the women in her circle. And because they heal, generations shift.
+  </p>
+
+  <p class="body-text" style="--delay: 1.7s;">
+    This is not about going viral. It is not about a six-figure launch. It is about building something so true, so grounded, so deeply rooted in real transformation — that it is still standing long after we are gone.
+  </p>
+
+  <div class="divider" style="opacity:1;animation:none;">
+    <div class="divider-line"></div>
+    <div class="divider-diamond"></div>
+    <div class="divider-line"></div>
+  </div>
+
+  <p class="closing">
+    <em>Avizaya</em> is the woman who was never lost —<br>
+    she was always becoming.<br><br>
+    She is you.<br>
+    She has always been you.
+  </p>
+
+  <div class="signature">
+    <p class="signature-name">Avizaya</p>
+    <p class="signature-sub">Founded in purpose · Built for generations</p>
+    <div class="seal">
+      <div class="seal-inner">A</div>
+    </div>
+  </div>
+
+</div>
+
+
+<footer class="site-footer">
+  <img class="seal" src="assets/avizaya-seal-ivory.svg" alt="">
+  <p class="foot-brand">Avizaya</p>
+  <p class="foot-tag">She was never lost — she was always becoming.</p>
+  <div class="foot-links">
+    <a href="index.html#schools">The Schools</a>
+    <a href="manifesto.html">The Manifesto</a>
+    <a href="school-1/index.html">School 1</a>
+  </div>
+  <p class="foot-copy">&copy; 2026 Avizaya &nbsp;&middot;&nbsp; Founded in purpose &middot; Built for generations</p>
+</footer>
+
+</body>
+</html>
