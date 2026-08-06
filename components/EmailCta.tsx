@@ -11,16 +11,47 @@ export default function EmailCta({ source = 'homepage' }: { source?: string }) {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
+  const MC_URL =
+    'https://avizaya.us1.list-manage.com/subscribe/post-json?u=76683a178bdba458a5475422b&id=18050bf063&f_id=00f2c2e1f0';
+  const MC_HONEYPOT = 'b_76683a178bdba458a5475422b_18050bf063';
+
+  function subscribeMailchimp(value: string): Promise<boolean> {
+    return new Promise((resolve) => {
+      const cbName = 'mcCallback' + Math.floor(Math.random() * 1e9);
+      const w = window as unknown as Record<string, unknown>;
+      w[cbName] = (resp: { result?: string; msg?: string }) => {
+        delete w[cbName];
+        resolve(
+          resp?.result === 'success' ||
+            (resp?.msg ?? '').includes('already subscribed')
+        );
+      };
+      const s = document.createElement('script');
+      s.src =
+        MC_URL +
+        '&EMAIL=' +
+        encodeURIComponent(value) +
+        '&' +
+        MC_HONEYPOT +
+        '=&c=' +
+        cbName;
+      s.onerror = () => resolve(false);
+      document.body.appendChild(s);
+    });
+  }
+
   async function submit() {
     if (!email.trim() || status === 'sending') return;
     setStatus('sending');
     try {
-      const res = await fetch('/api/subscribe', {
+      // Keep a copy in our own database (non-blocking).
+      fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email.trim(), source }),
-      });
-      setStatus(res.ok ? 'sent' : 'error');
+      }).catch(() => {});
+      const ok = await subscribeMailchimp(email.trim());
+      setStatus(ok ? 'sent' : 'error');
     } catch {
       setStatus('error');
     }

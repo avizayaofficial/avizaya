@@ -344,33 +344,49 @@
 </footer>
 
 <script>
-document.querySelectorAll('form[data-provider]').forEach(function(f){
-  f.addEventListener('submit', async function(e){
-    e.preventDefault();
-    var input = f.querySelector('input[type="email"]');
-    var note = f.parentElement.querySelector('.cta-note');
-    var btn = f.querySelector('button');
-    if (!input || !input.value.trim()) return;
-    if (btn) btn.disabled = true;
-    try {
-      var res = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: input.value.trim(), source: 'site' })
+(function () {
+  var MC_URL = "https://avizaya.us1.list-manage.com/subscribe/post-json?u=76683a178bdba458a5475422b&id=18050bf063&f_id=00f2c2e1f0";
+  var mcCount = 0;
+  function subscribeMailchimp(email, onDone) {
+    mcCount += 1;
+    var cbName = "mcCallback" + mcCount;
+    window[cbName] = function (resp) {
+      delete window[cbName];
+      onDone(resp && resp.result === "success" || (resp && resp.msg && resp.msg.indexOf("already subscribed") !== -1));
+    };
+    var s = document.createElement("script");
+    s.src = MC_URL + "&EMAIL=" + encodeURIComponent(email) + "&b_76683a178bdba458a5475422b_18050bf063=" + "&c=" + cbName;
+    s.onerror = function () { onDone(false); };
+    document.body.appendChild(s);
+  }
+  document.querySelectorAll("form[data-provider]").forEach(function (f) {
+    f.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var input = f.querySelector('input[type="email"]');
+      var note = f.parentElement.querySelector(".cta-note");
+      var btn = f.querySelector("button");
+      if (!input || !input.value.trim()) return;
+      var email = input.value.trim();
+      if (btn) btn.disabled = true;
+      try {
+        fetch("/api/subscribe", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: email, source: "site" })
+        });
+      } catch (err) {}
+      subscribeMailchimp(email, function (ok) {
+        if (ok) {
+          f.style.display = "none";
+          if (note) note.textContent = "You are on the list. When the next school opens, you will be the first to know.";
+        } else {
+          if (note) note.textContent = "Something went wrong. Try again.";
+          if (btn) btn.disabled = false;
+        }
       });
-      if (res.ok) {
-        f.style.display = 'none';
-        if (note) note.textContent = 'You are on the list. When the next school opens, you will be the first to know.';
-      } else {
-        if (note) note.textContent = 'Something went wrong. Try again.';
-        if (btn) btn.disabled = false;
-      }
-    } catch (err) {
-      if (note) note.textContent = 'Something went wrong. Try again.';
-      if (btn) btn.disabled = false;
-    }
+    });
   });
-});
+})();
 </script>
 
 </body>
