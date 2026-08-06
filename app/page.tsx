@@ -96,14 +96,14 @@ export default function HomePage() {
           mind and wealth.
         </p>
         <p className="text-[11px] tracking-[0.24em] uppercase text-gold text-opacity-80 mb-10">
-          10 Schools &nbsp;&middot;&nbsp; 102 Episodes &nbsp;&middot;&nbsp; Free to read
+          10 Schools &nbsp;&middot;&nbsp; 102 Episodes
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="/school-1/index.html"
             className="inline-block px-9 py-4 rounded-lg bg-gold text-plum text-xs font-medium tracking-[0.2em] uppercase hover:bg-opacity-90 transition"
           >
-            Begin School 1 &middot; Free
+            Begin School 1
           </a>
           <a
             href="/manifesto.html"
@@ -147,7 +147,7 @@ export default function HomePage() {
             The complete <em className="text-gold italic">rebuilding.</em>
           </h2>
           <p className="font-serif italic text-muted mt-4">
-            School 1 is open now, free. The remaining schools open one at a time.
+            School 1 is open now. The remaining schools open one at a time.
           </p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">

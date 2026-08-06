@@ -33,8 +33,8 @@ export default function EmailCta({ source = 'homepage' }: { source?: string }) {
         <em className="text-gold italic">next school opens.</em>
       </h3>
       <p className="text-sm text-ivory text-opacity-70 max-w-md mx-auto mb-7 leading-relaxed">
-        Every school is free to read. Leave your email and you will be the
-        first to know when a new school is published.
+        Leave your email and you will be the first to know when a new
+        school is published.
       </p>
       {status === 'sent' ? (
         <p className="font-serif italic text-lg text-gold">
@@ -66,11 +66,11 @@ export default function EmailCta({ source = 'homepage' }: { source?: string }) {
               {status === 'sending' ? 'Sending…' : 'Keep me posted'}
             </button>
           </div>
-          <p className="text-[11px] text-ivory text-opacity-40 mt-4">
-            {status === 'error'
-              ? 'Something went wrong. Try again.'
-              : 'No noise. Only new schools and what matters.'}
-          </p>
+          {status === 'error' && (
+            <p className="text-[11px] text-ivory text-opacity-40 mt-4">
+              Something went wrong. Try again.
+            </p>
+          )}
         </>
       )}
     </div>
